@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
+import Landing from './components/Landing';
+import SideMenu from './components/SideMenu';
+import Monthly from './components/Monthly';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date()
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleButton = this.handleButton.bind(this);
+  }
+
+  handleChange(date) {
+    this.setState({date})
+  }
+
+  handleButton(date) {
+    this.setState({
+      date: date.activeStartDate
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main>
+          <Route exact path="/" render={() => (<Landing />)}/>
+          <Route
+            path="/dashboard"
+            render={() => (<SideMenu />)}
+          />
+
+          <Switch>
+            <Route
+              exact path="/dashboard/monthly"
+              render={() => (<Monthly />)}
+            />
+          </Switch>
+        </main>
       </div>
     );
   }
