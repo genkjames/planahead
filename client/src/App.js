@@ -5,6 +5,7 @@ import './App.css';
 import Landing from './components/Landing';
 import SideMenu from './components/SideMenu';
 import Monthly from './components/Monthly';
+import Daily from './components/Daily';
 
 class App extends Component {
   constructor(props) {
@@ -29,20 +30,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <main>
           <Route exact path="/" render={() => (<Landing />)}/>
-          <Route
+          <div className="dashboard"><Route
             path="/dashboard"
             render={() => (<SideMenu />)}
           />
 
           <Switch>
             <Route
-              exact path="/dashboard/monthly"
+              exact path="/dashboard"
               render={() => (<Monthly />)}
             />
-          </Switch>
+            <Route
+              path="/dashboard/daily"
+              render={() => (<Daily />)}
+            />
+          </Switch></div>
         </main>
       </div>
     );
