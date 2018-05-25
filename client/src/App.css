@@ -1,16 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .dashboard {
   display: flex;
 }
 
-.dashboard > * {
-  padding: 20px;
-  border: 1px solid #000;
-}
-
 .side-menu {
   width: 300px;
+  padding: 20px;
   background: rgb(20, 20, 20);
   color: #fff;
+  min-height: 600px;
+  height: 100vh;
 }
 
 .side-menu a {
@@ -18,9 +22,65 @@
   text-decoration: none;
   color: #fff;
   font-size: 20px;
+  margin: 0 0 10px 0;
 }
 
 .dashboard > *:nth-of-type(2) {
   width: calc(100% - 300px);
+}
+
+.top-nav {
+  border: 1px solid #000;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px 10px;
+}
+
+.daily-links a {
+  padding: 0 0 0 40px;
+  margin: 0 0 5px 0;
+}
+
+.calendar {
+  padding: 30px;
+}
+
+.react-calendar__navigation__label {
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.react-calendar__month-view__weekdays {
   text-align: center;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days {
+  border: 1px solid black;
+}
+
+.react-calendar__tile {
+  display: inline;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  text-align: left;
+  vertical-align: text-top;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: red;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #969696;
+  pointer-events: none;
+}
+
+.react-calendar__tile--active {
+  color: blue;
 }

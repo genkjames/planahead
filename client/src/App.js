@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import Landing from './components/Landing';
-import SideMenu from './components/SideMenu';
-import Monthly from './components/Monthly';
-import Daily from './components/Daily';
+import Dashboard from './components/Dashboard';
+
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date: new Date(),
+      juices: []
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,26 +29,23 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>
         <main>
           <Route exact path="/" render={() => (<Landing />)}/>
-          <div className="dashboard"><Route
+          <Route
             path="/dashboard"
-            render={() => (<SideMenu />)}
+            render={({ history }) => (
+              <Dashboard
+                history={history}
+              />
+            )}
           />
-
-          <Switch>
-            <Route
-              exact path="/dashboard"
-              render={() => (<Monthly />)}
-            />
-            <Route
-              path="/dashboard/daily"
-              render={() => (<Daily />)}
-            />
-          </Switch></div>
         </main>
       </div>
     );
