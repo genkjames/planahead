@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import TopNav from './TopNav';
+import TopNav from '../navigation/TopNav';
+import Routes from './Routes';
 
 class Daily extends Component {
   render() {
@@ -7,6 +8,8 @@ class Daily extends Component {
       <div>
         <TopNav />
         <h1>Daily</h1>
+        <p>{this.props.date.toDateString()}</p>
+        <Routes />
       </div>
     )
   }
