@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav(props) {
+function SideNav(props) {
   return (
     <div>
       <Link to="/dashboard">Monthly View</Link>
@@ -10,4 +10,4 @@ function Nav(props) {
   )
 }
 
-export default Nav;
+export default SideNav;

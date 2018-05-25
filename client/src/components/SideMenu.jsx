@@ -1,11 +1,11 @@
 import React from 'react';
-import Nav from './Nav';
+import SideNav from './SideNav';
 
 function SideMenu(props) {
   return (
     <div className="side-menu">
       <h1>Side Menu</h1>
-      <Nav />
+      <SideNav />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar/';
+import TopNav from './TopNav';
 
 class Monthly extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Monthly extends Component {
   render() {
     return (
       <div>
+        <TopNav />
         <Calendar
           onChange={this.handleChange}
           onClickMonth={this.handleChange}
