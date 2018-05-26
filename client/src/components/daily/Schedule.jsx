@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import DailyMenu from '../navigation/DailyMenu';
 
 class Schedule extends Component {
   render() {
     return (
-      <div>
-        <h1>Schedule</h1>
+      <div className="schedule">
+        <DailyMenu />
+        <h2>Schedule</h2>
       </div>
     )
   }

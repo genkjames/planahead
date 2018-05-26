@@ -4,9 +4,13 @@
   box-sizing: border-box;
 }
 
+/* Dashboard */
+
 .dashboard {
   display: flex;
 }
+
+/* Side Menu */
 
 .side-menu {
   width: 300px;
@@ -29,6 +33,10 @@
   width: calc(100% - 300px);
 }
 
+.side-nav {
+  padding: 20px 0 0 0;
+}
+
 .top-nav {
   border: 1px solid #000;
   display: flex;
@@ -40,6 +48,8 @@
   padding: 0 0 0 40px;
   margin: 0 0 5px 0;
 }
+
+/* Calendar */
 
 .calendar {
   padding: 30px;
@@ -83,4 +93,10 @@
 
 .react-calendar__tile--active {
   color: blue;
+}
+
+/* Daily View */
+
+.nav {
+
 }

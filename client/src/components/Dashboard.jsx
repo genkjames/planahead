@@ -11,12 +11,19 @@ class Dashboard extends Component {
       date: new Date()
     }
 
-    this.getDate = this.getDate.bind(this);
+    this.changeDate = this.changeDate.bind(this);
+    this.switchViews = this.switchViews.bind(this);
   }
 
-  getDate(date) {
+  changeDate(date) {
     this.setState({date})
     this.props.history.push('/dashboard/daily');
+  }
+
+  switchViews(date) {
+    this.setState({
+      date: date.activeStartDate
+    })
   }
 
   render() {
@@ -29,7 +36,8 @@ class Dashboard extends Component {
             render={() => (
               <Monthly
                 date={this.state.date}
-                onChange={this.getDate}
+                onChange={this.changeDate}
+                onSwitch={this.switchViews}
               />
             )}
           />

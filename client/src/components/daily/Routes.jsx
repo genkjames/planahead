@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Tasks from './Tasks';
 import Events from './Events';
 import Notes from './Notes';
@@ -10,7 +10,7 @@ function Routes(props) {
   return (
     <Switch>
       <Route
-        path="/dashboard/daily/tasks"
+        exact path="/dashboard/daily"
         render={() => (<Tasks />)}
       />
       <Route
@@ -25,6 +25,7 @@ function Routes(props) {
         path="/dashboard/daily/schedule"
         render={() => (<Schedule />)}
       />
+      <Redirect to="/dashboard/daily" />
     </Switch>
   )
 }

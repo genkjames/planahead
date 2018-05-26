@@ -16,9 +16,7 @@ class Monthly extends Component {
   }
 
   handleButton(date) {
-    this.setState({
-      date: date.activeStartDate
-    })
+    this.props.onSwitch(date);
   }
 
   render() {

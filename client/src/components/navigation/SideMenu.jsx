@@ -4,7 +4,7 @@ import SideNav from './SideNav';
 function SideMenu(props) {
   return (
     <div className="side-menu">
-      <h1>Side Menu</h1>
+      <h1>PlanAhead</h1>
       <SideNav />
     </div>
   )

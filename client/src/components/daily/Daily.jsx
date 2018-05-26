@@ -5,10 +5,9 @@ import Routes from './Routes';
 class Daily extends Component {
   render() {
     return (
-      <div>
+      <div className="daily">
         <TopNav />
-        <h1>Daily</h1>
-        <p>{this.props.date.toDateString()}</p>
+        <h1>{this.props.date.toDateString()}</h1>
         <Routes />
       </div>
     )
