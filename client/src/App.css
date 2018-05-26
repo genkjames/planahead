@@ -8,14 +8,13 @@
 
 .dashboard {
   display: flex;
-  min-height: 600px;
   height: 100vh;
 }
 
 /* Side Menu */
 
 .side-menu {
-  width: 300px;
+  width: 200px;
   padding: 20px;
   background: rgb(20, 20, 20);
   color: #fff;
@@ -31,7 +30,7 @@
 }
 
 .dashboard > *:nth-of-type(2) {
-  width: calc(100% - 300px);
+  width: calc(100% - 200px);
   overflow: scroll;
 }
 
@@ -98,6 +97,9 @@
 
 /* Daily View */
 
-.nav {
-
+.tasks .daily-tasks,
+.events .daily-events,
+.notes .daily-notes,
+.schedule .daily-schedule {
+  color: blue;
 }

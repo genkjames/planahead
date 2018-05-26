@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 function DailyMenu(props) {
   return (
-    <nav>
-      <Link to="/dashboard/daily">Tasks</Link>
-      <Link to="/dashboard/daily/events">Events</Link>
-      <Link to="/dashboard/daily/notes">Notes</Link>
-      <Link to="/dashboard/daily/schedule">Schedule</Link>
+    <nav className="daily-nav">
+      <Link to="/dashboard/daily" className="daily-tasks">Tasks</Link>
+      <Link to="/dashboard/daily/events" className="daily-events">Events</Link>
+      <Link to="/dashboard/daily/notes" className="daily-notes">Notes</Link>
+      <Link to="/dashboard/daily/schedule" className="daily-schedule">Schedule</Link>
     </nav>
   )
 }
