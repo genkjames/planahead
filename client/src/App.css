@@ -8,6 +8,8 @@
 
 .dashboard {
   display: flex;
+  min-height: 600px;
+  height: 100vh;
 }
 
 /* Side Menu */
@@ -17,8 +19,7 @@
   padding: 20px;
   background: rgb(20, 20, 20);
   color: #fff;
-  min-height: 600px;
-  height: 100vh;
+  overflow: scroll;
 }
 
 .side-menu a {
@@ -31,6 +32,7 @@
 
 .dashboard > *:nth-of-type(2) {
   width: calc(100% - 300px);
+  overflow: scroll;
 }
 
 .side-nav {
@@ -74,8 +76,7 @@
   display: inline;
   outline: none;
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  padding: 10px 100px 100px 10px;
   text-align: left;
   vertical-align: text-top;
   font-size: 20px;
