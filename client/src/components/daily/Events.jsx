@@ -6,7 +6,7 @@ class Events extends Component {
     return (
       <div className="events">
         <DailyMenu />
-        <h2>Events</h2>
+        <button>Add Event</button>
       </div>
     )
   }

@@ -6,7 +6,7 @@ class Notes extends Component {
     return (
       <div className="notes">
         <DailyMenu />
-        <h2>Notes</h2>
+        <button>Add a Note</button>
       </div>
     )
   }

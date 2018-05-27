@@ -6,7 +6,7 @@ class Tasks extends Component {
     return (
       <div className="tasks">
         <DailyMenu />
-        <h2>Tasks</h2>
+        <button>Add Task</button>
       </div>
     )
   }

@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font: 300 16px 'Lato', sans-serif;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 23px;
+}
+
+h2 {
+  font-size: 20px;
 }
 
 /* Dashboard */
@@ -14,40 +30,55 @@
 /* Side Menu */
 
 .side-menu {
-  width: 200px;
-  padding: 20px;
+  width: 180px;
   background: rgb(20, 20, 20);
   color: #fff;
   overflow: scroll;
 }
 
+.side-menu h1 {
+  padding: 20px 15px;
+}
+
 .side-menu a {
   display: block;
   text-decoration: none;
-  color: #fff;
-  font-size: 20px;
-  margin: 0 0 10px 0;
+  color: #899999;
+  font: 300 17px 'Lato', sans-serif;
+  padding: 12px 15px;
+  letter-spacing: 1px;
+  transition: 200ms background;
 }
 
-.dashboard > *:nth-of-type(2) {
-  width: calc(100% - 200px);
-  overflow: scroll;
-}
-
-.side-nav {
-  padding: 20px 0 0 0;
-}
-
-.top-nav {
-  border: 1px solid #000;
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 10px 10px;
+.daily-links {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
 .daily-links a {
-  padding: 0 0 0 40px;
-  margin: 0 0 5px 0;
+  font: 300 16px 'Lato', sans-serif;
+  padding: 8px 10px 8px 25px;
+}
+
+.side-menu a:hover {
+  background: #333;
+}
+
+.dashboard > *:nth-of-type(2) {
+  width: calc(100% - 180px);
+  overflow: scroll;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 10px;
+  background: #eaf7f9;
+  color: #899999;
+}
+
+.top-nav p {
+  font: 300px 22px 'Lato', sans-serif;
 }
 
 /* Calendar */
@@ -68,7 +99,7 @@
 }
 
 .react-calendar__month-view__days {
-  border: 1px solid black;
+  border: 1px solid #dfe6e9;
 }
 
 .react-calendar__tile {
@@ -79,11 +110,11 @@
   text-align: left;
   vertical-align: text-top;
   font-size: 20px;
-  border: 1px solid black;
+  border: 1px solid #dfe6e9;
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: red;
+  color: #e0114f;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -92,8 +123,9 @@
 }
 
 .react-calendar__tile--active {
-  color: blue;
+  color: #8bdbe5;
 }
+
 
 /* Daily View */
 
@@ -101,5 +133,40 @@
 .events .daily-events,
 .notes .daily-notes,
 .schedule .daily-schedule {
-  color: blue;
+  color: #8bdbe5;
+  background: #fff;
 }
+
+.daily h1 {
+  text-align: center;
+  padding: 20px;
+  background: #eaf7f9;
+}
+
+.daily-nav {
+  display: flex;
+  justify-content: center;
+  background: #eaf7f9;
+}
+
+.daily-nav a {
+  color: #899999;
+  text-decoration: none;
+  flex-basis: 200px;
+  padding: 10px 0;
+  text-align: center;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  transition: color 200ms, background 300ms;
+}
+
+.daily-nav a:active {
+  color: black;
+}
+
+.daily-nav a:hover {
+  color: #8bdbe5;
+  background: #fff;
+}
+
+.daily-nav:

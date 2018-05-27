@@ -6,7 +6,6 @@ class Schedule extends Component {
     return (
       <div className="schedule">
         <DailyMenu />
-        <h2>Schedule</h2>
       </div>
     )
   }
