@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 
@@ -10,27 +9,22 @@ import Dashboard from './components/Dashboard';
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      date: new Date(),
-      juices: []
+
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleButton = this.handleButton.bind(this);
   }
 
-  handleChange(date) {
-    this.setState({date})
+  fetchTasks() {
+    console.log('fetching');
   }
 
-  handleButton(date) {
-    this.setState({
-      date: date.activeStartDate
-    })
+  createTask(task) {
+    console.log(task);
   }
 
   componentDidMount() {
-
+    this.fetchTasks();
   }
 
   render() {
@@ -43,6 +37,7 @@ class App extends Component {
             render={({ history }) => (
               <Dashboard
                 history={history}
+                onTask={this.createTask}
               />
             )}
           />

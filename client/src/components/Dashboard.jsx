@@ -46,6 +46,7 @@ class Dashboard extends Component {
             render={() => (
               <Daily
                 date={this.state.date}
+                onTask={this.props.onTask}
               />
             )}
           />

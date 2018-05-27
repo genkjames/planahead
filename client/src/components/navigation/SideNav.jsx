@@ -7,7 +7,7 @@ function SideNav(props) {
       <Link to="/dashboard">Monthly View</Link>
       <Link to="/dashboard/daily">Daily View</Link>
       <div className="daily-links">
-        <Link to="/dashboard/daily">Tasks</Link>
+        <Link to="/dashboard/daily/tasks">Tasks</Link>
         <Link to="/dashboard/daily/events">Events</Link>
         <Link to="/dashboard/daily/notes">Notes</Link>
         <Link to="/dashboard/daily/schedule">Schedule</Link>

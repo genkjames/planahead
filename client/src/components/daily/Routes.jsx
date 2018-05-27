@@ -10,8 +10,13 @@ function Routes(props) {
   return (
     <Switch>
       <Route
-        exact path="/dashboard/daily"
-        render={() => (<Tasks />)}
+        path="/dashboard/daily/tasks"
+        render={() => (
+          <Tasks
+            onTask={props.onTask}
+            date={props.date}
+          />
+        )}
       />
       <Route
         path="/dashboard/daily/events"
@@ -25,7 +30,7 @@ function Routes(props) {
         path="/dashboard/daily/schedule"
         render={() => (<Schedule />)}
       />
-      <Redirect to="/dashboard/daily" />
+      <Redirect to="/dashboard/daily/tasks" />
     </Switch>
   )
 }

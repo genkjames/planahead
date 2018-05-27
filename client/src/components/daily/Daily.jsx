@@ -8,7 +8,10 @@ class Daily extends Component {
       <div className="daily">
         <TopNav />
         <h1>{this.props.date.toDateString()}</h1>
-        <Routes />
+        <Routes
+          onTask={this.props.onTask}
+          date={this.props.date}
+        />
       </div>
     )
   }
