@@ -16,6 +16,7 @@ function Routes(props) {
             onTask={props.onTask}
             onEdit={props.updateTask}
             onDelete={props.deleteTask}
+            changeDate={props.changeDate}
             date={props.date}
             tasks={props.tasks}
             dateFormat={props.dateFormat}

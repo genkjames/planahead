@@ -65,6 +65,7 @@ class Dashboard extends Component {
                 onTask={this.props.onTask}
                 updateTask={this.props.updateTask}
                 deleteTask={this.props.deleteTask}
+                changeDate={this.changeDate}
                 tasks={this.props.tasks}
                 dateFormat={this.dateFormat}
               />

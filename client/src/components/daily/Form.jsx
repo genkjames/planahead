@@ -30,13 +30,20 @@ class Form extends Component {
     })
   }
 
-  handleEdit() {
-    console.log('edit');
+  changeDate() {
+    const newDate = new Date();
+    const dateValues = this.state.task.set_date.split('-');
+    newDate.setFullYear(dateValues[0]);
+    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
+    newDate.setDate(dateValues[2]);
+    this.props.changeDate(newDate);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props)
+    if(this.state.task.id) {
+      this.changeDate();
+    }
     this.props.onSubmit(this.state.task);
   }
 
@@ -66,7 +73,6 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h2>Form</h2>
@@ -81,6 +87,17 @@ class Form extends Component {
               id="text"
             />
           </div>
+          {this.props.task &&
+          <div>
+            <label htmlFor="set_date"></label>
+            <input
+              type="date"
+              onChange={this.handleChange}
+              value={this.state.task.set_date}
+              name="set_date"
+              id="set_date"
+            />
+          </div>}
           <button value="submit">{this.props.label} Task</button>
           <Link to="/dashboard/daily/tasks">Cancel</Link>
         </form>

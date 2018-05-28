@@ -18,6 +18,7 @@ class Task extends Component {
               onSubmit={this.props.onEdit}
               task={this.props.task}
               label="Edit"
+              changeDate={this.props.changeDate}
             />
           )}
         />

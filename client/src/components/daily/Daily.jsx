@@ -12,6 +12,7 @@ class Daily extends Component {
           onTask={this.props.onTask}
           updateTask={this.props.updateTask}
           deleteTask={this.props.deleteTask}
+          changeDate={this.props.changeDate}
           date={this.props.date}
           tasks={this.props.tasks}
           dateFormat={this.props.dateFormat}

@@ -49,9 +49,6 @@ class App extends Component {
   }
 
   updateTask(task) {
-    console.log(task);
-    console.log(`update task with id of ${task.id}`);
-
     const options = {
       method: 'PUT',
       body: JSON.stringify(task),
@@ -69,7 +66,6 @@ class App extends Component {
       this.props.history.push('/dashboard/daily/tasks')
       this.setState((prevState) => {
         const index = prevState.tasks.findIndex(task => task.id === data.id);
-        console.log(index);
         return {
           tasks: [
             ...prevState.tasks.slice(0, index),

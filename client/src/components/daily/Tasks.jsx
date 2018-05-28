@@ -26,6 +26,7 @@ class Tasks extends Component {
           date={this.props.date}
           onEdit={this.props.onEdit}
           onDelete={this.props.onDelete}
+          changeDate={this.props.changeDate}
         />
       )
     })
