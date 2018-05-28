@@ -10,6 +10,7 @@ class Daily extends Component {
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
           onTask={this.props.onTask}
+          deleteTask={this.props.deleteTask}
           date={this.props.date}
           tasks={this.props.tasks}
           dateFormat={this.props.dateFormat}

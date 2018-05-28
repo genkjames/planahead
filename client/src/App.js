@@ -4,7 +4,7 @@ import './App.css';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 class App extends Component {
   constructor(props) {
@@ -15,10 +15,11 @@ class App extends Component {
     }
 
     this.createTask = this.createTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   fetchTasks() {
-    fetch('http://localhost:3001/tasks')
+    fetch(`${BASE_URL}/tasks`)
     .then(res => res.json())
     .then(data => this.setState({
       tasks: data
@@ -26,7 +27,6 @@ class App extends Component {
   }
 
   createTask(task) {
-    console.log(task);
     const options = {
       method: 'POST',
       body: JSON.stringify(task),
@@ -35,16 +35,28 @@ class App extends Component {
       }
     }
 
-    fetch('http://localhost:3001/tasks', options)
-    .then(res => {
-      console.log(res);
-      return res.json()
-    })
+    fetch(`${BASE_URL}/tasks`, options)
+    .then(res => res.json())
     .then(data => {
       this.props.history.push('/dashboard/daily/tasks');
       this.setState((prevState) => {
         return {
           tasks: [...prevState.tasks, data]
+        }
+      })
+    })
+  }
+
+  deleteTask(id) {
+    fetch(`${BASE_URL}/tasks/${id}`, {method: 'DELETE'})
+    .then(res => {
+      if(!res.ok) throw new Error('There was an error');
+      return res.json();
+    })
+    .then(data => {
+      this.setState((prevState) => {
+        return {
+          tasks: prevState.tasks.filter(task => task.id !== id)
         }
       })
     })
@@ -65,6 +77,7 @@ class App extends Component {
               <Dashboard
                 history={history}
                 onTask={this.createTask}
+                deleteTask={this.deleteTask}
                 tasks={this.state.tasks}
               />
             )}

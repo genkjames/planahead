@@ -23,6 +23,7 @@ class Tasks extends Component {
         <Task
           key={task.id}
           task={task}
+          onDelete={this.props.onDelete}
         />
       )
     })

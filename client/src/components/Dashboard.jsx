@@ -63,6 +63,7 @@ class Dashboard extends Component {
               <Daily
                 date={this.state.date}
                 onTask={this.props.onTask}
+                deleteTask={this.props.deleteTask}
                 tasks={this.props.tasks}
                 dateFormat={this.dateFormat}
               />
