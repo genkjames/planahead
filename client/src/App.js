@@ -15,6 +15,7 @@ class App extends Component {
     }
 
     this.createTask = this.createTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
 
@@ -47,6 +48,39 @@ class App extends Component {
     })
   }
 
+  updateTask(task) {
+    console.log(task);
+    console.log(`update task with id of ${task.id}`);
+
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(task),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
+
+    fetch(`${BASE_URL}/tasks/${task.id}`, options)
+    .then(res => {
+      if (!res.ok) throw new Error('There was an error');
+      return res.json()
+    })
+    .then(data => {
+      this.props.history.push('/dashboard/daily/tasks')
+      this.setState((prevState) => {
+        const index = prevState.tasks.findIndex(task => task.id === data.id);
+        console.log(index);
+        return {
+          tasks: [
+            ...prevState.tasks.slice(0, index),
+            data,
+            ...prevState.tasks.slice(index + 1)
+          ]
+        }
+      })
+    });
+  }
+
   deleteTask(id) {
     fetch(`${BASE_URL}/tasks/${id}`, {method: 'DELETE'})
     .then(res => {
@@ -77,6 +111,7 @@ class App extends Component {
               <Dashboard
                 history={history}
                 onTask={this.createTask}
+                updateTask={this.updateTask}
                 deleteTask={this.deleteTask}
                 tasks={this.state.tasks}
               />

@@ -30,8 +30,13 @@ class Form extends Component {
     })
   }
 
+  handleEdit() {
+    console.log('edit');
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.props)
     this.props.onSubmit(this.state.task);
   }
 
@@ -51,10 +56,17 @@ class Form extends Component {
   }
 
   componentDidMount() {
-    this.setDate();
+    if(this.props.task) {
+      this.setState({
+        task: this.props.task
+      })
+    } else {
+      this.setDate();
+    }
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h2>Form</h2>
@@ -69,7 +81,7 @@ class Form extends Component {
               id="text"
             />
           </div>
-          <button value="submit">Add Task</button>
+          <button value="submit">{this.props.label} Task</button>
           <Link to="/dashboard/daily/tasks">Cancel</Link>
         </form>
       </div>

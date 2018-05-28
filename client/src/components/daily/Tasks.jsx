@@ -23,6 +23,8 @@ class Tasks extends Component {
         <Task
           key={task.id}
           task={task}
+          date={this.props.date}
+          onEdit={this.props.onEdit}
           onDelete={this.props.onDelete}
         />
       )
@@ -37,6 +39,7 @@ class Tasks extends Component {
               <Form
                 date={this.props.date}
                 onSubmit={this.props.onTask}
+                label="Add"
               />)
             }
           />
