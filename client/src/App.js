@@ -11,16 +11,43 @@ class App extends Component {
     super(props);
 
     this.state = {
-
+      tasks: []
     }
+
+    this.createTask = this.createTask.bind(this);
   }
 
   fetchTasks() {
-    console.log('fetching');
+    fetch('http://localhost:3001/tasks')
+    .then(res => res.json())
+    .then(data => this.setState({
+      tasks: data
+    }));
   }
 
   createTask(task) {
     console.log(task);
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(task),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    fetch('http://localhost:3001/tasks', options)
+    .then(res => {
+      console.log(res);
+      return res.json()
+    })
+    .then(data => {
+      this.props.history.push('/dashboard/daily/tasks');
+      this.setState((prevState) => {
+        return {
+          tasks: [...prevState.tasks, data]
+        }
+      })
+    })
   }
 
   componentDidMount() {
@@ -38,6 +65,7 @@ class App extends Component {
               <Dashboard
                 history={history}
                 onTask={this.createTask}
+                tasks={this.state.tasks}
               />
             )}
           />

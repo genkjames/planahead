@@ -9,6 +9,6 @@ class TasksController < ApplicationController
 
   private
     def tasks_params
-      params.require(:task).permit(:user, :task, :is_complete, :date)
+      params.require(:task).permit(:user_id, :text, :is_complete, :set_date)
     end
 end

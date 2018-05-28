@@ -15,6 +15,8 @@ function Routes(props) {
           <Tasks
             onTask={props.onTask}
             date={props.date}
+            tasks={props.tasks}
+            dateFormat={props.dateFormat}
           />
         )}
       />

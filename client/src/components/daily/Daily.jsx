@@ -11,6 +11,8 @@ class Daily extends Component {
         <Routes
           onTask={this.props.onTask}
           date={this.props.date}
+          tasks={this.props.tasks}
+          dateFormat={this.props.dateFormat}
         />
       </div>
     )

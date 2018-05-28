@@ -13,6 +13,7 @@ class Dashboard extends Component {
 
     this.changeDate = this.changeDate.bind(this);
     this.switchViews = this.switchViews.bind(this);
+    this.dateFormat = this.dateFormat.bind(this);
   }
 
   changeDate(date) {
@@ -24,6 +25,21 @@ class Dashboard extends Component {
     this.setState({
       date: date.activeStartDate
     })
+  }
+
+  dateLength(num) {
+    if(num.toString().length === 1) {
+      return '0' + num;
+    }
+
+    return num;
+  }
+
+  dateFormat(date) {
+    const month = this.dateLength(date.getMonth() + 1);
+    const day = this.dateLength(date.getDate());
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
   render() {
@@ -47,6 +63,8 @@ class Dashboard extends Component {
               <Daily
                 date={this.state.date}
                 onTask={this.props.onTask}
+                tasks={this.props.tasks}
+                dateFormat={this.dateFormat}
               />
             )}
           />
