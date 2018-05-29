@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      tasks: []
+      tasks: [],
+      taskDates: []
     }
 
     this.createTask = this.createTask.bind(this);
@@ -25,6 +26,14 @@ class App extends Component {
     .then(data => this.setState({
       tasks: data
     }));
+  }
+
+  fetchTaskDates() {
+    fetch(`${BASE_URL}/tasks/dates`)
+    .then(res => res.json())
+    .then(data => this.setState({
+      taskDates: data
+    }))
   }
 
   createTask(task) {
@@ -41,6 +50,7 @@ class App extends Component {
     .then(data => {
       this.props.history.push('/dashboard/daily/tasks');
       this.setState((prevState) => {
+        this.fetchTaskDates();
         return {
           tasks: [...prevState.tasks, data]
         }
@@ -65,6 +75,7 @@ class App extends Component {
     .then(data => {
       this.props.history.push('/dashboard/daily/tasks')
       this.setState((prevState) => {
+        this.fetchTaskDates();
         const index = prevState.tasks.findIndex(task => task.id === data.id);
         return {
           tasks: [
@@ -85,6 +96,7 @@ class App extends Component {
     })
     .then(data => {
       this.setState((prevState) => {
+        this.fetchTaskDates();
         return {
           tasks: prevState.tasks.filter(task => task.id !== id)
         }
@@ -94,6 +106,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchTasks();
+    this.fetchTaskDates();
   }
 
   render() {
@@ -109,6 +122,7 @@ class App extends Component {
                 onTask={this.createTask}
                 updateTask={this.updateTask}
                 deleteTask={this.deleteTask}
+                taskDates={this.state.taskDates}
                 tasks={this.state.tasks}
               />
             )}

@@ -72,7 +72,7 @@ h2 {
 .top-nav {
   display: flex;
   justify-content: flex-end;
-  padding: 20px 20px 10px;
+  padding: 20px 20px 40px;
   background: #eaf7f9;
   color: #899999;
 }
@@ -83,23 +83,48 @@ h2 {
 
 /* Calendar */
 
-.calendar {
-  padding: 30px;
+.react-calendar__navigation {
+  background: #eaf7f9;
+  padding: 0 30px;
+}
+
+.react-calendar__navigation > * {
+  padding: 30px 0;
+}
+
+.react-calendar__navigation__arrow {
+  font-size: 20px;
+  width: 80px;
+  border: none;
+  background: transparent;
+  color: #000;
+  outline: none;
 }
 
 .react-calendar__navigation__label {
   border: none;
-  font-size: 20px;
+  font-size: 23px;
   padding: 10px;
+  font-weight: 100;
+  text-transform: uppercase;
+  background: transparent;
+  pointer-events: none;
 }
 
 .react-calendar__month-view__weekdays {
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 30px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 15px 0;
 }
 
 .react-calendar__month-view__days {
   border: 1px solid #dfe6e9;
+  margin: 0 30px 20px;
 }
 
 .react-calendar__tile {
@@ -126,6 +151,30 @@ h2 {
   color: #8bdbe5;
 }
 
+.hasTask {
+  position: relative;
+}
+
+.hasTask:not(.react-calendar__month-view__days__day--neighboringMonth):after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: 20%;
+  right: 30%;
+  background: blue;
+  border-radius: 50%;
+}
+
+.nav-arrow {
+  color: #343;
+  font-size: 35px;
+  transition: color 200ms;
+}
+
+.react-calendar__navigation__arrow:hover .nav-arrow {
+  color: #888;
+}
 
 /* Daily View */
 
@@ -161,7 +210,7 @@ h2 {
 }
 
 .daily-nav a:active {
-  color: black;
+  color: #000;
 }
 
 .daily-nav a:hover {
@@ -169,4 +218,36 @@ h2 {
   background: #fff;
 }
 
-.daily-nav:
+/* Tasks */
+
+.tasks .container {
+  max-width: 900px;
+  margin: 50px auto 10px;
+  padding: 15px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.task p {
+  font-size: 20px;
+}
+
+.task button {
+  border: none;
+}
+
+.fa-pencil, .fa-trash {
+  padding: 15px;
+  font-size: 20px;
+  color: #a8a3a3;
+  transition: color 200ms;
+}
+
+.fa-pencil:hover, .fa-trash:hover {
+  color: #8bdbe5;
+}

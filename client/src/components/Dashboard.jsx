@@ -54,6 +54,8 @@ class Dashboard extends Component {
                 date={this.state.date}
                 onChange={this.changeDate}
                 onSwitch={this.switchViews}
+                dateFormat={this.dateFormat}
+                taskDates={this.props.taskDates}
               />
             )}
           />

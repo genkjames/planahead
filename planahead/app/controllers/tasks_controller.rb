@@ -19,6 +19,10 @@ class TasksController < ApplicationController
     render json: @task
   end
 
+  def dates
+    render json: Task.pluck(:set_date).uniq
+  end
+
   private
     def tasks_params
       params.require(:task).permit(:user_id, :text, :is_complete, :set_date)

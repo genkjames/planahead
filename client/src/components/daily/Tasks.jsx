@@ -33,26 +33,28 @@ class Tasks extends Component {
     return (
       <div className="tasks">
         <DailyMenu />
-        <Switch>
-          <Route
-            path="/dashboard/daily/tasks/new"
-            render={() => (
-              <Form
-                date={this.props.date}
-                onSubmit={this.props.onTask}
-                label="Add"
-              />)
-            }
-          />
-          <Route
-            path="/dashboard/daily/tasks"
-            render={() => (
-              <Link to="/dashboard/daily/tasks/new">Add Task</Link>
-              )
-            }
-          />
-        </Switch>
-        {tasks}
+        <div className="container">
+          <Switch>
+            <Route
+              path="/dashboard/daily/tasks/new"
+              render={() => (
+                <Form
+                  date={this.props.date}
+                  onSubmit={this.props.onTask}
+                  label="Add"
+                />)
+              }
+            />
+            <Route
+              path="/dashboard/daily/tasks"
+              render={() => (
+                <Link to="/dashboard/daily/tasks/new">Add Task</Link>
+                )
+              }
+            />
+          </Switch>
+          {tasks}
+        </div>
       </div>
     )
   }

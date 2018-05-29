@@ -25,11 +25,16 @@ class Task extends Component {
         <Route
            path="/dashboard/daily/tasks/"
            render={() => (
-            <div>
-              <h2>{this.props.task.text}</h2>
-              <p>{this.props.task.set_date}</p>
-              <Link to={`/dashboard/daily/tasks/edit/${this.props.task.id}`}>Edit</Link>
-              <button onClick={() => this.handleDelete(this.props.task.id)}>Delete</button>
+            <div className="task">
+              <p>{this.props.task.text}</p>
+              <div>
+                <Link to={`/dashboard/daily/tasks/edit/${this.props.task.id}`}>
+                  <i className="fa fa-pencil"></i>
+                </Link>
+                <button onClick={() => this.handleDelete(this.props.task.id)}>
+                  <i className="fa fa-trash"></i>
+                </button>
+              </div>
             </div>
           )}
         />
