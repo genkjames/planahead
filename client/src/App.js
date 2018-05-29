@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       tasks: [],
-      taskDates: []
+      taskDates: [],
+      events: []
     }
 
     this.createTask = this.createTask.bind(this);
@@ -104,9 +105,22 @@ class App extends Component {
     })
   }
 
+  fetchEvents() {
+    fetch(`${BASE_URL}/events`)
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      events: data
+    }))
+  }
+
   componentDidMount() {
     this.fetchTasks();
     this.fetchTaskDates();
+    this.fetchEvents();
+  }
+
+  createEvent() {
+
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Complete extends Component {
+class Incomplete extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,4 +48,4 @@ class Complete extends Component {
   }
 }
 
-export default Complete
+export default Incomplete;

@@ -4,12 +4,29 @@ class Complete extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      completedTask: {}
+      incomplete: {}
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    console.log('gu');
+    this.props.onEdit(this.state.incomplete);
+  }
+
+  componentDidMount() {
+    this.setState(() => {
+      const { id, user_id, text, set_date } = this.props.task;
+      return {
+        incomplete: {
+          id,
+          user_id,
+          text,
+          set_date,
+          is_complete: false
+        }
+      }
+    })
   }
 
   render() {
@@ -28,4 +45,4 @@ class Complete extends Component {
   }
 }
 
-export default Complete
+export default Complete;

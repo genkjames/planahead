@@ -54,6 +54,12 @@ h2 {
   height: 100vh;
 }
 
+.container {
+  max-width: 900px;
+  margin: 50px auto 10px;
+  padding: 15px;
+}
+
 /* Side Menu */
 
 .side-menu {
@@ -259,12 +265,6 @@ h2 {
 /* Tasks */
 .add-new {
   margin: 20px 0 40px;
-}
-
-.tasks .container {
-  max-width: 900px;
-  margin: 50px auto 10px;
-  padding: 15px;
 }
 
 .task,

@@ -31,6 +31,7 @@ class TaskView extends Component {
     return (
       this.props.task.is_complete ? (
         <Complete
+          onEdit={this.handleEdit}
           handleDelete={this.handleDelete}
           task={this.props.task}
         />

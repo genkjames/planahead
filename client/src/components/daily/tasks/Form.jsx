@@ -77,7 +77,7 @@ class Form extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="text"></label>
+            <label htmlFor="text">Text</label>
             <textarea
               type="text"
               onChange={this.handleChange}
@@ -88,7 +88,7 @@ class Form extends Component {
           </div>
           {this.props.task &&
           <div>
-            <label htmlFor="set_date"></label>
+            <label htmlFor="set_date">Date</label>
             <input
               type="date"
               onChange={this.handleChange}

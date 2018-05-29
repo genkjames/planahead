@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Tasks from './tasks/Tasks';
-import Events from './Events';
+import Events from './events/Events';
 import Notes from './Notes';
 import Schedule from './Schedule';
 
