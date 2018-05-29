@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Tasks from './Tasks';
+import Tasks from './tasks/Tasks';
 import Events from './Events';
 import Notes from './Notes';
 import Schedule from './Schedule';

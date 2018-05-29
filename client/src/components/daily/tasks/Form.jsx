@@ -75,7 +75,6 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <h2>Form</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="text"></label>

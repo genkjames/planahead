@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DailyMenu from '../navigation/DailyMenu';
+import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
-import Task from './Task';
+import TaskRoutes from './TaskRoutes';
 import { Switch, Link, Route } from 'react-router-dom';
 
 class Tasks extends Component {
@@ -18,9 +18,10 @@ class Tasks extends Component {
   }
 
   render() {
+    // filter tasks for daily view
     const tasks = this.props.tasks.filter(this.compareDate).map(task => {
       return (
-        <Task
+        <TaskRoutes
           key={task.id}
           task={task}
           date={this.props.date}
@@ -48,7 +49,9 @@ class Tasks extends Component {
             <Route
               path="/dashboard/daily/tasks"
               render={() => (
-                <Link to="/dashboard/daily/tasks/new">Add Task</Link>
+                <div className="add-new">
+                  <Link to="/dashboard/daily/tasks/new" className="links">Add Task</Link>
+                </div>
                 )
               }
             />

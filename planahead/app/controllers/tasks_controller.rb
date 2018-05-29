@@ -4,23 +4,23 @@ class TasksController < ApplicationController
   end
 
   def create
-    render json: Task.create(tasks_params)
+    render json: Task.create(tasks_params).to_json
   end
 
   def update
     @task = Task.find(params[:id])
     @task.update(tasks_params)
-    render json: @task
+    render json: @task.to_json
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    render json: @task
+    render json: @task.to_json
   end
 
   def dates
-    render json: Task.pluck(:set_date).uniq
+    render json: Task.pluck(:set_date).uniq.to_json
   end
 
   private
