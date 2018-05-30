@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       tasks: [],
       taskDates: [],
-      events: []
+      events: [],
+      eventDates: []
     }
 
     this.createTask = this.createTask.bind(this);
@@ -116,6 +117,14 @@ class App extends Component {
     }));
   }
 
+  fetchEventDates() {
+    fetch(`${BASE_URL}/events/dates`)
+    .then(res => res.json())
+    .then(data => this.setState({
+      eventDates: data
+    }))
+  }
+
   createEvent(event) {
     const options = {
       method: 'POST',
@@ -185,6 +194,7 @@ class App extends Component {
     this.fetchTasks();
     this.fetchTaskDates();
     this.fetchEvents();
+    this.fetchEventDates();
   }
 
   render() {
@@ -206,6 +216,7 @@ class App extends Component {
                 onEvent={this.createEvent}
                 updateEvent={this.updateEvent}
                 deleteEvent={this.deleteEvent}
+                eventDates={this.state.eventDates}
               />
             )}
           />

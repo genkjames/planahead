@@ -169,6 +169,7 @@ h2 {
   vertical-align: text-top;
   font-size: 20px;
   border: 1px solid var(--shadow);
+  position: relative;
 }
 
 .react-calendar__month-view__days__day--weekend {
@@ -184,30 +185,30 @@ h2 {
   color: var(--sky-blue);
 }
 
-.hasTask {
-  position: relative;
-}
-
-.hasTask:not(.react-calendar__month-view__days__day--neighboringMonth)::after {
-  content: "";
+.hasTask,
+.hasEvent {
   position: absolute;
   width: 10px;
   height: 10px;
+  border-radius: 50%;
+
+}
+
+.hasTask {
   bottom: 20%;
   right: 30%;
   background: blue;
-  border-radius: 50%;
 }
 
-.hasEvent:not(.react-calendar__month-view__days__day--neighboringMonth)::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
+.hasEvent {
   bottom: 20%;
   right: 20%;
   background: red;
-  border-radius: 50%;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth .hasTask,
+.react-calendar__month-view__days__day--neighboringMonth .hasEvent {
+  background: transparent;
 }
 
 .nav-arrow {

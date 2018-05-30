@@ -64,6 +64,7 @@ class Dashboard extends Component {
                 onSwitch={this.switchViews}
                 dateFormat={this.dateFormat}
                 taskDates={this.props.taskDates}
+                eventDates={this.props.eventDates}
               />
             )}
           />
