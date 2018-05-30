@@ -20,12 +20,22 @@ function Routes(props) {
             date={props.date}
             tasks={props.tasks}
             dateFormat={props.dateFormat}
+            compareDate={props.compareDate}
           />
         )}
       />
       <Route
         path="/dashboard/daily/events"
-        render={() => (<Events />)}
+        render={() => (
+          <Events
+            date={props.date}
+            events={props.events}
+            compareDate={props.compareDate}
+            dateFormat={props.dateFormat}
+            changeDate={props.changeDate}
+            onEvent={props.onEvent}
+          />
+        )}
       />
       <Route
         path="/dashboard/daily/notes"

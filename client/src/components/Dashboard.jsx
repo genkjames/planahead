@@ -14,10 +14,18 @@ class Dashboard extends Component {
     this.changeDate = this.changeDate.bind(this);
     this.switchViews = this.switchViews.bind(this);
     this.dateFormat = this.dateFormat.bind(this);
+    this.compareDate = this.compareDate.bind(this);
   }
 
   changeDate(date) {
-    this.setState({date})
+    const newDate = new Date();
+    const dateValues = date.set_date.split('-');
+    newDate.setFullYear(dateValues[0]);
+    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
+    newDate.setDate(dateValues[2]);
+    this.setState({
+      date: newDate
+    })
     this.props.history.push('/dashboard/daily');
   }
 
@@ -40,6 +48,13 @@ class Dashboard extends Component {
     const day = this.dateLength(date.getDate());
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
+  }
+
+  compareDate(prod) {
+    const date = this.dateFormat(this.state.date);
+    if(date === prod.set_date) {
+      return true;
+    }
   }
 
   render() {
@@ -69,7 +84,10 @@ class Dashboard extends Component {
                 deleteTask={this.props.deleteTask}
                 changeDate={this.changeDate}
                 tasks={this.props.tasks}
+                compareDate={this.compareDate}
                 dateFormat={this.dateFormat}
+                events={this.props.events}
+                onEvent={this.props.onEvent}
               />
             )}
           />

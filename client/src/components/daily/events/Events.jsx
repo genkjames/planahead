@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DailyMenu from '../../navigation/DailyMenu'
 import { Link, Route, Switch } from 'react-router-dom';
 import Form from './Form';
 
-class Events extends Component {
-  render() {
+function Events(props) {
+  const events = props.events.map(event => {
     return (
-      <div className="events">
-        <DailyMenu />
-        <div className="container">
-          <Switch>
-            <Route
-              path="/dashboard/daily/events/new"
-              render={() => (<Form />)}
-            />
-            <Route
-              path="/dashboard/daily/events"
-              render={() => (<Link to="/dashboard/daily/events/new">Add Event</Link>)}
-            />
-          </Switch>
-        </div>
+      <div key={event.id}>
+        <p>{event.text}</p>
       </div>
     )
-  }
+  })
+  return (
+    <div className="events">
+      <DailyMenu />
+      <div className="container">
+        <Switch>
+          <Route
+            path="/dashboard/daily/events/new"
+            render={() => (
+              <Form
+                date={props.date}
+                dateFormat={props.dateFormat}
+                onSubmit={props.onEvent}
+              />)}
+          />
+          <Route
+            path="/dashboard/daily/events"
+            render={() => (<Link to="/dashboard/daily/events/new">Add Event</Link>)}
+          />
+        </Switch>
+        {events}
+      </div>
+    </div>
+  )
 }
 
 export default Events;

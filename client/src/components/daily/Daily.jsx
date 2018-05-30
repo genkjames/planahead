@@ -16,6 +16,9 @@ class Daily extends Component {
           date={this.props.date}
           tasks={this.props.tasks}
           dateFormat={this.props.dateFormat}
+          compareDate={this.props.compareDate}
+          events={this.props.events}
+          onEvent={this.props.onEvent}
         />
       </div>
     )

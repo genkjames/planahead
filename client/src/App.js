@@ -19,6 +19,7 @@ class App extends Component {
     this.createTask = this.createTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.createEvent = this.createEvent.bind(this);
   }
 
   fetchTasks() {
@@ -110,17 +111,35 @@ class App extends Component {
     .then(resp => resp.json())
     .then(data => this.setState({
       events: data
-    }))
+    }));
+  }
+
+  createEvent(event) {
+    console.log(event);
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(event),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    fetch(`${BASE_URL}/events`, options)
+    .then(resp => resp.json())
+    .then(data => {
+      this.props.history.push('/dashboard/daily/events');
+      this.setState((prevState) => {
+        return {
+          events: [...prevState.events, data]
+        }
+      })
+    })
   }
 
   componentDidMount() {
     this.fetchTasks();
     this.fetchTaskDates();
     this.fetchEvents();
-  }
-
-  createEvent() {
-
   }
 
   render() {
@@ -138,6 +157,8 @@ class App extends Component {
                 deleteTask={this.deleteTask}
                 taskDates={this.state.taskDates}
                 tasks={this.state.tasks}
+                events={this.state.events}
+                onEvent={this.createEvent}
               />
             )}
           />

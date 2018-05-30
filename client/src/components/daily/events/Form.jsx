@@ -8,7 +8,8 @@ class Form extends Component {
       user_id: null,
       event: {
         text: '',
-        set_datetime: ''
+        set_date: '',
+        set_time: ''
       }
     }
 
@@ -22,7 +23,8 @@ class Form extends Component {
       return {
         event: {
           ...prevState.event,
-          [name]: value
+          [name]: value,
+          user_id: prevState.user_id
         }
       }
     })
@@ -30,7 +32,32 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submit event form');
+    // if(this.state.event.id) {
+    //   this.props.changeDate(this.state.event);
+    // }
+    this.props.onSubmit(this.state.event);
+  }
+
+  setDate() {
+    const date = this.props.dateFormat(this.props.date);
+    this.setState((prevState) => {
+      return {
+        event: {
+          ...prevState.event,
+          set_date: date
+        }
+      }
+    })
+  }
+
+  componentDidMount() {
+    if (this.props.event) {
+      this.setState({
+        event: this.props.event
+      })
+    } else {
+      this.setDate();
+    }
   }
 
   render() {
@@ -48,13 +75,13 @@ class Form extends Component {
             />
           </div>
           <div>
-            <label htmlFor="set_datetime">Date</label>
+            <label htmlFor="set_datetime">Time</label>
             <input
               type="time"
               onChange={this.handleChange}
-              value={this.state.event.set_datetime}
-              name="set_datetime"
-              id="set_datetime"
+              value={this.state.event.set_time}
+              name="set_time"
+              id="set_time"
             />
           </div>
           <div>

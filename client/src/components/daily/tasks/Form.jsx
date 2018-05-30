@@ -30,28 +30,16 @@ class Form extends Component {
     })
   }
 
-  changeDate() {
-    const newDate = new Date();
-    const dateValues = this.state.task.set_date.split('-');
-    newDate.setFullYear(dateValues[0]);
-    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
-    newDate.setDate(dateValues[2]);
-    this.props.changeDate(newDate);
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     if(this.state.task.id) {
-      this.changeDate();
+      this.props.changeDate(this.state.task);
     }
     this.props.onSubmit(this.state.task);
   }
 
   setDate() {
-    const month = this.props.date.getMonth() + 1;
-    const day = this.props.date.getDate();
-    const year = this.props.date.getFullYear();
-    const date = `${year}-${month}-${day}`;
+    const date = this.props.dateFormat(this.props.date);
     this.setState((prevState) => {
       return {
         task: {
