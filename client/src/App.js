@@ -25,6 +25,8 @@ class App extends Component {
     this.deleteEvent = this.deleteEvent.bind(this);
   }
 
+  // CRUD Task Operations
+
   fetchTasks() {
     fetch(`${BASE_URL}/tasks`)
     .then(res => res.json())
@@ -33,6 +35,7 @@ class App extends Component {
     }));
   }
 
+  // fetch unique task dates to color code monthly view
   fetchTaskDates() {
     fetch(`${BASE_URL}/tasks/dates`)
     .then(res => res.json())
@@ -109,6 +112,8 @@ class App extends Component {
     })
   }
 
+  // CRUD Event Operations
+
   fetchEvents() {
     fetch(`${BASE_URL}/events`)
     .then(resp => resp.json())
@@ -117,6 +122,7 @@ class App extends Component {
     }));
   }
 
+  // fetch unique event dates to color code monthly view
   fetchEventDates() {
     fetch(`${BASE_URL}/events/dates`)
     .then(res => res.json())

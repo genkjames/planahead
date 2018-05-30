@@ -14,6 +14,7 @@ function Events(props) {
         onEdit={props.onEdit}
         onDelete={props.onDelete}
         changeDate={props.changeDate}
+        dateObject={props.dateObject}
       />
     )
   })

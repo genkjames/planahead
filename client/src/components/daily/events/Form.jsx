@@ -30,23 +30,22 @@ class Form extends Component {
     })
   }
 
+  // converts set_date of event to an instance of a Date object to change the state of date if user updates the date of their event
   changeDate() {
-    const newDate = new Date();
-    const dateValues = this.state.event.set_date.split('-');
-    newDate.setFullYear(dateValues[0]);
-    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
-    newDate.setDate(dateValues[2]);
+    const newDate = this.props.dateObject(this.state.event);
     this.props.changeDate(newDate);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    // checks if a user is updating an existing event
     if(this.state.event.id) {
       this.changeDate();
     }
     this.props.onSubmit(this.state.event);
   }
 
+  // sets date when user creates a new event
   setDate() {
     const date = this.props.dateFormat(this.props.date);
     this.setState((prevState) => {

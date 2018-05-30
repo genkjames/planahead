@@ -20,6 +20,7 @@ function Routes(props) {
             date={props.date}
             tasks={props.tasks}
             dateFormat={props.dateFormat}
+            dateObject={props.dateObject}
             compareDate={props.compareDate}
           />
         )}
@@ -33,6 +34,7 @@ function Routes(props) {
             compareDate={props.compareDate}
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
+            dateObject={props.dateObject}
             onEvent={props.onEvent}
             onEdit={props.updateEvent}
             onDelete={props.deleteEvent}

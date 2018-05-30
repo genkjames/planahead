@@ -16,7 +16,10 @@ class View extends Component {
     return (
       <div>
         <div className="view">
-          <p>{this.props.event.text}</p>
+          <div className="event-info">
+            <p><i className="fa fa-bell forShow"></i> {this.props.event.set_time}</p>
+            <p>{this.props.event.text}</p>
+          </div>
           <div>
             <Link to={`/dashboard/daily/events/edit/${this.props.event.id}`}>
               <i className="fa fa-pencil"></i>

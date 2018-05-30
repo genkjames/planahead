@@ -3,9 +3,11 @@
 one:
   text: MyText
   user: one
-  set_datetime: 2018-05-29 14:56:24
+  set_date: 2018-05-29
+  set_time: 2018-05-29 14:56:24
 
 two:
   text: MyText
   user: two
-  set_datetime: 2018-05-29 14:56:24
+  set_date: 2018-05-29
+  set_time: 2018-05-29 14:56:24

@@ -1,20 +1,21 @@
 import React from 'react';
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
-import TaskRoutes from './TaskRoutes';
+import Routes from './Routes';
 import { Switch, Link, Route } from 'react-router-dom';
 
 function Tasks(props) {
     // filter tasks for daily view
   const tasks = props.tasks.filter(props.compareDate).map(task => {
     return (
-      <TaskRoutes
+      <Routes
         key={task.id}
         task={task}
         date={props.date}
         onEdit={props.onEdit}
         onDelete={props.onDelete}
         changeDate={props.changeDate}
+        dateObject={props.dateObject}
       />
     )
   })

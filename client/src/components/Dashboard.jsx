@@ -17,17 +17,20 @@ class Dashboard extends Component {
     this.compareDate = this.compareDate.bind(this);
   }
 
+  // onClick function for calendar date tiles
   changeDate(date) {
     this.setState({date});
     this.props.history.push('/dashboard/daily');
   }
 
+  // onClick function for navigation arrows
   switchViews(date) {
     this.setState({
       date: date.activeStartDate
     })
   }
 
+  // adds a 0 to any month or day field that has one digit
   dateLength(num) {
     if(num.toString().length === 1) {
       return '0' + num;
@@ -36,6 +39,7 @@ class Dashboard extends Component {
     return num;
   }
 
+  // formats date to input into the database
   dateFormat(date) {
     const month = this.dateLength(date.getMonth() + 1);
     const day = this.dateLength(date.getDate());
@@ -43,11 +47,22 @@ class Dashboard extends Component {
     return `${year}-${month}-${day}`;
   }
 
+  // filters out tasks, events, etc. that aren't scheduled for a particular day
   compareDate(prod) {
     const date = this.dateFormat(this.state.date);
     if(date === prod.set_date) {
       return true;
     }
+  }
+
+  // converts set_date to an instance of a Date object to change the state of date if user updates
+  createDateObject(date) {
+    const newDate = new Date();
+    const dateValues = date.set_date.split('-');
+    newDate.setFullYear(dateValues[0]);
+    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
+    newDate.setDate(dateValues[2]);
+    return newDate;
   }
 
   render() {
@@ -80,6 +95,7 @@ class Dashboard extends Component {
                 tasks={this.props.tasks}
                 compareDate={this.compareDate}
                 dateFormat={this.dateFormat}
+                dateObject={this.createDateObject}
                 events={this.props.events}
                 onEvent={this.props.onEvent}
                 updateEvent={this.props.updateEvent}

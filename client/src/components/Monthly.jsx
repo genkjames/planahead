@@ -12,14 +12,17 @@ class Monthly extends Component {
     this.handleButton = this.handleButton.bind(this);
   }
 
+  // handles change in calendar tiles when clicked
   handleChange(date) {
     this.props.onChange(date);
   }
 
+  // handles change in navigation arrows when clicked
   handleButton(date) {
     this.props.onSwitch(date);
   }
 
+  // allows users to see when a date has a task or event scheduled
   colorCodes(arr, elName) {
     arr.forEach(date => {
       const val = document.querySelector(`[datetime*="${date}"]`);

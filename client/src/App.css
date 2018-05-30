@@ -290,15 +290,29 @@ h2 {
   border: none;
 }
 
-.fa-pencil, .fa-trash {
+.fa:not(.forShow) {
   padding: 5px 15px;
   font-size: 20px;
   color: var(--dim);
   transition: color 200ms;
 }
 
-.fa-pencil:hover, .fa-trash:hover {
+.fa:not(.forShow):hover {
   color: var(--sky-blue);
+}
+
+.event-info {
+  display: flex;
+  justify-content: center;
+}
+
+.event-info p {
+  padding: 0 0 0 20px;
+}
+
+.forShow {
+  color: var(--dim);
+  font-size: 24px;
 }
 
 .completed-task {

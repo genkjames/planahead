@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Form from './Form';
-import TaskView from './TaskView';
+import View from './View';
 
-function TaskRoutes(props) {
+function Routes(props) {
   return (
     <Switch>
       <Route
@@ -15,13 +15,14 @@ function TaskRoutes(props) {
             task={props.task}
             label="Edit"
             changeDate={props.changeDate}
+            dateObject={props.dateObject}
           />
         )}
       />
       <Route
          path="/dashboard/daily/tasks/"
          render={() => (
-          <TaskView
+          <View
             task={props.task}
             onDelete={props.onDelete}
             onEdit={props.onEdit}
@@ -32,4 +33,4 @@ function TaskRoutes(props) {
   )
 }
 
-export default TaskRoutes;
+export default Routes;

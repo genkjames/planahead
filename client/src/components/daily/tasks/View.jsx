@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Complete from './Complete';
 import Incomplete from './Incomplete';
 
-class TaskView extends Component {
+class View extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,4 +46,4 @@ class TaskView extends Component {
   }
 }
 
-export default TaskView;
+export default View;

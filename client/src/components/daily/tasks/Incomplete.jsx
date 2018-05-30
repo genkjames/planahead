@@ -10,12 +10,14 @@ class Incomplete extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+   // when clicked task is updated to being complete in database
   handleClick() {
     this.props.onEdit(this.state.complete);
   }
 
   componentDidMount() {
     this.setState(() => {
+       // sets initial state so when task text is clicked it becomes complete
       const { id, user_id, text, set_date } = this.props.task;
       return {
         complete: {
