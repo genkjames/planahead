@@ -267,8 +267,7 @@ h2 {
   margin: 20px 0 40px;
 }
 
-.task,
-.task-complete {
+.view{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -277,12 +276,15 @@ h2 {
   margin-bottom: 5px;
 }
 
-.task p {
+.view p {
   font-size: 20px;
+}
+
+.task p {
   cursor: pointer;
 }
 
-.task button {
+.view button {
   border: none;
 }
 

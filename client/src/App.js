@@ -20,6 +20,8 @@ class App extends Component {
     this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.createEvent = this.createEvent.bind(this);
+    this.updateEvent = this.updateEvent.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
   }
 
   fetchTasks() {
@@ -115,7 +117,6 @@ class App extends Component {
   }
 
   createEvent(event) {
-    console.log(event);
     const options = {
       method: 'POST',
       body: JSON.stringify(event),
@@ -131,6 +132,50 @@ class App extends Component {
       this.setState((prevState) => {
         return {
           events: [...prevState.events, data]
+        }
+      })
+    })
+  }
+
+  updateEvent(event) {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(event),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    fetch(`${BASE_URL}/events/${event.id}`, options)
+    .then(res => {
+      if (!res.ok) throw new Error('There was an error');
+      return res.json()
+    })
+    .then(data => {
+      this.props.history.push('/dashboard/daily/events')
+      this.setState((prevState) => {
+        const index = prevState.events.findIndex(event => event.id === data.id);
+        return {
+          events: [
+            ...prevState.events.slice(0, index),
+            data,
+            ...prevState.events.slice(index + 1)
+          ]
+        }
+      })
+    });
+  }
+
+  deleteEvent(id) {
+    fetch(`${BASE_URL}/events/${id}`, {method: 'DELETE'})
+    .then(res => {
+      if(!res.ok) throw new Error('There was an error');
+      return res.json();
+    })
+    .then(data => {
+      this.setState((prevState) => {
+        return {
+          events: prevState.events.filter(event => event.id !== id)
         }
       })
     })
@@ -159,6 +204,8 @@ class App extends Component {
                 tasks={this.state.tasks}
                 events={this.state.events}
                 onEvent={this.createEvent}
+                updateEvent={this.updateEvent}
+                deleteEvent={this.deleteEvent}
               />
             )}
           />

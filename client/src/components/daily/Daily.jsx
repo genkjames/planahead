@@ -19,6 +19,8 @@ class Daily extends Component {
           compareDate={this.props.compareDate}
           events={this.props.events}
           onEvent={this.props.onEvent}
+          updateEvent={this.props.updateEvent}
+          deleteEvent={this.props.deleteEvent}
         />
       </div>
     )

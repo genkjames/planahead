@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get 'tasks/dates', to: 'tasks#dates'
   resources :tasks
 
+  get 'events/dates', to: 'events#dates'
   resources :events
 end

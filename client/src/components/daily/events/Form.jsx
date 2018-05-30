@@ -30,11 +30,20 @@ class Form extends Component {
     })
   }
 
+  changeDate() {
+    const newDate = new Date();
+    const dateValues = this.state.event.set_date.split('-');
+    newDate.setFullYear(dateValues[0]);
+    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
+    newDate.setDate(dateValues[2]);
+    this.props.changeDate(newDate);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    // if(this.state.event.id) {
-    //   this.props.changeDate(this.state.event);
-    // }
+    if(this.state.event.id) {
+      this.changeDate();
+    }
     this.props.onSubmit(this.state.event);
   }
 
@@ -74,6 +83,17 @@ class Form extends Component {
               id="text"
             />
           </div>
+          {this.props.event &&
+          <div>
+            <label htmlFor="set_date">Date</label>
+            <input
+              type="date"
+              onChange={this.handleChange}
+              value={this.state.event.set_date}
+              name="set_date"
+              id="set_date"
+            />
+          </div>}
           <div>
             <label htmlFor="set_datetime">Time</label>
             <input

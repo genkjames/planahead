@@ -17,6 +17,15 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  changeDate() {
+    const newDate = new Date();
+    const dateValues = this.state.task.set_date.split('-');
+    newDate.setFullYear(dateValues[0]);
+    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
+    newDate.setDate(dateValues[2]);
+    this.props.changeDate(newDate);
+  }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState((prevState) => {
@@ -33,7 +42,7 @@ class Form extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if(this.state.task.id) {
-      this.props.changeDate(this.state.task);
+      this.changeDate();
     }
     this.props.onSubmit(this.state.task);
   }

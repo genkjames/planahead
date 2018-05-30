@@ -32,7 +32,7 @@ class Complete extends Component {
   render() {
     return (
       <div>
-        <div className="task completed-task">
+        <div className="view task completed-task">
           <p className="fade" onClick={this.handleClick}>{this.props.task.text}</p>
           <div>
             <button onClick={() => this.props.handleDelete(this.props.task.id)}>

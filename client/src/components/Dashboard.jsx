@@ -18,14 +18,7 @@ class Dashboard extends Component {
   }
 
   changeDate(date) {
-    const newDate = new Date();
-    const dateValues = date.set_date.split('-');
-    newDate.setFullYear(dateValues[0]);
-    newDate.setMonth(parseInt(dateValues[1], 10) - 1);
-    newDate.setDate(dateValues[2]);
-    this.setState({
-      date: newDate
-    })
+    this.setState({date});
     this.props.history.push('/dashboard/daily');
   }
 
@@ -88,6 +81,8 @@ class Dashboard extends Component {
                 dateFormat={this.dateFormat}
                 events={this.props.events}
                 onEvent={this.props.onEvent}
+                updateEvent={this.props.updateEvent}
+                deleteEvent={this.props.deleteEvent}
               />
             )}
           />

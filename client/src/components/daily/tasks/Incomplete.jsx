@@ -32,7 +32,7 @@ class Incomplete extends Component {
   render() {
     return (
       <div>
-        <div className="task">
+        <div className="view task">
           <p onClick={this.handleClick}>{this.props.task.text}</p>
           <div>
             <Link to={`/dashboard/daily/tasks/edit/${this.props.task.id}`}>

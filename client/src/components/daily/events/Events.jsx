@@ -2,13 +2,19 @@ import React from 'react';
 import DailyMenu from '../../navigation/DailyMenu'
 import { Link, Route, Switch } from 'react-router-dom';
 import Form from './Form';
+import Routes from './Routes';
 
 function Events(props) {
-  const events = props.events.map(event => {
+  const events = props.events.filter(props.compareDate).map(event => {
     return (
-      <div key={event.id}>
-        <p>{event.text}</p>
-      </div>
+      <Routes
+        key={event.id}
+        event={event}
+        date={props.date}
+        onEdit={props.onEdit}
+        onDelete={props.onDelete}
+        changeDate={props.changeDate}
+      />
     )
   })
   return (
@@ -27,7 +33,12 @@ function Events(props) {
           />
           <Route
             path="/dashboard/daily/events"
-            render={() => (<Link to="/dashboard/daily/events/new">Add Event</Link>)}
+            render={() => (
+              <div className="add-new">
+                <Link to="/dashboard/daily/events/new" className="links">Add Event</Link>
+              </div>
+              )
+            }
           />
         </Switch>
         {events}
