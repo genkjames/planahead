@@ -29,6 +29,7 @@ function Events(props) {
                 date={props.date}
                 dateFormat={props.dateFormat}
                 onSubmit={props.onEvent}
+                label="Add"
               />)}
           />
           <Route

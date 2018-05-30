@@ -72,7 +72,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="text">Event</label>
             <textarea
@@ -87,6 +87,7 @@ class Form extends Component {
           <div>
             <label htmlFor="set_date">Date</label>
             <input
+              className="test"
               type="date"
               onChange={this.handleChange}
               value={this.state.event.set_date}
@@ -105,8 +106,8 @@ class Form extends Component {
             />
           </div>
           <div>
-            <button value="submit">Add Event</button>
-            <Link to="/dashboard/daily/events">Cancel</Link>
+            <button className="links" value="submit">{this.props.label} Event</button>
+            <Link className="links" to="/dashboard/daily/events">Cancel</Link>
           </div>
         </form>
       </div>
