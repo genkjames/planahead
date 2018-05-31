@@ -35,49 +35,51 @@ class Form extends Component {
 
   render() {
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        {this.props.label === "Register" && <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={this.handleChange}
-            value={this.state.user.username}
-          />
-        </div>}
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.user.email}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.user.password}
-          />
-        </div>
-        {this.props.label === "Register" && <div>
-          <label htmlFor="password_confirmation">Confirm Password</label>
-          <input
-            type="password"
-            id="password_confirmation"
-            name="password_confirmation"
-            onChange={this.handleChange}
-            value={this.state.user.password_confirmation}
-          />
-        </div>}
-        <button value="submit" className="links">{this.props.label}</button>
-      </form>
+      <div>
+        <form className="form" onSubmit={this.handleSubmit}>
+          {this.props.label === "Register" && <div>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              onChange={this.handleChange}
+              value={this.state.user.username}
+            />
+          </div>}
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={this.handleChange}
+              value={this.state.user.email}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={this.handleChange}
+              value={this.state.user.password}
+            />
+          </div>
+          {this.props.label === "Register" && <div>
+            <label htmlFor="password_confirmation">Confirm Password</label>
+            <input
+              type="password"
+              id="password_confirmation"
+              name="password_confirmation"
+              onChange={this.handleChange}
+              value={this.state.user.password_confirmation}
+            />
+          </div>}
+          <button value="submit" className="links">{this.props.label}</button>
+        </form>
+      </div>
     )
   }
 }

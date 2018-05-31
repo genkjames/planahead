@@ -12,7 +12,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: [],
+      user: false,
+      errors: false,
       tasks: [],
       taskDates: [],
       events: [],
@@ -27,6 +28,8 @@ class App extends Component {
     this.deleteEvent = this.deleteEvent.bind(this);
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.isUser = this.isUser.bind(this);
   }
 
   // CRUD Task Operations
@@ -214,18 +217,50 @@ class App extends Component {
   login(user) {
     Service.login({session: user})
     .then(data => {
-      console.log(data);
-      Service.saveToken(data.token)
-      this.setState({user: data.user})
+      if(data.user) {
+        Service.saveToken(data.token)
+        this.props.push.history('/dashboard');
+        this.setState({
+          user: data.user,
+          errors: false
+        })
+      } else {
+        this.setState({
+          user: false,
+          errors: data.errors
+        })
+      }
     })
-    .catch(err => console.log(err.message))
+    .catch(err => console.log("Error"))
+  }
+
+  isUser() {
+    fetch(`${BASE_URL}/login`, {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }).then(resp => resp.json())
+    .then(user => this.setState({user}))
+    .catch(err => this.setState({user: false}))
+  }
+
+  logout() {
+    Service.destroyToken();
+    this.props.history.push('/');
+    console.log('destroyed');
   }
 
   componentDidMount() {
-    this.fetchTasks();
-    this.fetchTaskDates();
-    this.fetchEvents();
-    this.fetchEventDates();
+    if(this.state.user) {
+      this.fetchTasks();
+      this.fetchTaskDates();
+      this.fetchEvents();
+      this.fetchEventDates();
+    }
+
+    if(Service.fetchToken() !== "undefined") {
+      this.isUser();
+    }
   }
 
   render() {
@@ -237,6 +272,7 @@ class App extends Component {
               path="/dashboard"
               render={({ history }) => (
                 <Dashboard
+                  user={this.state.user}
                   history={history}
                   onTask={this.createTask}
                   updateTask={this.updateTask}
@@ -255,8 +291,11 @@ class App extends Component {
               path="/"
               render={() => (
                 <Landing
+                  user={this.state.user}
                   register={this.register}
                   login={this.login}
+                  logout={this.logout}
+                  errors={this.state.errors}
                 />
               )}
             />

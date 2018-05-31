@@ -74,6 +74,7 @@ class Dashboard extends Component {
             exact path="/dashboard"
             render={() => (
               <Monthly
+                user={this.props.user}
                 date={this.state.date}
                 onChange={this.changeDate}
                 onSwitch={this.switchViews}
@@ -87,6 +88,7 @@ class Dashboard extends Component {
             path="/dashboard/daily"
             render={() => (
               <Daily
+                user={this.props.user}
                 date={this.state.date}
                 onTask={this.props.onTask}
                 updateTask={this.props.updateTask}

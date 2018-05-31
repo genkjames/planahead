@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import Register from './auth/Register';
 import Login from './auth/Login';
+import AuthMenu from './navigation/AuthMenu';
 
 function Landing(props) {
   return (
     <div>
       <h1>PlanAhead</h1>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      <AuthMenu
+        user={props.user}
+      />
       <Switch>
         <Route
           exact path="/"
@@ -16,6 +18,7 @@ function Landing(props) {
             <Link to="/dashboard">View dashboard</Link>
           )}
         />
+        {props.user && <Redirect to="/" />}
         <Route
           exact path="/register"
           render={() => (
@@ -29,6 +32,7 @@ function Landing(props) {
           render={() => (
             <Login
               login={props.login}
+              errors={props.errors}
             />
           )}
         />

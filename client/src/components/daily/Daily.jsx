@@ -6,7 +6,9 @@ class Daily extends Component {
   render() {
     return (
       <div className="daily">
-        <TopNav />
+        <TopNav
+          user={this.props.user}
+        />
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
           onTask={this.props.onTask}

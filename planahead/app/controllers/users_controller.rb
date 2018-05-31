@@ -11,9 +11,6 @@ class UsersController < ApplicationController
 
   def gen_token(user_id)
     payload = {id: user_id}
-    p 'called'
-    p user_id
-    p payload
     JWT.encode(payload, ENV["SECRET_KEY_BASE"])
   end
 
@@ -34,10 +31,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def is_logged_in
+  def isLoggedIn
     if current_user
-      render json: current_user
-    else render nothing: true, status: 401
+      render json: {
+        id: current_user.id,
+        username: current_user.username,
+        email: current_user.email
+      }.to_json
+    else render json: ""
     end
   end
 
@@ -45,7 +46,14 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
 
     if user && user.authenticate(params[:session][:password])
-      render json: {user: user, token: gen_token(user.id)}
+      render json: {
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email
+        },
+        token: gen_token(user.id)
+      }.to_json
     else
       render json: {errors: {message: 'Invalid username and/or password'}}
     end

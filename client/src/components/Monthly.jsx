@@ -48,7 +48,9 @@ class Monthly extends Component {
   render() {
     return (
       <div>
-        <TopNav />
+        <TopNav
+          user={this.props.user}
+        />
         <div className="calendar">
           <Calendar
             onChange={this.handleChange}
