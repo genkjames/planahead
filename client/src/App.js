@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
-import { register, login } from './services/apiService';
+import Service from './services/apiService';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -203,16 +203,21 @@ class App extends Component {
   // Auth
 
   register(user) {
-    register({user: user})
-    .then(user => this.setState({user}))
+    Service.register({user: user})
+    .then(data => {
+      Service.saveToken(data.token);
+      this.setState({user: data.user})
+    })
     .catch(err => console.log(err.message))
   }
 
   login(user) {
-    login({session: user})
-    .then(user => {
-      console.log(user);
-      this.setState({user})})
+    Service.login({session: user})
+    .then(data => {
+      console.log(data);
+      Service.saveToken(data.token)
+      this.setState({user: data.user})
+    })
     .catch(err => console.log(err.message))
   }
 

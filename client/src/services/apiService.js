@@ -1,5 +1,17 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+function saveToken(token) {
+  window.localStorage.setItem('authToken', token);
+}
+
+function fetchToken() {
+  return window.localStorage.getItem('authToken') || '';
+}
+
+function destroyToken() {
+  window.localStorage.removeItem('authToken');
+}
+
 function login(creds) {
   const options = {
     method: 'POST',
@@ -32,7 +44,11 @@ function register(creds) {
   })
 }
 
-export {
+export default {
+  saveToken,
+  fetchToken,
+  destroyToken,
   register,
-  login
+  login,
+
 }

@@ -22,9 +22,12 @@ class UsersController < ApplicationController
 
     if @user.save
       render json: {
-        id: @user.id,
-        username: @user.username,
-        email: @user.email
+        user: {
+          id: @user.id,
+          username: @user.username,
+          email: @user.email
+        },
+        token: gen_token(@user.id)
       }.to_json
     else
       render json: {errors: @user.errors.full_messages}
