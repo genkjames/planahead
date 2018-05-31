@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   get 'events/dates/:id', to: 'events#dates'
   get 'events/users/:id', to: 'events#userEvents'
   resources :events
+
+  get 'notes/dates/:id', to: 'notes#dates'
+  get 'notes/users/:id', to: 'notes#userNotes'
+  resources :notes
 end
