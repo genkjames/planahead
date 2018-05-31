@@ -1,43 +1,45 @@
 import React from 'react';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Register from './auth/Register';
 import Login from './auth/Login';
-import AuthMenu from './navigation/AuthMenu';
+import Content from './Content';
 
 function Landing(props) {
   return (
     <div>
-      <h1>PlanAhead</h1>
-      <AuthMenu
-        user={props.user}
-        logout={props.logout}
-      />
-      <Switch>
-        <Route
-          exact path="/"
-          render={() => (
-            <Link to="/dashboard">View dashboard</Link>
-          )}
-        />
-        {props.user && <Redirect to="/" />}
-        <Route
-          exact path="/register"
-          render={() => (
-            <Register
-              register={props.register}
-            />
-          )}
-        />
-        <Route
-          exact path="/login"
-          render={() => (
-            <Login
-              login={props.login}
-              errors={props.errors}
-            />
-          )}
-        />
-      </Switch>
+      <div className="landing-head">
+        <h1 className="title">PlanAhead</h1>
+      </div>
+      <div className="background">
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => (
+              <Content
+                user={props.user}
+              />
+            )}
+          />
+          {props.user && <Redirect to="/" />}
+          <Route
+            exact path="/register"
+            render={() => (
+              <Register
+                register={props.register}
+              />
+            )}
+          />
+          <Route
+            exact path="/login"
+            render={() => (
+              <Login
+                login={props.login}
+                errors={props.errors}
+              />
+            )}
+          />
+        </Switch>
+      </div>
     </div>
   )
 }

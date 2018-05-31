@@ -65,6 +65,12 @@ class Dashboard extends Component {
     return newDate;
   }
 
+  componentDidMount() {
+    if (!this.props.user.id) {
+      this.props.history.push('/login');
+    }
+  }
+
   render() {
     return (
       <div className="dashboard">

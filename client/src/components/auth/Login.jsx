@@ -3,7 +3,7 @@ import Form from './Form';
 
 function Login(props) {
   return (
-    <div>
+    <div className="user-logs">
       <h1>Login</h1>
       {props.errors && <p>{props.errors.message}</p>}
       <Form

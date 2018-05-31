@@ -20,12 +20,14 @@ class ApplicationController < ActionController::API
   def find_current_user
     authenticate_with_http_token do | token, options |
       data = decode(token)
+      p 'lokked'
+      p token
       token && User.find(data[:id])
     end
   end
 
   def ensure_signed_in
     return if current_user
-    render nothing: true, status: 401
+    render json: ''
   end
 end

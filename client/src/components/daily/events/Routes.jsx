@@ -10,6 +10,7 @@ function Routes(props) {
         path={`/dashboard/daily/events/edit/${props.event.id}`}
         render={() => (
           <Form
+            user={props.user}
             date={props.date}
             onSubmit={props.onEdit}
             event={props.event}

@@ -38,7 +38,7 @@ class Complete extends Component {
           <p className="fade" onClick={this.handleClick}>{this.props.task.text}</p>
           <div>
             <button onClick={() => this.props.handleDelete(this.props.task.id)}>
-              <i className="fa fa-trash fade"></i>
+              <i className="fa fa-trash fa-hover fade"></i>
             </button>
           </div>
         </div>

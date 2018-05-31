@@ -17,15 +17,15 @@ class View extends Component {
       <div>
         <div className="view">
           <div className="event-info">
-            <p><i className="fa fa-bell forShow"></i> {this.props.event.set_time}</p>
+            <p><i className="fa fa-book forShow"></i> {this.props.event.set_time}</p>
             <p>{this.props.event.text}</p>
           </div>
           <div>
             <Link to={`/dashboard/daily/events/edit/${this.props.event.id}`}>
-              <i className="fa fa-pencil"></i>
+              <i className="fa fa-pencil fa-hover"></i>
             </Link>
             <button onClick={() => this.handleDelete(this.props.event.id)}>
-              <i className="fa fa-trash"></i>
+              <i className="fa fa-trash fa-hover"></i>
             </button>
           </div>
         </div>

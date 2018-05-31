@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Landing from './components/Landing';
-import Dashboard from './components/Dashboard';
-import Service from './services/apiService';
+import Main from './Main';
+import Service from '../services/apiService';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -35,7 +33,13 @@ class App extends Component {
   // CRUD Task Operations
 
   fetchTasks() {
-    fetch(`${BASE_URL}/tasks/users/${this.state.user.id}`)
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/tasks/users/${this.state.user.id}`, options)
     .then(res => res.json())
     .then(data => this.setState({
       tasks: data
@@ -44,7 +48,13 @@ class App extends Component {
 
   // fetch unique task dates to color code monthly view
   fetchTaskDates() {
-    fetch(`${BASE_URL}/tasks/dates/${this.state.user.id}`)
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/tasks/dates/${this.state.user.id}`, options)
     .then(res => res.json())
     .then(data => this.setState({
       taskDates: data
@@ -56,7 +66,8 @@ class App extends Component {
       method: 'POST',
       body: JSON.stringify(task),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
       }
     }
 
@@ -78,7 +89,8 @@ class App extends Component {
       method: 'PUT',
       body: JSON.stringify(task),
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
       }
     }
 
@@ -104,7 +116,14 @@ class App extends Component {
   }
 
   deleteTask(id) {
-    fetch(`${BASE_URL}/tasks/${id}`, {method: 'DELETE'})
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/tasks/${id}`, options)
     .then(res => {
       if(!res.ok) throw new Error('There was an error');
       return res.json();
@@ -122,7 +141,13 @@ class App extends Component {
   // CRUD Event Operations
 
   fetchEvents() {
-    fetch(`${BASE_URL}/events`)
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/events/users/${this.state.user.id}`, options)
     .then(resp => resp.json())
     .then(data => this.setState({
       events: data
@@ -131,7 +156,13 @@ class App extends Component {
 
   // fetch unique event dates to color code monthly view
   fetchEventDates() {
-    fetch(`${BASE_URL}/events/dates`)
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/events/dates/${this.state.user.id}`, options)
     .then(res => res.json())
     .then(data => this.setState({
       eventDates: data
@@ -139,11 +170,13 @@ class App extends Component {
   }
 
   createEvent(event) {
+    debugger;
     const options = {
       method: 'POST',
       body: JSON.stringify(event),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
       }
     }
 
@@ -160,11 +193,13 @@ class App extends Component {
   }
 
   updateEvent(event) {
+    debugger;
     const options = {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
       }
     }
 
@@ -189,7 +224,14 @@ class App extends Component {
   }
 
   deleteEvent(id) {
-    fetch(`${BASE_URL}/events/${id}`, {method: 'DELETE'})
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/events/${id}`, options)
     .then(res => {
       if(!res.ok) throw new Error('There was an error');
       return res.json();
@@ -226,11 +268,11 @@ class App extends Component {
     .then(data => {
       if(data.user) {
         Service.saveToken(data.token)
-        this.props.history.push('/dashboard');
         this.setState({
           user: data.user,
           errors: false
         })
+        this.props.history.push('/dashboard');
         this.fetchCalls();
       } else {
         this.setState({
@@ -257,7 +299,13 @@ class App extends Component {
 
   logout() {
     Service.destroyToken();
-    this.setState({user: false})
+    this.setState({
+      user: false,
+      tasks: [],
+      taskDates: [],
+      events: [],
+      eventDates: []
+    })
     this.props.history.push('/');
   }
 
@@ -271,40 +319,23 @@ class App extends Component {
     return (
       <div>
         <main>
-          <Switch>
-            <Route
-              path="/dashboard"
-              render={({ history }) => (
-                <Dashboard
-                  user={this.state.user}
-                  history={history}
-                  onTask={this.createTask}
-                  updateTask={this.updateTask}
-                  deleteTask={this.deleteTask}
-                  taskDates={this.state.taskDates}
-                  tasks={this.state.tasks}
-                  events={this.state.events}
-                  onEvent={this.createEvent}
-                  updateEvent={this.updateEvent}
-                  deleteEvent={this.deleteEvent}
-                  eventDates={this.state.eventDates}
-                  logout={this.logout}
-                />
-              )}
-            />
-            <Route
-              path="/"
-              render={() => (
-                <Landing
-                  user={this.state.user}
-                  register={this.register}
-                  login={this.login}
-                  logout={this.logout}
-                  errors={this.state.errors}
-                />
-              )}
-            />
-          </Switch>
+          <Main
+            user={this.state.user}
+            logout={this.logout}
+            register={this.register}
+            login={this.login}
+            onTask={this.createTask}
+            updateTask={this.updateTask}
+            deleteTask={this.deleteTask}
+            taskDates={this.state.taskDates}
+            tasks={this.state.tasks}
+            events={this.state.events}
+            onEvent={this.createEvent}
+            updateEvent={this.updateEvent}
+            deleteEvent={this.deleteEvent}
+            eventDates={this.state.eventDates}
+            errors={this.state.errors}
+          />
         </main>
       </div>
     );

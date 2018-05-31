@@ -5,8 +5,8 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: null,
       event: {
+        user_id: this.props.user.id,
         text: '',
         set_date: '',
         set_time: '12:00'
@@ -24,7 +24,7 @@ class Form extends Component {
         event: {
           ...prevState.event,
           [name]: value,
-          user_id: prevState.user_id
+          user_id: this.props.user.id
         }
       }
     })

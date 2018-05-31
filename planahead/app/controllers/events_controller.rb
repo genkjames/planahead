@@ -1,6 +1,12 @@
 class EventsController < ApplicationController
+  before_action :ensure_signed_in
+
   def index
     render json: Event.all.to_json
+  end
+
+  def userEvents
+    render json: Event.where("user_id = ?", params[:id]).to_json
   end
 
   def create
@@ -20,7 +26,7 @@ class EventsController < ApplicationController
   end
 
   def dates
-    render json: Event.pluck(:set_date).uniq.to_json
+    render json: Event.where("user_id = ?", params[:id]).pluck(:set_date).uniq.to_json
   end
 
   private

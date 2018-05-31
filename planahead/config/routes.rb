@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'tasks/users/:id', to: 'tasks#userTasks'
   resources :tasks
 
-  get 'events/dates', to: 'events#dates'
+  get 'events/dates/:id', to: 'events#dates'
+  get 'events/users/:id', to: 'events#userEvents'
   resources :events
 end

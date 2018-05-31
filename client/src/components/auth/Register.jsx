@@ -3,7 +3,7 @@ import Form from './Form';
 
 function Register(props) {
   return (
-    <div>
+    <div className="user-logs">
       <h1>Register</h1>
       <Form
         label="Register"

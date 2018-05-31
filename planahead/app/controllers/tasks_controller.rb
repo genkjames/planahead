@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :ensure_signed_in
+
   def index
     render json: Task.all.to_json
   end

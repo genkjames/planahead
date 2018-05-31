@@ -9,6 +9,7 @@ function Events(props) {
     return (
       <Routes
         key={event.id}
+        user={props.user}
         event={event}
         date={props.date}
         onEdit={props.onEdit}
@@ -27,6 +28,7 @@ function Events(props) {
             path="/dashboard/daily/events/new"
             render={() => (
               <Form
+                user={props.user}
                 date={props.date}
                 dateFormat={props.dateFormat}
                 onSubmit={props.onEvent}
