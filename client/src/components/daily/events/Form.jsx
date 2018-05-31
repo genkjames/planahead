@@ -23,8 +23,7 @@ class Form extends Component {
       return {
         event: {
           ...prevState.event,
-          [name]: value,
-          user_id: this.props.user.id
+          [name]: value
         }
       }
     })

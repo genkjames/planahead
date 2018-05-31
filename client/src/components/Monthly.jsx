@@ -37,14 +37,18 @@ class Monthly extends Component {
     }
   }
 
-  componentDidMount() {
+  setColorCodes() {
     this.colorCodes(this.props.taskDates, 'hasTask');
     this.colorCodes(this.props.eventDates, 'hasEvent');
+    this.colorCodes(this.props.noteDates, 'hasNote');
+  }
+
+  componentDidMount() {
+    this.setColorCodes();
   }
 
   componentDidUpdate() {
-    this.colorCodes(this.props.taskDates, 'hasTask');
-    this.colorCodes(this.props.eventDates, 'hasEvent');
+    this.setColorCodes();
   }
 
   render() {

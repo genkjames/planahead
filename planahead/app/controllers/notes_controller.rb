@@ -15,7 +15,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    @note.update(tasks_params)
+    @note.update(notes_params)
     render json: @note.to_json
   end
 

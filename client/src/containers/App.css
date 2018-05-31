@@ -306,24 +306,28 @@ h2 {
 }
 
 .hasTask,
-.hasEvent {
+.hasEvent,
+.hasNote {
   position: absolute;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-
+  bottom: 20%;
 }
 
 .hasTask {
-  bottom: 20%;
-  right: 30%;
+  right: 40%;
   background: blue;
 }
 
 .hasEvent {
-  bottom: 20%;
-  right: 20%;
+  right: 30%;
   background: red;
+}
+
+.hasNote {
+  right: 20%;
+  background: yellow;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth .hasTask,

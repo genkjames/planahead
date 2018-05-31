@@ -15,15 +15,23 @@ class App extends Component {
       tasks: [],
       taskDates: [],
       events: [],
-      eventDates: []
+      eventDates: [],
+      notes: [],
+      noteDates: []
     }
 
     this.createTask = this.createTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+
+    this.createNote = this.createNote.bind(this);
+    this.updateNote = this.updateNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
+
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -170,7 +178,6 @@ class App extends Component {
   }
 
   createEvent(event) {
-    debugger;
     const options = {
       method: 'POST',
       body: JSON.stringify(event),
@@ -185,6 +192,7 @@ class App extends Component {
     .then(data => {
       this.props.history.push('/dashboard/daily/events');
       this.setState((prevState) => {
+        this.fetchEventDates();
         return {
           events: [...prevState.events, data]
         }
@@ -193,7 +201,6 @@ class App extends Component {
   }
 
   updateEvent(event) {
-    debugger;
     const options = {
       method: 'PUT',
       body: JSON.stringify(event),
@@ -212,6 +219,7 @@ class App extends Component {
       this.props.history.push('/dashboard/daily/events')
       this.setState((prevState) => {
         const index = prevState.events.findIndex(event => event.id === data.id);
+        this.fetchEventDates();
         return {
           events: [
             ...prevState.events.slice(0, index),
@@ -238,8 +246,118 @@ class App extends Component {
     })
     .then(data => {
       this.setState((prevState) => {
+        this.fetchEventDates();
         return {
           events: prevState.events.filter(event => event.id !== id)
+        }
+      })
+    })
+  }
+
+  // CRUD Note operations
+
+  fetchNotes() {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/notes/users/${this.state.user.id}`, options)
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      notes: data
+    }));
+  }
+
+  // fetch unique note dates to color code monthly view
+  fetchNoteDates() {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/notes/dates/${this.state.user.id}`, options)
+    .then(res => res.json())
+    .then(data => this.setState({
+      noteDates: data
+    }))
+  }
+
+  createNote(note) {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/notes`, options)
+    .then(resp => resp.json())
+    .then(data => {
+      this.props.history.push('/dashboard/daily/notes');
+      this.fetchNoteDates();
+      this.setState((prevState) => {
+        return {
+          notes: [...prevState.notes, data]
+        }
+      })
+    })
+  }
+
+  updateNote(note) {
+    debugger;
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/notes/${note.id}`, options)
+    .then(res => {
+      if (!res.ok) throw new Error('There was an error');
+      return res.json()
+    })
+    .then(data => {
+      this.props.history.push('/dashboard/daily/notes')
+      this.setState((prevState) => {
+        const index = prevState.notes.findIndex(note => note.id === data.id);
+        return {
+          notes: [
+            ...prevState.notes.slice(0, index),
+            data,
+            ...prevState.notes.slice(index + 1)
+          ]
+        }
+      })
+    });
+  }
+
+  deleteNote(id) {
+    debugger;
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${Service.fetchToken()}`
+      }
+    }
+
+    fetch(`${BASE_URL}/notes/${id}`, options)
+    .then(res => {
+      if(!res.ok) throw new Error('There was an error');
+      return res.json();
+    })
+    .then(data => {
+      this.setState((prevState) => {
+        this.fetchNoteDates();
+        return {
+          notes: prevState.notes.filter(note => note.id !== id)
         }
       })
     })
@@ -252,6 +370,8 @@ class App extends Component {
     this.fetchTaskDates();
     this.fetchEvents();
     this.fetchEventDates();
+    this.fetchNotes();
+    this.fetchNoteDates();
   }
 
   register(user) {
@@ -335,6 +455,11 @@ class App extends Component {
             deleteEvent={this.deleteEvent}
             eventDates={this.state.eventDates}
             errors={this.state.errors}
+            notes={this.state.notes}
+            noteDates={this.state.noteDates}
+            onNote={this.createNote}
+            updateNote={this.updateNote}
+            deleteNote={this.deleteNote}
           />
         </main>
       </div>

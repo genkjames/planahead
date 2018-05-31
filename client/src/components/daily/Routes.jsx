@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Tasks from './tasks/Tasks';
 import Events from './events/Events';
-import Notes from './Notes';
+import Notes from './notes/Notes';
 import Schedule from './Schedule';
 
 
@@ -14,7 +14,7 @@ function Routes(props) {
         render={() => (
           <Tasks
             user={props.user}
-            onTask={props.onTask}
+            onTask={props.createTask}
             onEdit={props.updateTask}
             onDelete={props.deleteTask}
             changeDate={props.changeDate}
@@ -37,7 +37,7 @@ function Routes(props) {
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
             dateObject={props.dateObject}
-            onEvent={props.onEvent}
+            onEvent={props.createEvent}
             onEdit={props.updateEvent}
             onDelete={props.deleteEvent}
           />
@@ -45,7 +45,17 @@ function Routes(props) {
       />
       <Route
         path="/dashboard/daily/notes"
-        render={() => (<Notes />)}
+        render={() => (<Notes
+            user={props.user}
+            date={props.date}
+            notes={props.notes}
+            dateFormat={props.dateFormat}
+            onNote={props.createNote}
+            compareDate={props.compareDate}
+            onEdit={props.updateNote}
+            onDelete={props.deleteNote}
+          />
+        )}
       />
       <Route
         path="/dashboard/daily/schedule"
