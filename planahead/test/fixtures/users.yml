@@ -1,1 +1,9 @@
-# empty
+one:
+  username: MyString
+  email: MyString
+  password_digest: MyString
+
+two:
+  username: MyString
+  email: MyString
+  password_digest: MyString

@@ -9,7 +9,7 @@ class Form extends Component {
       event: {
         text: '',
         set_date: '',
-        set_time: ''
+        set_time: '12:00'
       }
     }
 

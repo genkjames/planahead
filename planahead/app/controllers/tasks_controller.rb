@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   end
 
   private
+
     def tasks_params
       params.require(:task).permit(:user_id, :text, :is_complete, :set_date)
     end

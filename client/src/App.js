@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
+import { register, login } from './services/apiService';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -11,6 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      user: [],
       tasks: [],
       taskDates: [],
       events: [],
@@ -23,6 +25,8 @@ class App extends Component {
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
   }
 
   // CRUD Task Operations
@@ -196,6 +200,22 @@ class App extends Component {
     })
   }
 
+  // Auth
+
+  register(user) {
+    register({user: user})
+    .then(user => this.setState({user}))
+    .catch(err => console.log(err.message))
+  }
+
+  login(user) {
+    login({session: user})
+    .then(user => {
+      console.log(user);
+      this.setState({user})})
+    .catch(err => console.log(err.message))
+  }
+
   componentDidMount() {
     this.fetchTasks();
     this.fetchTaskDates();
@@ -207,25 +227,35 @@ class App extends Component {
     return (
       <div>
         <main>
-          <Route exact path="/" render={() => (<Landing />)}/>
-          <Route
-            path="/dashboard"
-            render={({ history }) => (
-              <Dashboard
-                history={history}
-                onTask={this.createTask}
-                updateTask={this.updateTask}
-                deleteTask={this.deleteTask}
-                taskDates={this.state.taskDates}
-                tasks={this.state.tasks}
-                events={this.state.events}
-                onEvent={this.createEvent}
-                updateEvent={this.updateEvent}
-                deleteEvent={this.deleteEvent}
-                eventDates={this.state.eventDates}
-              />
-            )}
-          />
+          <Switch>
+            <Route
+              path="/dashboard"
+              render={({ history }) => (
+                <Dashboard
+                  history={history}
+                  onTask={this.createTask}
+                  updateTask={this.updateTask}
+                  deleteTask={this.deleteTask}
+                  taskDates={this.state.taskDates}
+                  tasks={this.state.tasks}
+                  events={this.state.events}
+                  onEvent={this.createEvent}
+                  updateEvent={this.updateEvent}
+                  deleteEvent={this.deleteEvent}
+                  eventDates={this.state.eventDates}
+                />
+              )}
+            />
+            <Route
+              path="/"
+              render={() => (
+                <Landing
+                  register={this.register}
+                  login={this.login}
+                />
+              )}
+            />
+          </Switch>
         </main>
       </div>
     );
