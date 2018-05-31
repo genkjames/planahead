@@ -5,7 +5,6 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: null,
       task: {
         text: '',
         is_complete: false,
@@ -30,7 +29,7 @@ class Form extends Component {
         task: {
           ...prevState.task,
           [name]: value,
-          user_id: prevState.user_id
+          user_id: this.props.user.id
         }
       }
     })

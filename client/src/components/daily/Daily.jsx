@@ -8,9 +8,11 @@ class Daily extends Component {
       <div className="daily">
         <TopNav
           user={this.props.user}
+          logout={this.props.logout}
         />
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
+          user={this.props.user}
           onTask={this.props.onTask}
           updateTask={this.props.updateTask}
           deleteTask={this.props.deleteTask}

@@ -24,15 +24,17 @@ class Monthly extends Component {
 
   // allows users to see when a date has a task or event scheduled
   colorCodes(arr, elName) {
-    arr.forEach(date => {
-      const val = document.querySelector(`[datetime*="${date}"]`);
-      if(val !== null) {
-        let element = elName;
-        element = document.createElement("div");
-        element.className = elName;
-        val.parentElement.appendChild(element)
-      }
-    })
+    if (arr.length > 0) {
+      arr.forEach(date => {
+        const val = document.querySelector(`[datetime*="${date}"]`);
+        if(val !== null) {
+          let element = elName;
+          element = document.createElement("div");
+          element.className = elName;
+          val.parentElement.appendChild(element)
+        }
+      })
+    }
   }
 
   componentDidMount() {
@@ -50,6 +52,7 @@ class Monthly extends Component {
       <div>
         <TopNav
           user={this.props.user}
+          logout={this.props.logout}
         />
         <div className="calendar">
           <Calendar

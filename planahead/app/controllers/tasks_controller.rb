@@ -3,6 +3,10 @@ class TasksController < ApplicationController
     render json: Task.all.to_json
   end
 
+  def userTasks
+    render json: Task.where("user_id = ?", params[:id]).to_json
+  end
+
   def create
     render json: Task.create(tasks_params).to_json
   end
@@ -20,7 +24,7 @@ class TasksController < ApplicationController
   end
 
   def dates
-    render json: Task.pluck(:set_date).uniq.to_json
+    render json: Task.where("user_id = ?", params[:id]).pluck(:set_date).uniq.to_json
   end
 
   private

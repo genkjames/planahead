@@ -35,7 +35,7 @@ class App extends Component {
   // CRUD Task Operations
 
   fetchTasks() {
-    fetch(`${BASE_URL}/tasks`)
+    fetch(`${BASE_URL}/tasks/users/${this.state.user.id}`)
     .then(res => res.json())
     .then(data => this.setState({
       tasks: data
@@ -44,7 +44,7 @@ class App extends Component {
 
   // fetch unique task dates to color code monthly view
   fetchTaskDates() {
-    fetch(`${BASE_URL}/tasks/dates`)
+    fetch(`${BASE_URL}/tasks/dates/${this.state.user.id}`)
     .then(res => res.json())
     .then(data => this.setState({
       taskDates: data
@@ -205,6 +205,13 @@ class App extends Component {
 
   // Auth
 
+  fetchCalls() {
+    this.fetchTasks();
+    this.fetchTaskDates();
+    this.fetchEvents();
+    this.fetchEventDates();
+  }
+
   register(user) {
     Service.register({user: user})
     .then(data => {
@@ -219,11 +226,12 @@ class App extends Component {
     .then(data => {
       if(data.user) {
         Service.saveToken(data.token)
-        this.props.push.history('/dashboard');
+        this.props.history.push('/dashboard');
         this.setState({
           user: data.user,
           errors: false
         })
+        this.fetchCalls();
       } else {
         this.setState({
           user: false,
@@ -231,7 +239,7 @@ class App extends Component {
         })
       }
     })
-    .catch(err => console.log("Error"))
+    .catch(err => this.setState({errors: {message: "Some error"}}))
   }
 
   isUser() {
@@ -240,24 +248,20 @@ class App extends Component {
         Authorization: `Bearer ${Service.fetchToken()}`
       }
     }).then(resp => resp.json())
-    .then(user => this.setState({user}))
+    .then(user => {
+      this.setState({user})
+      this.fetchCalls();
+    })
     .catch(err => this.setState({user: false}))
   }
 
   logout() {
     Service.destroyToken();
+    this.setState({user: false})
     this.props.history.push('/');
-    console.log('destroyed');
   }
 
   componentDidMount() {
-    if(this.state.user) {
-      this.fetchTasks();
-      this.fetchTaskDates();
-      this.fetchEvents();
-      this.fetchEventDates();
-    }
-
     if(Service.fetchToken() !== "undefined") {
       this.isUser();
     }
@@ -284,6 +288,7 @@ class App extends Component {
                   updateEvent={this.updateEvent}
                   deleteEvent={this.deleteEvent}
                   eventDates={this.state.eventDates}
+                  logout={this.logout}
                 />
               )}
             />

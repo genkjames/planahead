@@ -5,20 +5,25 @@ import Routes from './Routes';
 import { Switch, Link, Route } from 'react-router-dom';
 
 function Tasks(props) {
-    // filter tasks for daily view
-  const tasks = props.tasks.filter(props.compareDate).map(task => {
-    return (
-      <Routes
-        key={task.id}
-        task={task}
-        date={props.date}
-        onEdit={props.onEdit}
-        onDelete={props.onDelete}
-        changeDate={props.changeDate}
-        dateObject={props.dateObject}
-      />
-    )
-  })
+  // filter tasks for daily view
+  let tasks;
+
+  if (props.tasks.length > 0) {
+    tasks = props.tasks.filter(props.compareDate).map(task => {
+      return (
+        <Routes
+          user={props.user}
+          key={task.id}
+          task={task}
+          date={props.date}
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
+          changeDate={props.changeDate}
+          dateObject={props.dateObject}
+        />
+      )
+    })
+  }
 
   return (
     <div className="tasks">
@@ -29,6 +34,7 @@ function Tasks(props) {
             path="/dashboard/daily/tasks/new"
             render={() => (
               <Form
+                user={props.user}
                 date={props.date}
                 onSubmit={props.onTask}
                 label="Add"

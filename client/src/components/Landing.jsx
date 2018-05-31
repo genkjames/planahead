@@ -10,6 +10,7 @@ function Landing(props) {
       <h1>PlanAhead</h1>
       <AuthMenu
         user={props.user}
+        logout={props.logout}
       />
       <Switch>
         <Route

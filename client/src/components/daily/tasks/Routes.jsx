@@ -10,6 +10,7 @@ function Routes(props) {
         path={`/dashboard/daily/tasks/edit/${props.task.id}`}
         render={() => (
           <Form
+            user={props.user}
             date={props.date}
             onSubmit={props.onEdit}
             task={props.task}
@@ -23,6 +24,7 @@ function Routes(props) {
          path="/dashboard/daily/tasks/"
          render={() => (
           <View
+            user={props.user}
             task={props.task}
             onDelete={props.onDelete}
             onEdit={props.onEdit}

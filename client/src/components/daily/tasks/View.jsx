@@ -31,12 +31,14 @@ class View extends Component {
     return (
       this.props.task.is_complete ? (
         <Complete
+          user={this.props.user}
           onEdit={this.handleEdit}
           handleDelete={this.handleDelete}
           task={this.props.task}
         />
       ) : (
         <Incomplete
+          user={this.props.user}
           onEdit={this.handleEdit}
           handleDelete={this.handleDelete}
           task={this.props.task}

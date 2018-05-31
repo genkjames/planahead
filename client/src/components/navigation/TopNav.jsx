@@ -6,6 +6,7 @@ function TopNav(props) {
     <div className="top-nav">
       <AuthMenu
         user={props.user}
+        logout={props.logout}
       />
       <p>Hello, User</p>
     </div>

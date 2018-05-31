@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'users#logout'
   resources :users
 
-  get 'tasks/dates', to: 'tasks#dates'
+  get 'tasks/dates/:id', to: 'tasks#dates'
+  get 'tasks/users/:id', to: 'tasks#userTasks'
   resources :tasks
 
   get 'events/dates', to: 'events#dates'

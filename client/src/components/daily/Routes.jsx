@@ -13,6 +13,7 @@ function Routes(props) {
         path="/dashboard/daily/tasks"
         render={() => (
           <Tasks
+            user={props.user}
             onTask={props.onTask}
             onEdit={props.updateTask}
             onDelete={props.deleteTask}
@@ -29,6 +30,7 @@ function Routes(props) {
         path="/dashboard/daily/events"
         render={() => (
           <Events
+            user={props.user}
             date={props.date}
             events={props.events}
             compareDate={props.compareDate}

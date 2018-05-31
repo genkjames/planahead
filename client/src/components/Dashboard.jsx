@@ -81,6 +81,7 @@ class Dashboard extends Component {
                 dateFormat={this.dateFormat}
                 taskDates={this.props.taskDates}
                 eventDates={this.props.eventDates}
+                logout={this.props.logout}
               />
             )}
           />
@@ -102,6 +103,7 @@ class Dashboard extends Component {
                 onEvent={this.props.onEvent}
                 updateEvent={this.props.updateEvent}
                 deleteEvent={this.props.deleteEvent}
+                logout={this.props.logout}
               />
             )}
           />
