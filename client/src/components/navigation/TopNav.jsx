@@ -8,7 +8,7 @@ function TopNav(props) {
         user={props.user}
         logout={props.logout}
       />
-      <p>Hello, User</p>
+      {props.user.username && <p>Hello, {props.user.username}</p>}
     </div>
   )
 }
