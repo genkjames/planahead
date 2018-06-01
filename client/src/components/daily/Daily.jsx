@@ -13,7 +13,7 @@ class Daily extends Component {
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
           user={this.props.user}
-          createTask={this.props.onTask}
+          createTask={this.props.createTask}
           updateTask={this.props.updateTask}
           deleteTask={this.props.deleteTask}
           changeDate={this.props.changeDate}
@@ -23,7 +23,7 @@ class Daily extends Component {
           dateObject={this.props.dateObject}
           compareDate={this.props.compareDate}
           events={this.props.events}
-          createEvent={this.props.onEvent}
+          createEvent={this.props.createEvent}
           updateEvent={this.props.updateEvent}
           deleteEvent={this.props.deleteEvent}
           notes={this.props.notes}

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './Main';
-import Service from '../services/apiService';
+import Service from '../services/authService';
+import Task from '../services/taskService';
+import Event from '../services/eventService';
+import Note from '../services/noteService';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -41,14 +44,7 @@ class App extends Component {
   // CRUD Task Operations
 
   fetchTasks() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/tasks/users/${this.state.user.id}`, options)
-    .then(res => res.json())
+    Task.All(this.state.user.id)
     .then(data => this.setState({
       tasks: data
     }));
@@ -56,31 +52,14 @@ class App extends Component {
 
   // fetch unique task dates to color code monthly view
   fetchTaskDates() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/tasks/dates/${this.state.user.id}`, options)
-    .then(res => res.json())
+    Task.Dates(this.state.user.id)
     .then(data => this.setState({
       taskDates: data
-    }))
+    }));
   }
 
   createTask(task) {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(task),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/tasks`, options)
-    .then(res => res.json())
+    Task.Create(task)
     .then(data => {
       this.props.history.push('/dashboard/daily/tasks');
       this.setState((prevState) => {
@@ -93,20 +72,7 @@ class App extends Component {
   }
 
   updateTask(task) {
-    const options = {
-      method: 'PUT',
-      body: JSON.stringify(task),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/tasks/${task.id}`, options)
-    .then(res => {
-      if (!res.ok) throw new Error('There was an error');
-      return res.json()
-    })
+    Task.Update(task)
     .then(data => {
       this.props.history.push('/dashboard/daily/tasks')
       this.setState((prevState) => {
@@ -124,18 +90,7 @@ class App extends Component {
   }
 
   deleteTask(id) {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/tasks/${id}`, options)
-    .then(res => {
-      if(!res.ok) throw new Error('There was an error');
-      return res.json();
-    })
+    Task.Delete(id)
     .then(data => {
       this.setState((prevState) => {
         this.fetchTaskDates();
@@ -149,14 +104,7 @@ class App extends Component {
   // CRUD Event Operations
 
   fetchEvents() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/events/users/${this.state.user.id}`, options)
-    .then(resp => resp.json())
+    Event.All(this.state.user.id)
     .then(data => this.setState({
       events: data
     }));
@@ -164,31 +112,14 @@ class App extends Component {
 
   // fetch unique event dates to color code monthly view
   fetchEventDates() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/events/dates/${this.state.user.id}`, options)
-    .then(res => res.json())
+    Event.Dates(this.state.user.id)
     .then(data => this.setState({
       eventDates: data
     }))
   }
 
   createEvent(event) {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(event),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/events`, options)
-    .then(resp => resp.json())
+    Event.Create(event)
     .then(data => {
       this.props.history.push('/dashboard/daily/events');
       this.setState((prevState) => {
@@ -201,20 +132,7 @@ class App extends Component {
   }
 
   updateEvent(event) {
-    const options = {
-      method: 'PUT',
-      body: JSON.stringify(event),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/events/${event.id}`, options)
-    .then(res => {
-      if (!res.ok) throw new Error('There was an error');
-      return res.json()
-    })
+    Event.Update(event)
     .then(data => {
       this.props.history.push('/dashboard/daily/events')
       this.setState((prevState) => {
@@ -232,18 +150,7 @@ class App extends Component {
   }
 
   deleteEvent(id) {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/events/${id}`, options)
-    .then(res => {
-      if(!res.ok) throw new Error('There was an error');
-      return res.json();
-    })
+    Event.Delete(id)
     .then(data => {
       this.setState((prevState) => {
         this.fetchEventDates();
@@ -257,14 +164,7 @@ class App extends Component {
   // CRUD Note operations
 
   fetchNotes() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/notes/users/${this.state.user.id}`, options)
-    .then(resp => resp.json())
+    Note.All(this.state.user.id)
     .then(data => this.setState({
       notes: data
     }));
@@ -272,31 +172,14 @@ class App extends Component {
 
   // fetch unique note dates to color code monthly view
   fetchNoteDates() {
-    const options = {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/notes/dates/${this.state.user.id}`, options)
-    .then(res => res.json())
+    Note.Dates(this.state.user.id)
     .then(data => this.setState({
       noteDates: data
     }))
   }
 
   createNote(note) {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(note),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/notes`, options)
-    .then(resp => resp.json())
+    Note.Create(note)
     .then(data => {
       this.props.history.push('/dashboard/daily/notes');
       this.fetchNoteDates();
@@ -309,21 +192,7 @@ class App extends Component {
   }
 
   updateNote(note) {
-    debugger;
-    const options = {
-      method: 'PUT',
-      body: JSON.stringify(note),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/notes/${note.id}`, options)
-    .then(res => {
-      if (!res.ok) throw new Error('There was an error');
-      return res.json()
-    })
+    Note.Update(note)
     .then(data => {
       this.props.history.push('/dashboard/daily/notes')
       this.setState((prevState) => {
@@ -340,19 +209,7 @@ class App extends Component {
   }
 
   deleteNote(id) {
-    debugger;
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }
-
-    fetch(`${BASE_URL}/notes/${id}`, options)
-    .then(res => {
-      if(!res.ok) throw new Error('There was an error');
-      return res.json();
-    })
+    Note.Delete(id)
     .then(data => {
       this.setState((prevState) => {
         this.fetchNoteDates();
@@ -444,20 +301,20 @@ class App extends Component {
             logout={this.logout}
             register={this.register}
             login={this.login}
-            onTask={this.createTask}
+            createTask={this.createTask}
             updateTask={this.updateTask}
             deleteTask={this.deleteTask}
             taskDates={this.state.taskDates}
             tasks={this.state.tasks}
             events={this.state.events}
-            onEvent={this.createEvent}
+            createEvent={this.createEvent}
             updateEvent={this.updateEvent}
             deleteEvent={this.deleteEvent}
             eventDates={this.state.eventDates}
             errors={this.state.errors}
             notes={this.state.notes}
             noteDates={this.state.noteDates}
-            onNote={this.createNote}
+            createNote={this.createNote}
             updateNote={this.updateNote}
             deleteNote={this.deleteNote}
           />

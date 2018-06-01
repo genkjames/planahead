@@ -98,7 +98,7 @@ class Dashboard extends Component {
               <Daily
                 user={this.props.user}
                 date={this.state.date}
-                createTask={this.props.onTask}
+                createTask={this.props.createTask}
                 updateTask={this.props.updateTask}
                 deleteTask={this.props.deleteTask}
                 changeDate={this.changeDate}
@@ -107,12 +107,12 @@ class Dashboard extends Component {
                 dateFormat={this.dateFormat}
                 dateObject={this.createDateObject}
                 events={this.props.events}
-                createEvent={this.props.onEvent}
+                createEvent={this.props.createEvent}
                 updateEvent={this.props.updateEvent}
                 deleteEvent={this.props.deleteEvent}
                 logout={this.props.logout}
                 notes={this.props.notes}
-                createNote={this.props.onNote}
+                createNote={this.props.createNote}
                 updateNote={this.props.updateNote}
                 deleteNote={this.props.deleteNote}
               />

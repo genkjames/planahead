@@ -20,8 +20,6 @@ class ApplicationController < ActionController::API
   def find_current_user
     authenticate_with_http_token do | token, options |
       data = decode(token)
-      p 'lokked'
-      p token
       token && User.find(data[:id])
     end
   end

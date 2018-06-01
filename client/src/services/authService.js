@@ -49,6 +49,5 @@ export default {
   fetchToken,
   destroyToken,
   register,
-  login,
-
+  login
 }
