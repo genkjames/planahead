@@ -11,6 +11,10 @@
   --grayish: #969696;
   --maroon: #e0114f;
   --sky-blue: #8bdbe5;
+  --task-color: #e3dcec;
+  --event-color: #bba6d1;
+  --note-color: #723f97;
+  --schedule-color: #2e0042;
 }
 
 * {
@@ -51,7 +55,7 @@ h2 {
 /* Landing */
 
 .background {
-  padding: 100px 20px;
+  padding: 100px 20px 50px;
   background: url('./images/background.jpg') center;
   background-size: cover;
   min-height: calc(100vh - 100px);
@@ -98,7 +102,7 @@ h2 {
 }
 
 .landing-content {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 0 20px 200px;
   padding: 50px;
   background: rgba(34, 34, 34, .5);
@@ -284,7 +288,7 @@ h2 {
   display: inline;
   outline: none;
   cursor: pointer;
-  padding: 10px 100px 100px 10px;
+  padding: 10px 100px 70px 10px;
   text-align: left;
   vertical-align: text-top;
   font-size: 20px;
@@ -317,21 +321,58 @@ h2 {
 
 .hasTask {
   right: 40%;
-  background: blue;
+  background: var(--task-color);
 }
 
 .hasEvent {
   right: 30%;
-  background: red;
+  background: var(--event-color);
 }
 
 .hasNote {
   right: 20%;
-  background: yellow;
+  background: var(--note-color);
+}
+
+.color-codes {
+  padding: 8px 30px;
+}
+
+.code {
+  padding: 7px 0 0 25px;
+  position: relative;
+  list-style: none;
+}
+
+.code::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  left: 0;
+}
+
+.tasks-color::before {
+  background: var(--task-color);
+}
+
+.events-color::before {
+  background: var(--event-color);
+}
+
+.notes-color::before {
+  background: var(--note-color);
+}
+
+.schedule-color::before {
+  background: var(--schedule-color);
 }
 
 .react-calendar__month-view__days__day--neighboringMonth .hasTask,
-.react-calendar__month-view__days__day--neighboringMonth .hasEvent {
+.react-calendar__month-view__days__day--neighboringMonth .hasEvent,
+.react-calendar__month-view__days__day--neighboringMonth .hasNote {
   background: transparent;
 }
 

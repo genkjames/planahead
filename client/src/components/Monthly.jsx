@@ -71,6 +71,14 @@ class Monthly extends Component {
             next2Label={<i className="fa fa-angle-double-right nav-arrow"></i>}
           />
         </div>
+        <div className="color-codes">
+          <ul>
+            <li className="tasks-color code">Tasks</li>
+            <li className="events-color code">Events</li>
+            <li className="notes-color code">Notes</li>
+            <li className="schedule-color code">Schedule</li>
+          </ul>
+        </div>
       </div>
     )
   }
