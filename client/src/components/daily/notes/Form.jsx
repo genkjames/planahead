@@ -6,7 +6,7 @@ class Form extends Component {
     super(props);
     this.state = {
       note: {
-        user_id: this.props.user.id,
+        user_id: '',
         text: '',
         set_date: ''
       }
@@ -22,7 +22,8 @@ class Form extends Component {
       return {
         note: {
           ...prevState.note,
-          [name]: value
+          [name]: value,
+          user_id: this.props.user.id
         }
       }
     })

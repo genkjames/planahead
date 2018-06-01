@@ -17,9 +17,9 @@ function login(creds) {
     method: 'POST',
     body: JSON.stringify(creds),
     headers: {
-      'Content-Type': 'application/json'
-    }
-  }
+      'Content-Type': 'application/json',
+    },
+  };
 
   return fetch(`${BASE_URL}/login`, options)
   .then(resp => {

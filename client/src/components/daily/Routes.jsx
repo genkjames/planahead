@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Tasks from './tasks/Tasks';
 import Events from './events/Events';
 import Notes from './notes/Notes';
-import Schedule from './Schedule';
+import Schedule from './schedule/Schedule';
 
 
 function Routes(props) {
@@ -45,7 +45,8 @@ function Routes(props) {
       />
       <Route
         path="/dashboard/daily/notes"
-        render={() => (<Notes
+        render={() => (
+          <Notes
             user={props.user}
             date={props.date}
             notes={props.notes}
@@ -59,7 +60,13 @@ function Routes(props) {
       />
       <Route
         path="/dashboard/daily/schedule"
-        render={() => (<Schedule />)}
+        render={() => (
+          <Schedule
+            user={props.user}
+            date={props.date}
+            dateFormat={props.dateFormat}
+          />
+        )}
       />
       <Redirect to="/dashboard/daily/tasks" />
     </Switch>

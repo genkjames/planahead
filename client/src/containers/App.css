@@ -387,7 +387,8 @@ h2 {
   background: #fff;
 }
 
-/* Tasks */
+/* Tasks, Events, Notes */
+
 .add-new {
   margin: 20px 0 40px;
 }
@@ -449,7 +450,8 @@ h2 {
 }
 
 /* Forms */
-textarea {
+
+.form textarea {
   resize: none;
   width: 100%;
   height: 80px;
@@ -491,4 +493,25 @@ textarea {
 
 .form .links {
   margin: 20px;
+}
+
+/* Schedule */
+
+.schedule textarea {
+  width: calc(100% - 300px);
+  border: none;
+  border-left: 1px solid var(--dim);
+  resize: none;
+  height: 40px;
+}
+
+.schedule input {
+  width: 300px;
+  border: none;
+}
+
+.schedule form {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--dim);
 }

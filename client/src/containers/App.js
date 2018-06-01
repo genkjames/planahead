@@ -281,7 +281,9 @@ class App extends Component {
       tasks: [],
       taskDates: [],
       events: [],
-      eventDates: []
+      eventDates: [],
+      notes: [],
+      noteDates: []
     })
     this.props.history.push('/');
   }
