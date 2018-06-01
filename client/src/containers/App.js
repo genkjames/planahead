@@ -5,6 +5,7 @@ import Service from '../services/authService';
 import Task from '../services/taskService';
 import Event from '../services/eventService';
 import Note from '../services/noteService';
+import Schedule from '../services/scheduleService';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,7 +21,9 @@ class App extends Component {
       events: [],
       eventDates: [],
       notes: [],
-      noteDates: []
+      noteDates: [],
+      schedules: [],
+      scheduleDates: []
     }
 
     this.createTask = this.createTask.bind(this);
@@ -34,6 +37,10 @@ class App extends Component {
     this.createNote = this.createNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+
+    this.createSchedule = this.createSchedule.bind(this);
+    this.updateSchedule = this.updateSchedule.bind(this);
+    this.deleteSchedule = this.deleteSchedule.bind(this);
 
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
@@ -220,6 +227,69 @@ class App extends Component {
     })
   }
 
+  // CRUD Schedule Operations
+
+  fetchSchedule() {
+    Schedule.All(this.state.user.id)
+    .then(data => this.setState({
+      schedules: data
+    }));
+  }
+
+  // fetch unique schedule dates to color code monthly view
+  fetchScheduleDates() {
+    Schedule.Dates(this.state.user.id)
+    .then(data => this.setState({
+      scheduleDates: data
+    }));
+  }
+
+  createSchedule(schedule) {
+    debugger;
+    // Schedule.Create(schedule)
+    // .then(data => {
+    //   this.props.history.push('/dashboard/daily/schedules');
+    //   this.setState((prevState) => {
+    //     this.fetchScheduleDates();
+    //     return {
+    //       schedules: [...prevState.schedules, data]
+    //     }
+    //   })
+    // })
+  }
+
+  updateSchedule(schedule) {
+    debugger;
+    Schedule.Update(schedule)
+    .then(data => {
+      this.props.history.push('/dashboard/daily/schedules')
+      this.setState((prevState) => {
+        this.fetchScheduleDates();
+        const index = prevState.schedules.findIndex(schedule => schedule.id === data.id);
+        return {
+          schedules: [
+            ...prevState.schedules.slice(0, index),
+            data,
+            ...prevState.schedules.slice(index + 1)
+          ]
+        }
+      })
+    });
+  }
+
+  deleteSchedule(id) {
+    debugger;
+    Schedule.Delete(id)
+    .then(data => {
+      this.setState((prevState) => {
+        this.fetchScheduleDates();
+        return {
+          schedules: prevState.schedules.filter(schedule => schedule.id !== id)
+        }
+      })
+    })
+  }
+
   // Auth
 
   fetchCalls() {
@@ -229,6 +299,8 @@ class App extends Component {
     this.fetchEventDates();
     this.fetchNotes();
     this.fetchNoteDates();
+    this.fetchSchedule();
+    this.fetchScheduleDates();
   }
 
   register(user) {
@@ -283,7 +355,9 @@ class App extends Component {
       events: [],
       eventDates: [],
       notes: [],
-      noteDates: []
+      noteDates: [],
+      schedules: [],
+      scheduleDates: []
     })
     this.props.history.push('/');
   }
@@ -319,6 +393,11 @@ class App extends Component {
             createNote={this.createNote}
             updateNote={this.updateNote}
             deleteNote={this.deleteNote}
+            schedules={this.state.schedules}
+            scheduleDates={this.state.scheduleDates}
+            createSchedule={this.createSchedule}
+            updateSchedule={this.updateSchedule}
+            deleteSchedule={this.deleteSchedule}
           />
         </main>
       </div>

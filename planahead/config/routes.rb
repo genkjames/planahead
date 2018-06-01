@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   get 'notes/dates/:id', to: 'notes#dates'
   get 'notes/users/:id', to: 'notes#userNotes'
   resources :notes
+
+  get 'schedules/dates/:id', to: 'schedules#dates'
+  get 'schedules/users/:id', to: 'schedules#userSchedule'
+  resources :schedules
 end

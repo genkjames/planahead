@@ -15,6 +15,10 @@ function Schedule(props) {
     }
   }
 
+  function scheduleExist() {
+
+  }
+
   const times = Array(24).fill(0).map(timeFormat).map(time => {
     return (
       <Form
@@ -23,9 +27,16 @@ function Schedule(props) {
         date={props.date}
         dateFormat={props.dateFormat}
         time={time}
+        onSubmit={props.onSchedule}
+        onEdit={props.onEdit}
+        onDelete={props.onDelete}
+        schedules={props.schedules}
       />
     )
   })
+
+  console.log(props.schedules)
+
   return (
     <div className="schedule">
       <DailyMenu />

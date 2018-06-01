@@ -88,6 +88,7 @@ class Dashboard extends Component {
                 taskDates={this.props.taskDates}
                 eventDates={this.props.eventDates}
                 noteDates={this.props.noteDates}
+                scheduleDates={this.props.scheduleDates}
                 logout={this.props.logout}
               />
             )}
@@ -115,6 +116,10 @@ class Dashboard extends Component {
                 createNote={this.props.createNote}
                 updateNote={this.props.updateNote}
                 deleteNote={this.props.deleteNote}
+                schedules={this.props.schedules}
+                createSchedule={this.props.createSchedule}
+                updateSchedule={this.props.updateSchedule}
+                deleteSchedule={this.props.deleteSchedule}
               />
             )}
           />

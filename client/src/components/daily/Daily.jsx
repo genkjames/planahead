@@ -30,6 +30,10 @@ class Daily extends Component {
           createNote={this.props.createNote}
           updateNote={this.props.updateNote}
           deleteNote={this.props.deleteNote}
+          schedules={this.props.schedules}
+          createSchedule={this.props.createSchedule}
+          updateSchedule={this.props.updateSchedule}
+          deleteSchedule={this.props.deleteSchedule}
         />
       </div>
     )

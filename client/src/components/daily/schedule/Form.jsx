@@ -4,27 +4,32 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: {
+      schedule: {
         user_id: '',
         text: '',
         set_date: '',
         set_time: '',
       }
     }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     const { name, value } = e.target;
     this.setState((prevState) => {
+      const schedule = {
+        ...prevState.schedule,
+        [name]: value
+      }
+      this.handleSubmit(schedule);
       return {
-        event: {
-          ...prevState.event,
-          [name]: value
-        }
+        schedule
       }
     })
+  }
+
+  handleSubmit(sched) {
+    this.props.onSubmit(sched);
   }
 
   setInitialValues() {
@@ -32,8 +37,8 @@ class Form extends Component {
       const { user, date, time } = this.props;
       const set_date = this.props.dateFormat(date)
       return {
-        event: {
-          ...prevState.event,
+        schedule: {
+          ...prevState.schedule,
           set_date,
           set_time: time,
           user_id: user.id
@@ -47,7 +52,6 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.state.event)
     return (
       <div>
         <form>
@@ -58,7 +62,7 @@ class Form extends Component {
           <textarea
             type="text"
             onChange={this.handleChange}
-            value={this.state.event.text}
+            value={this.state.schedule.text}
             name="text"
           />
         </form>

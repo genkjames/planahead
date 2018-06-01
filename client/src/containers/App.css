@@ -311,7 +311,8 @@ h2 {
 
 .hasTask,
 .hasEvent,
-.hasNote {
+.hasNote,
+.hasSchedule {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -334,8 +335,13 @@ h2 {
   background: var(--note-color);
 }
 
+.hasSchedule {
+  right: 10%;
+  background: var(--schedule-color);
+}
+
 .color-codes {
-  padding: 8px 30px;
+  padding: 8px 30px 15px;
 }
 
 .code {
@@ -523,6 +529,7 @@ h2 {
 .form input {
   outline: none;
   padding: 5px;
+  letter-spacing: 1px;
 }
 
 [type=time], [type=date] {
@@ -539,20 +546,27 @@ h2 {
 /* Schedule */
 
 .schedule textarea {
-  width: calc(100% - 300px);
+  width: calc(100% - 100px);
   border: none;
   border-left: 1px solid var(--dim);
   resize: none;
   height: 40px;
+  outline: none;
+  font: 400 18px 'Lato', sans-serif;
+  padding: 8px;
+  letter-spacing: 1px;
 }
 
 .schedule input {
-  width: 300px;
+  width: 100px;
   border: none;
+  text-align: center;
+  font: 300 18px 'Lato', sans-serif;
 }
 
 .schedule form {
   display: flex;
   align-items: center;
-  border: 1px solid var(--dim);
+  /*border: 1px solid var(--dim);*/
+  border-bottom: 1px solid var(--dim);
 }

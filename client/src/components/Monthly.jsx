@@ -41,6 +41,7 @@ class Monthly extends Component {
     this.colorCodes(this.props.taskDates, 'hasTask');
     this.colorCodes(this.props.eventDates, 'hasEvent');
     this.colorCodes(this.props.noteDates, 'hasNote');
+    this.colorCodes(this.props.scheduleDates, 'hasSchedule');
   }
 
   componentDidMount() {
@@ -52,6 +53,7 @@ class Monthly extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <TopNav
