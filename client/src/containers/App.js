@@ -341,6 +341,12 @@ class App extends Component {
     .catch(err => this.setState({user: false}))
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem('authToken') !== null) {
+      return true;
+    }
+  }
+
   logout() {
     Service.destroyToken();
     this.setState({
@@ -369,6 +375,7 @@ class App extends Component {
         <main>
           <Main
             user={this.state.user}
+            isLoggedIn={this.isLoggedIn}
             logout={this.logout}
             register={this.register}
             login={this.login}

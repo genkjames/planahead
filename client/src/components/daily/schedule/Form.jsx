@@ -9,9 +9,7 @@ class Form extends Component {
         text: '',
         set_date: '',
         set_time: '',
-      },
-      x: 0,
-      y: 0,
+      }
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -23,7 +21,7 @@ class Form extends Component {
         ...prevState.schedule,
         [name]: value
       }
-      this.handleSubmit(schedule, e);
+      this.handleSubmit(schedule);
       return {
         schedule
       }
@@ -34,8 +32,7 @@ class Form extends Component {
   // if schedule has an id and text is empty it will be deleted
   // if schedule has no id then it needs to be created
   // allows for users to create and update without having to click buttons / links
-  handleSubmit(schedule, e) {
-    debugger;
+  handleSubmit(schedule) {
     if (schedule.id && schedule.text === "") {
       console.log('delete');
       this.props.onDelete(schedule.id)

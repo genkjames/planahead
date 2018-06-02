@@ -66,12 +66,13 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.user.id) {
+    if (!this.props.isLoggedIn()) {
       this.props.history.push('/login');
     }
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="dashboard">
         <SideMenu />

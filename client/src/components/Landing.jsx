@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import Content from './Content';
@@ -20,7 +20,6 @@ function Landing(props) {
               />
             )}
           />
-          {props.user && <Redirect to="/" />}
           <Route
             exact path="/register"
             render={() => (
