@@ -152,12 +152,6 @@ h2 {
   left: -22px;
 }
 
-/* Login / Register */
-
-.user-logs {
-
-}
-
 /* Dashboard */
 
 .dashboard {
@@ -288,7 +282,7 @@ h2 {
   display: inline;
   outline: none;
   cursor: pointer;
-  padding: 10px 100px 70px 10px;
+  padding: 10px 60px 70px 10px;
   text-align: left;
   vertical-align: text-top;
   font-size: 20px;
@@ -567,6 +561,116 @@ h2 {
 .schedule form {
   display: flex;
   align-items: center;
-  /*border: 1px solid var(--dim);*/
   border-bottom: 1px solid var(--dim);
+}
+
+/* Login / Register */
+
+.user-forms {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.user-forms label {
+  width: 150px;
+}
+
+.user-forms input {
+  width: calc(100% - 150px);
+  border-radius: 3px;
+}
+
+.user-forms p {
+  color: var(--note-color);
+  letter-spacing: 1px;
+  font: 600 17px 'Lato', sans-serif;
+  text-align: center;
+}
+
+.user-forms a {
+  color: var(--schedule-color);
+  text-decoration: none;
+  transition: 200ms color;
+}
+
+.user-forms a:hover {
+  color: var(--task-color);
+}
+
+.user-forms button {
+  background: #fff;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1080px) {
+  .landing-content {
+    margin: 20px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .landing-content {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .landing-content {
+    padding: 20px;
+  }
+
+  .user-forms label {
+    width: 100px;
+  }
+
+  .user-forms input {
+    width: calc(100% - 100px);
+    border-radius: 3px;
+  }
+}
+
+@media screen and (max-width: 1249px) {
+  .hasTask,
+  .hasEvent,
+  .hasNote,
+  .hasSchedule {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .hasTask {
+    right: 60%;
+  }
+
+  .hasEvent {
+    right: 45%;
+  }
+
+  .hasNote {
+    right: 30%;
+  }
+
+  .hasSchedule {
+    right: 15%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .dashboard > * {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .dashboard > *:nth-of-type(2) {
+    width: 100%;
+    order: -1;
+    overflow: visible;
+  }
 }

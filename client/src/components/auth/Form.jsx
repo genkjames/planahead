@@ -65,6 +65,7 @@ class Form extends Component {
               name="password"
               onChange={this.handleChange}
               value={this.state.user.password}
+              minLength="8"
             />
           </div>
           {this.props.label === "Register" && <div>
@@ -75,6 +76,7 @@ class Form extends Component {
               name="password_confirmation"
               onChange={this.handleChange}
               value={this.state.user.password_confirmation}
+              minLength="8"
             />
           </div>}
           <button value="submit" className="links">{this.props.label}</button>

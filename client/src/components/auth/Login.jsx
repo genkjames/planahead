@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Form from './Form';
 
 function Login(props) {
   return (
-    <div className="user-logs">
-      <h1>Login</h1>
+    <div className="user-forms">
       {props.errors && <p>{props.errors.message}</p>}
       <Form
         label="Login"
         onSubmit={props.login}
       />
+      <p>Not registered? Sign up <Link to="/register">here</Link></p>
     </div>
   )
-  }
+}
 
 export default Login;
