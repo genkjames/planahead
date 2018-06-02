@@ -245,24 +245,20 @@ class App extends Component {
   }
 
   createSchedule(schedule) {
-    debugger;
-    // Schedule.Create(schedule)
-    // .then(data => {
-    //   this.props.history.push('/dashboard/daily/schedules');
-    //   this.setState((prevState) => {
-    //     this.fetchScheduleDates();
-    //     return {
-    //       schedules: [...prevState.schedules, data]
-    //     }
-    //   })
-    // })
+    Schedule.Create(schedule)
+    .then(data => {
+      this.setState((prevState) => {
+        this.fetchScheduleDates();
+        return {
+          schedules: [...prevState.schedules, data]
+        }
+      })
+    })
   }
 
   updateSchedule(schedule) {
-    debugger;
     Schedule.Update(schedule)
     .then(data => {
-      this.props.history.push('/dashboard/daily/schedules')
       this.setState((prevState) => {
         this.fetchScheduleDates();
         const index = prevState.schedules.findIndex(schedule => schedule.id === data.id);
@@ -278,7 +274,6 @@ class App extends Component {
   }
 
   deleteSchedule(id) {
-    debugger;
     Schedule.Delete(id)
     .then(data => {
       this.setState((prevState) => {

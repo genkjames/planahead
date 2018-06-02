@@ -9,7 +9,9 @@ class Form extends Component {
         text: '',
         set_date: '',
         set_time: '',
-      }
+      },
+      x: 0,
+      y: 0,
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,15 +23,29 @@ class Form extends Component {
         ...prevState.schedule,
         [name]: value
       }
-      this.handleSubmit(schedule);
+      this.handleSubmit(schedule, e);
       return {
         schedule
       }
     })
   }
 
-  handleSubmit(sched) {
-    this.props.onSubmit(sched);
+  // if schedule has id then update
+  // if schedule has an id and text is empty it will be deleted
+  // if schedule has no id then it needs to be created
+  // allows for users to create and update without having to click buttons / links
+  handleSubmit(schedule, e) {
+    debugger;
+    if (schedule.id && schedule.text === "") {
+      console.log('delete');
+      this.props.onDelete(schedule.id)
+    } else if (schedule.id) {
+      console.log('update');
+      this.props.onEdit(schedule)
+    } else {
+      console.log('create');
+      this.props.onSubmit(schedule);
+    }
   }
 
   setInitialValues() {
@@ -47,8 +63,18 @@ class Form extends Component {
     })
   }
 
+  // set value of schedule to be any created schedules retrieved from db
+  setCreatedValues(schedule) {
+    this.setState({ schedule })
+  }
+
   componentDidMount() {
-    this.setInitialValues();
+
+    if(this.props.schedule) {
+      this.setCreatedValues(this.props.schedule)
+    } else {
+      this.setInitialValues();
+    }
   }
 
   render() {
