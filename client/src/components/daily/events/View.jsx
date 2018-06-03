@@ -20,7 +20,7 @@ class View extends Component {
             <p><i className="fa fa-book forShow"></i> {this.props.event.set_time}</p>
             <p>{this.props.event.text}</p>
           </div>
-          <div>
+          <div className="actions">
             <Link to={`/dashboard/daily/events/edit/${this.props.event.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>

@@ -17,7 +17,7 @@ class View extends Component {
       <div>
         <div className="view">
           <p>{this.props.note.text}</p>
-          <div>
+          <div className="actions">
             <Link to={`/dashboard/daily/notes/edit/${this.props.note.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>

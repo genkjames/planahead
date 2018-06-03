@@ -52,6 +52,10 @@ h2 {
   background: var(--sky-blue);
 }
 
+button {
+  background: #fff;
+}
+
 /* Landing */
 
 .background {
@@ -216,6 +220,7 @@ h2 {
 .daily-links {
   border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
+  margin-bottom: 20px;
 }
 
 .side-menu .daily-links a {
@@ -244,7 +249,6 @@ h2 {
 }
 
 .react-calendar__navigation__arrow {
-  font-size: 20px;
   width: 80px;
   border: none;
   background: transparent;
@@ -285,7 +289,7 @@ h2 {
   padding: 10px 60px 70px 10px;
   text-align: left;
   vertical-align: text-top;
-  font-size: 20px;
+  font-size: 16px;
   border: 1px solid var(--shadow);
   position: relative;
 }
@@ -315,17 +319,17 @@ h2 {
 }
 
 .hasTask {
-  right: 40%;
+  right: 55%;
   background: var(--task-color);
 }
 
 .hasEvent {
-  right: 30%;
+  right: 40%;
   background: var(--event-color);
 }
 
 .hasNote {
-  right: 20%;
+  right: 25%;
   background: var(--note-color);
 }
 
@@ -372,7 +376,8 @@ h2 {
 
 .react-calendar__month-view__days__day--neighboringMonth .hasTask,
 .react-calendar__month-view__days__day--neighboringMonth .hasEvent,
-.react-calendar__month-view__days__day--neighboringMonth .hasNote {
+.react-calendar__month-view__days__day--neighboringMonth .hasNote,
+.react-calendar__month-view__days__day--neighboringMonth .hasSchedule {
   background: transparent;
 }
 
@@ -406,6 +411,7 @@ h2 {
   display: flex;
   justify-content: center;
   background: var(--light-blue);
+  padding: 0 10px;
 }
 
 .daily-nav a {
@@ -443,6 +449,10 @@ h2 {
   margin-bottom: 5px;
 }
 
+.view > *:first-child {
+  width: calc(100% - 98px);
+}
+
 .view p {
   font-size: 20px;
 }
@@ -453,6 +463,10 @@ h2 {
 
 .view button {
   border: none;
+}
+
+.actions {
+  width: 98px;
 }
 
 .fa-hover, .fa-book {
@@ -468,7 +482,6 @@ h2 {
 
 .event-info {
   display: flex;
-  justify-content: center;
 }
 
 .event-info p {
@@ -603,33 +616,6 @@ h2 {
 
 /* Media Queries */
 
-@media screen and (max-width: 1080px) {
-  .landing-content {
-    margin: 20px auto;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .landing-content {
-    padding: 30px;
-  }
-}
-
-@media screen and (max-width: 456px) {
-  .landing-content {
-    padding: 20px;
-  }
-
-  .user-forms label {
-    width: 100px;
-  }
-
-  .user-forms input {
-    width: calc(100% - 100px);
-    border-radius: 3px;
-  }
-}
-
 @media screen and (max-width: 1249px) {
   .hasTask,
   .hasEvent,
@@ -637,6 +623,12 @@ h2 {
   .hasSchedule {
     width: 8px;
     height: 8px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .landing-content {
+    margin: 20px auto;
   }
 }
 
@@ -658,6 +650,12 @@ h2 {
   }
 }
 
+@media screen and (max-width: 968px) {
+  .react-calendar__tile {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .dashboard {
     flex-direction: column;
@@ -670,7 +668,158 @@ h2 {
 
   .dashboard > *:nth-of-type(2) {
     width: 100%;
-    order: -1;
     overflow: visible;
+    min-height: 600px;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .view {
+    flex-direction: column;
+  }
+
+  .view > *:first-child {
+    width: 100%;
+  }
+
+  .actions {
+    margin: 25px 0 5px;
+    width: 100%;
+  }
+
+  .event-info {
+    flex-direction: column;
+  }
+
+  .event-info p {
+    padding: 0;
+  }
+
+  .event-info p:last-child {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 695px) {
+  .daily-nav a {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .nav-arrow {
+    font-size: 30px;
+  }
+
+  .react-calendar__navigation__arrow {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 647px) {
+  .hasTask,
+  .hasEvent,
+  .hasNote,
+  .hasSchedule {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hasTask {
+    right: 75%;
+  }
+
+  .hasEvent {
+    right: 55%;
+  }
+
+  .hasNote {
+    right: 35%;
+  }
+
+  .hasSchedule {
+    right: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .landing-content {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .react-calendar__month-view__weekdays {
+    margin: 0;
+  }
+
+  .react-calendar__month-view__days {
+    margin: 0;
+  }
+
+  .react-calendar__month-view__weekdays__weekday {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 534px) {
+  .nav-arrow {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 516px) {
+  .react-calendar__tile {
+    padding: 8px 20px 40px 8px;
+  }
+}
+
+@media screen and (max-width: 487px) {
+  .hasTask,
+  .hasEvent,
+  .hasNote,
+  .hasSchedule {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .landing-content {
+    padding: 20px;
+  }
+
+  .user-forms label {
+    width: 100px;
+  }
+
+  .user-forms input {
+    width: calc(100% - 100px);
+    border-radius: 3px;
+  }
+}
+
+@media screen and (max-width: 434px) {
+  .nav-arrow {
+    font-size: 20px;
+  }
+
+  .react-calendar__navigation {
+    padding: 0;
+  }
+
+  .react-calendar__navigation__arrow {
+    width: 40px;
+  }
+
+  .react-calendar__navigation__label {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .react-calendar__tile {
+    font-size: 12px;
   }
 }

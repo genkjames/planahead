@@ -34,13 +34,10 @@ class Form extends Component {
   // allows for users to create and update without having to click buttons / links
   handleSubmit(schedule) {
     if (schedule.id && schedule.text === "") {
-      console.log('delete');
       this.props.onDelete(schedule.id)
     } else if (schedule.id) {
-      console.log('update');
       this.props.onEdit(schedule)
     } else {
-      console.log('create');
       this.props.onSubmit(schedule);
     }
   }
@@ -66,7 +63,6 @@ class Form extends Component {
   }
 
   componentDidMount() {
-
     if(this.props.schedule) {
       this.setCreatedValues(this.props.schedule)
     } else {

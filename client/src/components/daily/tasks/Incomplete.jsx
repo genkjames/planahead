@@ -36,7 +36,7 @@ class Incomplete extends Component {
       <div>
         <div className="view task">
           <p onClick={this.handleClick}>{this.props.task.text}</p>
-          <div>
+          <div className="actions">
             <Link to={`/dashboard/daily/tasks/edit/${this.props.task.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>

@@ -302,6 +302,7 @@ class App extends Component {
     Service.register({user: user})
     .then(data => {
       Service.saveToken(data.token);
+      this.props.history.push('/dashboard');
       this.setState({user: data.user})
     })
     .catch(err => console.log(err.message))
