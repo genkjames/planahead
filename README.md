@@ -37,34 +37,40 @@ More than ever it's critical to be organized in this fast paced society. With th
 | email | text not null |
 | password_digest | text not null |
 
-### Table Name: sounds
-| Column Name | Data Type |
-| --- | :---: |
-| id | primary key |
-| sound | text not null |
-
-### Table Name: colors
-| Column Name | Data Type |
-| --- | :---: |
-| id | primary key |
-| color | text not null |
-
 ### Table Name: tasks
 | Column Name | Data Type |
 | --- | :---: |
 | id | primary key |
 | user_id | references users(id) |
-| task | text not null |
+| text | text not null |
 | isComplete | boolean not null |
+| set_date | date not null |
 
 ### Table Name: events
 | Column Name | Data Type |
 | --- | :---: |
 | id | primary key |
 | user_id | references users(id) |
-| event | text not null |
-| time | timestamp not null |
-| sound | references sounds(id)
+| text | text not null |
+| set_time | string not null |
+| set_date | date not null |
+
+### Table Name: notes
+| Column Name | Data Type |
+| --- | :---: |
+| id | primary key |
+| user_id | references users(id) |
+| text | text not null |
+| set_date | date not null |
+
+### Table Name: schedules
+| Column Name | Data Type |
+| --- | :---: |
+| id | primary key |
+| user_id | references users(id) |
+| text | text not null |
+| set_time | string not null |
+| set_date | date not null |
 
 ## Priority Matrix
 
@@ -84,15 +90,15 @@ Include a full list of features that have been prioritized based on the `Time an
 
 ### Landing Page
 <!-- What will a user see when they start your app? -->
-When the app is started users will see home page that tells them what they can do with the app, and a link to the dashboard. 
+When the app is started users will see the home page that tells them what they can do with the app, and a link to the dashboard. If users aren't logged, instead of seeing a link to the dashboard the login and register buttons will be seen.
 
 ### App Initialization
 <!-- What will a user see when the app is started?  -->
-Once a user has entered the dashboard they will see a view of the current month with options to add events, tasks and notes to a particular day. They can also set up any upcoming appointments so they can be notified by alarm. 
+Once a user has entered the dashboard they will see a view of the current month with options to add events, tasks and notes to a particular day when it is clicked on. They can also plan out their whole day by the hour using the schedule tab.
 
 ### Using The App
 <!-- What will a user see when the app is started?  -->
-Users will be able to view their tasks and events with a monthly or daily view. They can add tasks, events and notes right on the calendar, or by going to a specific date on the calendar. Notes can include shopping lists or important details that go along with a specific task, etc. Users will be notified when an event they have added is about to start. Users will also have the option to customize their dashboard with a variety of colors. The app will be simple enough that a person of any age can feel comfortable using it as their own personal organizer. 
+Users will be able to view their tasks and events with a by daily view. The monthly view will be color coded to inform users which day they added any tasks, events, etc. They can add tasks, events and notes by going to a specific date on the calendar. Notes can include important details that go along with a specific task. The app will be simple enough that a person of any age can feel comfortable using it as their own personal organizer. 
 
 
 ## MVP 
@@ -100,7 +106,7 @@ Users will be able to view their tasks and events with a monthly or daily view. 
 Users will be able to
 
 * Add any tasks they must complete for a particular day
-* Add important events they need to be notified of
+* Add important events
 * Take notes that they feel is important
 * View and edit a daily schedule by the hour
 * View tasks and events by the month or day
@@ -111,7 +117,6 @@ Users will be able to
 Have users
 
 * Customize the look of their dashboard
-* Choose between a selection of alarm sounds
 * View holidays that will be coming up
 
 ## Functional Components
@@ -130,3 +135,10 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Auth | 5 | 8hrs| 1hrs | 6hrs |
 | Post-MVP | 7 | 9hrs| 1hrs | 1hrs |
 | Total |  | 39hrs| 34hrs | 34hrs |
+
+## Technologies Used
+
+* React
+* Rails
+* Postgresql
+* React-Calendar
