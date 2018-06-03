@@ -6,7 +6,7 @@ import Form from './Form';
 function Login(props) {
   return (
     <div className="user-forms">
-      {props.errors && <p>{props.errors.message}</p>}
+      {props.errors && <p className="errors">{props.errors.message}</p>}
       <Form
         label="Login"
         onSubmit={props.login}

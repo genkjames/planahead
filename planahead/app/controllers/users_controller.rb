@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         token: gen_token(@user.id)
       }.to_json
     else
-      render json: {errors: @user.errors.full_messages}
+      render json: {errors: {message: @user.errors.full_messages}}
     end
   end
 

@@ -301,11 +301,21 @@ class App extends Component {
   register(user) {
     Service.register({user: user})
     .then(data => {
-      Service.saveToken(data.token);
-      this.props.history.push('/dashboard');
-      this.setState({user: data.user})
+      if(data.user) {
+        Service.saveToken(data.token)
+        this.setState({
+          user: data.user,
+          errors: false
+        })
+        this.props.history.push('/dashboard');
+      } else {
+        this.setState({
+          user: false,
+          errors: data.errors
+        })
+      }
     })
-    .catch(err => console.log(err.message))
+    .catch(err => this.setState({errors: {message: "Some error"}}))
   }
 
   login(user) {
@@ -344,7 +354,9 @@ class App extends Component {
 
   isLoggedIn() {
     if (localStorage.getItem('authToken') !== null) {
-      return true;
+      if(localStorage.getItem('authToken') !== "undefined") {
+        return true;
+      }
     }
   }
 

@@ -614,6 +614,10 @@ button {
   background: #fff;
 }
 
+.errors {
+  margin-bottom: 20px;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1249px) {

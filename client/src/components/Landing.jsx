@@ -25,6 +25,7 @@ function Landing(props) {
             render={() => (
               <Register
                 register={props.register}
+                errors={props.errors}
               />
             )}
           />
