@@ -11,10 +11,12 @@ class Form extends Component {
       }
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleExit = this.handleExit.bind(this);
   }
 
   handleChange(e) {
     const { name, value } = e.target;
+    console.log(value);
     this.setState((prevState) => {
       const schedule = {
         ...prevState.schedule,
@@ -28,6 +30,19 @@ class Form extends Component {
     })
   }
 
+  //prevent user from adding line breaks
+  handleEnter(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  }
+
+  handleExit(e) {
+    if (!this.state.schedule.id && this.state.schedule.text !== "") {
+      console.log(this.state.schedule);
+    }
+  }
+
   // if schedule has id then update
   // if schedule has an id and text is empty it will be deleted
   // if schedule has no id then it needs to be created
@@ -37,8 +52,6 @@ class Form extends Component {
       this.props.onDelete(schedule.id);
     } else if (schedule.id) {
       this.props.onEdit(schedule)
-    } else {
-      this.props.onSubmit(schedule);
     }
   }
 
@@ -80,7 +93,9 @@ class Form extends Component {
           <textarea
             type="text"
             onChange={this.handleChange}
+            onKeyPress={this.handleEnter}
             value={this.state.schedule.text}
+            onBlur={this.handleExit}
             name="text"
           />
         </form>
