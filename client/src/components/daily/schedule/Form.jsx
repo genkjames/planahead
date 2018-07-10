@@ -5,7 +5,6 @@ class Form extends Component {
     super(props);
     this.state = {
       schedule: {
-        user_id: '',
         text: '',
         set_date: '',
         set_time: '',
@@ -19,7 +18,8 @@ class Form extends Component {
     this.setState((prevState) => {
       const schedule = {
         ...prevState.schedule,
-        [name]: value
+        [name]: value,
+        user_id: this.props.user.id
       }
       this.handleSubmit(schedule);
       return {
@@ -34,7 +34,7 @@ class Form extends Component {
   // allows for users to create and update without having to click buttons / links
   handleSubmit(schedule) {
     if (schedule.id && schedule.text === "") {
-      this.props.onDelete(schedule.id)
+      this.props.onDelete(schedule.id);
     } else if (schedule.id) {
       this.props.onEdit(schedule)
     } else {
@@ -44,14 +44,13 @@ class Form extends Component {
 
   setInitialValues() {
     this.setState((prevState) => {
-      const { user, date, time } = this.props;
+      const { date, time } = this.props;
       const set_date = this.props.dateFormat(date)
       return {
         schedule: {
           ...prevState.schedule,
           set_date,
-          set_time: time,
-          user_id: user.id
+          set_time: time
         }
       }
     })

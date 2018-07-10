@@ -58,8 +58,31 @@ class Schedule extends Component {
     return true;
   }
 
+  filterDuplicates(schedule, index, obj) {
+    if (obj.hasOwnProperty(schedule.set_time)) {
+      obj[schedule.id] = {status: 'delete', index};
+      return false;
+    } else {
+      obj[schedule.set_time] = true;
+      return true;
+    }
+  }
+
   render() {
-    const schedules = this.props.schedules.filter(this.props.compareDate);
+    let duplicatesObj = {};
+    
+    const schedules = this.props.schedules.filter(this.props.compareDate).reverse().filter((schedule, i) => this.filterDuplicates(schedule, i, duplicatesObj));
+    
+    // console.log(duplicatesObj);
+    // if(Object.keys(duplicatesObj).length > 0) {
+    //   console.log('hi');
+    //   Object.keys(duplicatesObj).forEach(key => {
+    //     if (duplicatesObj[key].status === 'delete') {
+    //       this.props.schedules.splice(duplicatesObj[key].index, 1)
+    //     }
+    //   });
+    //   console.log(this.props.schedules);
+    // }
 
     const schedule = schedules.map(schedule => {
       return (
