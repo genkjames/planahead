@@ -62,8 +62,7 @@ button {
   padding: 100px 20px 50px;
   background: url('./images/background.jpg') center;
   background-size: cover;
-  min-height: calc(100vh - 100px);
-  overflow: scroll;
+  min-height: 100vh;
 }
 
 .landing-head {
@@ -160,7 +159,7 @@ button {
 
 .dashboard {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -194,7 +193,6 @@ button {
   width: 180px;
   background: var(--dark);
   color: #fff;
-  overflow: scroll;
 }
 
 .side-menu h1 {
@@ -234,7 +232,6 @@ button {
 
 .dashboard > *:nth-of-type(2) {
   width: calc(100% - 180px);
-  overflow: scroll;
 }
 
 /* Calendar */
@@ -667,12 +664,10 @@ button {
 
   .dashboard > * {
     width: 100%;
-    overflow: visible;
   }
 
   .dashboard > *:nth-of-type(2) {
     width: 100%;
-    overflow: visible;
     min-height: 600px;
   }
 }
