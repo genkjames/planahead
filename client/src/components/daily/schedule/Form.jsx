@@ -16,7 +16,6 @@ class Form extends Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    console.log(value);
     this.setState((prevState) => {
       const schedule = {
         ...prevState.schedule,
@@ -37,16 +36,16 @@ class Form extends Component {
     }
   }
 
+  // creates schedule once user leaves input box and schedule has no id 
   handleExit(e) {
     if (!this.state.schedule.id && this.state.schedule.text !== "") {
-      console.log(this.state.schedule);
+      this.props.onSubmit(this.state.schedule);
     }
   }
 
   // if schedule has id then update
   // if schedule has an id and text is empty it will be deleted
-  // if schedule has no id then it needs to be created
-  // allows for users to create and update without having to click buttons / links
+  // allows for users to edit and delete without having to click buttons / links
   handleSubmit(schedule) {
     if (schedule.id && schedule.text === "") {
       this.props.onDelete(schedule.id);
