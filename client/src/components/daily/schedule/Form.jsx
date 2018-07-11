@@ -8,7 +8,8 @@ class Form extends Component {
         text: '',
         set_date: '',
         set_time: '',
-      }
+      },
+      focused: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleExit = this.handleExit.bind(this);
@@ -24,7 +25,8 @@ class Form extends Component {
       }
       this.handleSubmit(schedule);
       return {
-        schedule
+        schedule,
+        focused: true
       }
     })
   }
@@ -41,6 +43,9 @@ class Form extends Component {
     if (!this.state.schedule.id && this.state.schedule.text !== "") {
       this.props.onSubmit(this.state.schedule);
     }
+    this.setState({
+        focused: false
+    })
   }
 
   // if schedule has id then update
@@ -78,6 +83,12 @@ class Form extends Component {
       this.setCreatedValues(this.props.schedule)
     } else {
       this.setInitialValues();
+    }
+  }
+
+  componentWillUnmount() {
+    if(this.state.focused) {
+      this.handleExit();
     }
   }
 
