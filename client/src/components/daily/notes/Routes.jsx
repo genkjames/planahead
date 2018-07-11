@@ -24,6 +24,7 @@ function Routes(props) {
           <View
             note={props.note}
             onDelete={props.onDelete}
+            manipulate={true}
           />
         )}
       />

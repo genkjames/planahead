@@ -17,14 +17,14 @@ class View extends Component {
       <div>
         <div className="view">
           <p>{this.props.note.text}</p>
-          <div className="actions">
+          {this.props.manipulate && <div className="actions">
             <Link to={`/dashboard/daily/notes/edit/${this.props.note.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>
             <button onClick={() => this.handleDelete(this.props.note.id)}>
               <i className="fa fa-trash fa-hover"></i>
             </button>
-          </div>
+          </div>}
         </div>
       </div>
     )

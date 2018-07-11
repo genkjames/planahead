@@ -26,6 +26,7 @@ function Routes(props) {
           <View
             event={props.event}
             onDelete={props.onDelete}
+            manipulate={true}
           />
         )}
       />
