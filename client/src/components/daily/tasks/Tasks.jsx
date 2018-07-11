@@ -9,7 +9,7 @@ function Tasks(props) {
   let tasks;
 
   if (props.tasks.length > 0) {
-    tasks = props.tasks.filter(props.compareDate).map(task => {
+    tasks = props.tasks.map(task => {
       return (
         <Routes
           user={props.user}

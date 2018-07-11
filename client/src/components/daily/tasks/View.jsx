@@ -35,6 +35,7 @@ class View extends Component {
           onEdit={this.handleEdit}
           handleDelete={this.handleDelete}
           task={this.props.task}
+          manipulate={this.props.manipulate}
         />
       ) : (
         <Incomplete
@@ -42,6 +43,7 @@ class View extends Component {
           onEdit={this.handleEdit}
           handleDelete={this.handleDelete}
           task={this.props.task}
+          manipulate={this.props.manipulate}
         />
       )
     )

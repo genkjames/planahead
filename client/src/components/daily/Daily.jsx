@@ -4,6 +4,10 @@ import Routes from './Routes';
 
 class Daily extends Component {
   render() {
+    const tasks = this.props.tasks.filter(this.props.compareDate);
+    const events = this.props.events.filter(this.props.compareDate);
+    const notes = this.props.notes.filter(this.props.compareDate);
+    const schedules = this.props.schedules.filter(this.props.compareDate);
     return (
       <div className="daily">
         <TopNav
@@ -18,19 +22,19 @@ class Daily extends Component {
           deleteTask={this.props.deleteTask}
           changeDate={this.props.changeDate}
           date={this.props.date}
-          tasks={this.props.tasks}
+          tasks={tasks}
           dateFormat={this.props.dateFormat}
           dateObject={this.props.dateObject}
           compareDate={this.props.compareDate}
-          events={this.props.events}
+          events={events}
           createEvent={this.props.createEvent}
           updateEvent={this.props.updateEvent}
           deleteEvent={this.props.deleteEvent}
-          notes={this.props.notes}
+          notes={notes}
           createNote={this.props.createNote}
           updateNote={this.props.updateNote}
           deleteNote={this.props.deleteNote}
-          schedules={this.props.schedules}
+          schedules={schedules}
           createSchedule={this.props.createSchedule}
           updateSchedule={this.props.updateSchedule}
           deleteSchedule={this.props.deleteSchedule}

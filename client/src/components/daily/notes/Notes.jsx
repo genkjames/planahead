@@ -8,7 +8,7 @@ function Notes(props) {
   let notes;
 
   if(props.notes.length > 0) {
-    notes = props.notes.filter(props.compareDate).map(note => {
+    notes = props.notes.map(note => {
       return (
         <Routes
           key={note.id}

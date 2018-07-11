@@ -28,6 +28,7 @@ function Routes(props) {
             task={props.task}
             onDelete={props.onDelete}
             onEdit={props.onEdit}
+            manipulate={true}
           />
         )}
       />

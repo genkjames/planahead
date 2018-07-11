@@ -59,9 +59,7 @@ class Schedule extends Component {
   }
 
   render() {
-    const schedules = this.props.schedules.filter(this.props.compareDate);
-
-    const schedule = schedules.map(schedule => {
+    const schedule = this.props.schedules.map(schedule => {
       return (
         <Form
           key={schedule.id}
@@ -79,7 +77,7 @@ class Schedule extends Component {
 
     let obj = {};
 
-    schedules.forEach((schedule, i) => {
+    this.props.schedules.forEach((schedule, i) => {
       obj[schedule['set_time']] = i
     })
 

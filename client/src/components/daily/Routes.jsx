@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import View from './View';
 import Tasks from './tasks/Tasks';
 import Events from './events/Events';
 import Notes from './notes/Notes';
@@ -9,6 +10,19 @@ import Schedule from './schedule/Schedule';
 function Routes(props) {
   return (
     <Switch>
+      <Route 
+        exact path="/dashboard/daily"
+        render={() => (
+          <View 
+            tasks={props.tasks}
+            events={props.events}
+            notes={props.notes}
+            schedules={props.schedules}
+            onEditTask={props.updateTask}
+            onDeleteTask={props.deleteTask}
+          />
+        )}
+      />
       <Route
         path="/dashboard/daily/tasks"
         render={() => (
@@ -73,7 +87,7 @@ function Routes(props) {
           />
         )}
       />
-      <Redirect to="/dashboard/daily/tasks" />
+      <Redirect to="/dashboard/daily" />
     </Switch>
   )
 }

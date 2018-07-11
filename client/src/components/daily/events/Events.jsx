@@ -8,7 +8,7 @@ function Events(props) {
   let events;
 
   if(props.events.length > 0) {
-    events = props.events.filter(props.compareDate).map(event => {
+    events = props.events.map(event => {
       return (
         <Routes
           key={event.id}
