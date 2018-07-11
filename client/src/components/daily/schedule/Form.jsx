@@ -13,6 +13,7 @@ class Form extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleUnsavedChanges = this.handleUnsavedChanges.bind(this);
   }
 
   handleChange(e) {
@@ -59,6 +60,12 @@ class Form extends Component {
     }
   }
 
+  handleUnsavedChanges() {
+    if (this.state.focused) {
+      this.handleExit();
+    }
+  }
+
   setInitialValues() {
     this.setState((prevState) => {
       const { date, time } = this.props;
@@ -85,17 +92,12 @@ class Form extends Component {
       this.setInitialValues();
     }
 
-    window.addEventListener('beforeunload', (e) => {
-      if (this.state.focused) {
-        this.handleExit();
-      }
-    });
+    window.addEventListener('beforeunload', this.handleUnsavedChanges);
   }
 
   componentWillUnmount() {
-    if(this.state.focused) {
-      this.handleExit();
-    }
+    window.removeEventListener('beforeunload', this.handleUnsavedChanges);
+    this.handleUnsavedChanges();
   }
 
   render() {
