@@ -36,21 +36,21 @@ function View(props) {
   })
 
   return (
-    <div>  
+    <div className="container daily-view">  
       <div>   
         <h2>Tasks</h2>
         {tasks}
-        <Link to="/dashboard/daily/tasks">See Tasks</Link>
+        <Link to="/dashboard/daily/tasks" className="links">{tasks.length > 0 ? 'Manage' : 'Add'} Tasks</Link>
       </div>
       <div>   
         <h2>Events</h2>
         {events}
-        <Link to="/dashboard/daily/events">See Events</Link>
+        <Link to="/dashboard/daily/events" className="links">{events.length > 0 ? 'Manage' : 'Add'} Events</Link>
       </div>
       <div>   
         <h2>Notes</h2>
         {notes}
-        <Link to="/dashboard/daily/notes">See Notes</Link>
+        <Link to="/dashboard/daily/notes" className="links">{notes.length > 0 ? 'Manage' : 'Add'} Notes</Link>
       </div>
     </div>
   )
