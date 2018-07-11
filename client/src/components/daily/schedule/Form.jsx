@@ -84,6 +84,8 @@ class Form extends Component {
     } else {
       this.setInitialValues();
     }
+
+    window.onbeforeunload = function() {return 'stop'};
   }
 
   componentWillUnmount() {
