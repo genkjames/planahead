@@ -85,7 +85,11 @@ class Form extends Component {
       this.setInitialValues();
     }
 
-    window.onbeforeunload = function() {return 'stop'};
+    window.addEventListener('beforeunload', (e) => {
+      if (this.state.focused) {
+        this.handleExit();
+      }
+    });
   }
 
   componentWillUnmount() {
