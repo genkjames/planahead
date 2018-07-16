@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskView from '../daily/TaskView';
 
 function View(props) {
   let date;
@@ -11,7 +12,9 @@ function View(props) {
     <div>
       <div className="container">
         <h2>{date}</h2>
-        <p>{JSON.stringify(props.tasks)}</p>
+        <TaskView 
+          tasks={props.tasks}
+        />
       </div>
     </div>
   )
