@@ -131,6 +131,7 @@ class Dashboard extends Component {
                 user={this.props.user}
                 logout={this.props.logout}
                 tasks={this.props.tasks}
+                dateObject={this.createDateObject}
               />
             )}
           />

@@ -45,6 +45,7 @@ class Tasks extends Component {
           key={date}
           date={date}
           tasks={dates[date]}
+          dateObject={this.props.dateObject}
         />
       )
     })
