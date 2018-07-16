@@ -219,7 +219,6 @@ button {
 .daily-links {
   border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
-  margin-bottom: 20px;
 }
 
 .side-menu .daily-links a {
@@ -411,7 +410,7 @@ button {
   background: #fff;
 }
 
-.daily h1 {
+.daily h1, .all-tasks h1 {
   text-align: center;
   padding: 20px;
   background: var(--light-blue);

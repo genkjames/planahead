@@ -12,6 +12,7 @@ function SideNav(props) {
         <Link to="/dashboard/daily/notes">Notes</Link>
         <Link to="/dashboard/daily/schedule">Schedule</Link>
       </div>
+      <Link to="/dashboard/tasks">Tasks</Link>
     </nav>
   )
 }

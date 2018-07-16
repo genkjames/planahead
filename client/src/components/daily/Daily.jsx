@@ -8,6 +8,7 @@ class Daily extends Component {
     const events = this.props.events.filter(this.props.compareDate);
     const notes = this.props.notes.filter(this.props.compareDate);
     const schedules = this.props.schedules.filter(this.props.compareDate);
+
     return (
       <div className="daily">
         <TopNav
@@ -25,7 +26,6 @@ class Daily extends Component {
           tasks={tasks}
           dateFormat={this.props.dateFormat}
           dateObject={this.props.dateObject}
-          compareDate={this.props.compareDate}
           events={events}
           createEvent={this.props.createEvent}
           updateEvent={this.props.updateEvent}

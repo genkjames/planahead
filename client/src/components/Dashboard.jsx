@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import SideMenu from './navigation/SideMenu';
 import Monthly from './Monthly';
 import Daily from './daily/Daily';
+import Tasks from './tasks/Tasks';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -120,6 +121,17 @@ class Dashboard extends Component {
                 createSchedule={this.props.createSchedule}
                 updateSchedule={this.props.updateSchedule}
                 deleteSchedule={this.props.deleteSchedule}
+              />
+            )}
+          />
+          <Route 
+            path="/dashboard/tasks"
+            render={() => (
+              <Tasks 
+                user={this.props.user}
+                logout={this.props.logout}
+                tasks={this.props.tasks}
+                dateObject={this.createDateObject}
               />
             )}
           />

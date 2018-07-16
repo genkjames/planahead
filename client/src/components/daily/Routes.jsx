@@ -11,20 +11,18 @@ function Routes(props) {
   return (
     <Switch>
       <Route 
-        exact path="/dashboard/daily"
+        exact path='/dashboard/daily/'
         render={() => (
           <View 
             tasks={props.tasks}
             events={props.events}
             notes={props.notes}
             schedules={props.schedules}
-            onEditTask={props.updateTask}
-            onDeleteTask={props.deleteTask}
           />
         )}
       />
       <Route
-        path="/dashboard/daily/tasks"
+        path={`/dashboard/daily/tasks`}
         render={() => (
           <Tasks
             user={props.user}
@@ -36,7 +34,6 @@ function Routes(props) {
             tasks={props.tasks}
             dateFormat={props.dateFormat}
             dateObject={props.dateObject}
-            compareDate={props.compareDate}
           />
         )}
       />
@@ -47,7 +44,6 @@ function Routes(props) {
             user={props.user}
             date={props.date}
             events={props.events}
-            compareDate={props.compareDate}
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
             dateObject={props.dateObject}
@@ -66,7 +62,6 @@ function Routes(props) {
             notes={props.notes}
             dateFormat={props.dateFormat}
             onNote={props.createNote}
-            compareDate={props.compareDate}
             onEdit={props.updateNote}
             onDelete={props.deleteNote}
           />
@@ -83,11 +78,10 @@ function Routes(props) {
             onSchedule={props.createSchedule}
             onEdit={props.updateSchedule}
             onDelete={props.deleteSchedule}
-            compareDate={props.compareDate}
           />
         )}
       />
-      <Redirect to="/dashboard/daily" />
+      <Redirect to="/dashboard/daily/" />
     </Switch>
   )
 }
