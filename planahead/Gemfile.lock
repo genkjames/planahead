@@ -44,16 +44,14 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     bcrypt (3.1.12)
-    bcrypt (3.1.12-x64-mingw32)
-    bootsnap (1.3.0)
+    bootsnap (1.3.1)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     erubi (1.7.1)
-    ffi (1.9.23)
-    ffi (1.9.23-x64-mingw32)
+    ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.0.1)
@@ -76,15 +74,11 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.4)
-    msgpack (1.2.4-x64-mingw32)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
-      mini_portile2 (~> 2.3.0)
-    nokogiri (1.8.2-x64-mingw32)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     pg (1.0.0)
-    pg (1.0.0-x64-mingw32)
-    puma (3.11.4)
+    puma (3.12.0)
     rack (2.0.5)
     rack-cors (1.0.2)
     rack-test (1.0.0)
@@ -134,15 +128,12 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.5)
-      tzinfo (>= 1.0.0)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
 
 PLATFORMS
   ruby
-  x64-mingw32
 
 DEPENDENCIES
   bcrypt (~> 3.1.12)
@@ -159,7 +150,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
