@@ -396,7 +396,7 @@ class App extends Component {
             updateTask={this.updateTask}
             deleteTask={this.deleteTask}
             taskDates={this.state.taskDates}
-            tasks={this.state.tasks}
+            // tasks={this.state.tasks}
             events={this.state.events}
             createEvent={this.createEvent}
             updateEvent={this.updateEvent}

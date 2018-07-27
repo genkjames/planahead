@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getTasks } from '../../../store/actionTypes';
+
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
 import Routes from './Routes';
@@ -58,4 +61,10 @@ function Tasks(props) {
   )
 }
 
-export default Tasks;
+function mapStateToProps(reduxState) {
+  return {
+    tasks: reduxState.tasks
+  }
+}
+
+export default connect(mapStateToProps, { getTasks })(Tasks);
