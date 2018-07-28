@@ -36,10 +36,13 @@ export function getTaskDates(id) {
   }
 }
 
-export function addTask(task) {
+export function addTask(task, id) {
   return dispatch => {
-    Task.Create(task)
-    .then(data => dispatch(handleSubmit(data)));
+    return new Promise((resolve, reject) => {      
+      Task.Create(task)
+      .then(data => dispatch(handleSubmit(data)));
+    })
+  .then(dispatch(getTaskDates(id)));
   }
 }
 

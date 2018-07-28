@@ -36,7 +36,6 @@ class Tasks extends Component {
   }
 
   render() {
-    console.log(this.props);
     const tasksSortedByDate = this.props.tasks.sort(this.sortByDate);
 
     const dates = this.datesOfTasks(tasksSortedByDate);

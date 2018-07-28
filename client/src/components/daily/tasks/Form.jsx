@@ -42,7 +42,8 @@ class Form extends Component {
     if(this.state.task.id) {
       this.changeDate();
     }
-    this.props.onSubmit(this.state.task);
+    this.props.onSubmit(this.state.task, this.props.user.id)
+    .then(this.props.history.push('/dashboard/daily/tasks'));
   }
 
   // sets date when user creates a new task
@@ -69,6 +70,7 @@ class Form extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>

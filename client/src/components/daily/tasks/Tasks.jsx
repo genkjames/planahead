@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { addTask } from '../../../store/actions/tasks';
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
 import Routes from './Routes';
@@ -37,9 +39,10 @@ function Tasks(props) {
               <Form
                 user={props.user}
                 date={props.date}
-                onSubmit={props.onTask}
+                onSubmit={props.addTask}
                 label="Add"
                 dateFormat={props.dateFormat}
+                history={props.history}
               />)
             }
           />
@@ -59,4 +62,10 @@ function Tasks(props) {
   )
 }
 
-export default Tasks;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, { addTask })(Tasks);

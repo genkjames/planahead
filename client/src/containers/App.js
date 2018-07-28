@@ -3,7 +3,6 @@ import './App.css';
 import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/users';
-import { getTasks, getTaskDates } from '../store/actions/tasks';
 import Service from '../services/authService';
 import Task from '../services/taskService';
 import Event from '../services/eventService';
@@ -29,7 +28,7 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.createTask = this.createTask.bind(this);
+    // this.createTask = this.createTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
 
@@ -49,36 +48,6 @@ class App extends Component {
     // this.login = this.login.bind(this);
     // this.logout = this.logout.bind(this);
     // this.isUser = this.isUser.bind(this);
-  }
-
-  // CRUD Task Operations
-
-  // fetchTasks() {
-  //   Task.All(this.state.user.id)
-  //   .then(data => this.setState({
-  //     tasks: data
-  //   }));
-  // }
-
-  // fetch unique task dates to color code monthly view
-  // fetchTaskDates() {
-  //   Task.Dates(this.state.user.id)
-  //   .then(data => this.setState({
-  //     taskDates: data
-  //   }));
-  // }
-
-  createTask(task) {
-    Task.Create(task)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/tasks');
-      this.setState((prevState) => {
-        this.fetchTaskDates();
-        return {
-          tasks: [...prevState.tasks, data]
-        }
-      })
-    })
   }
 
   updateTask(task) {
@@ -332,7 +301,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('app component rendered');
     return (
       <div>
         <main>
@@ -371,4 +339,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { checkUser, getTasks, getTaskDates })(App);
+export default connect(mapStateToProps, { checkUser })(App);

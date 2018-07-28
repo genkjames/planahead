@@ -104,10 +104,11 @@ class Dashboard extends Component {
             />
             <Route
               path="/dashboard/daily"
-              render={() => (
+              render={({ history }) => (
                 <Daily
                   user={this.props.user}
                   date={this.state.date}
+                  history={history}
                   createTask={this.props.createTask}
                   updateTask={this.props.updateTask}
                   deleteTask={this.props.deleteTask}

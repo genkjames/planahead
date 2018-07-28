@@ -15,6 +15,7 @@ class Daily extends Component {
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
           user={this.props.user}
+          history={this.props.history}
           createTask={this.props.createTask}
           updateTask={this.props.updateTask}
           deleteTask={this.props.deleteTask}
