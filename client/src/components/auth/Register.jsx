@@ -1,25 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registering } from '../../store/actionTypes';
 
 import Form from './Form';
 
 function Register(props) {
   return (
     <div className="user-forms">
-      {props.errors &&
+      {props.errorTwo &&
         <div>
-          {props.errors.message.map(error => {
+          {props.errorTwo.message.map(error => {
             return <p key={error} className="errors">{error}</p>
           })}
         </div>
       }
       <Form
         label="Register"
-        onSubmit={props.register}
+        onSubmit={props.registering}
       />
       <p>Already registered? Log in <Link to="/login">here</Link></p>
     </div>
   )
 }
 
-export default Register;
+function mapStateToProps(reduxState) {
+  return {
+    userTwo: reduxState.users.user,
+    errorTwo: reduxState.users.error
+  }
+}
+
+export default connect(mapStateToProps, { registering })(Register);

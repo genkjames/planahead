@@ -12,10 +12,7 @@ export default function rootReducer(state = initialState, action) {
       return { ...state, tasks: [ ...state.tasks, action.task ] }
     case REMOVE_TASK:
       let tasks = state.tasks.filter(task => task.id !== action.id);
-      return {
-        ...state,
-        tasks
-      }
+      return { ...state, tasks }
     default:
       return state;
   }
