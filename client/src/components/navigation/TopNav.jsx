@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logout } from '../../store/actions/users';
 
-function TopNav(props) {
-  return (
-    <div className="top-nav">
-      <div className="auth-menu">
-        <button className="links-auth" onClick={props.logout}>Logout</button>
+class TopNav extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.logout()
+    .then(this.props.history.push('/login'));
+  }
+
+  render() {
+    console.log(this.props);
+    return (
+      <div className="top-nav">
+        <div className="auth-menu">
+          <button className="links-auth" onClick={this.handleClick}>Logout</button>
+        </div>
+        <p>Hello, {this.props.user.username}</p>
       </div>
-      <p>Hello, {props.user.username}</p>
-    </div>
-  )
+    )
+  }
 }
 
-export default TopNav;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, { logout })(TopNav);

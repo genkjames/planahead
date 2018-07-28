@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
-import TopNav from './navigation/TopNav';
+import { connect } from 'react-redux';
 
 class Monthly extends Component {
   constructor(props) {
@@ -55,10 +55,6 @@ class Monthly extends Component {
   render() {
     return (
       <div>
-        <TopNav
-          user={this.props.user}
-          logout={this.props.logout}
-        />
         <div className="calendar">
           <Calendar
             onChange={this.handleChange}
@@ -85,4 +81,10 @@ class Monthly extends Component {
   }
 }
 
-export default Monthly;
+function mapStateToProps(state) {
+  return {
+    taskDates: state.tasks.taskDates
+  }
+}
+
+export default connect(mapStateToProps, null)(Monthly);

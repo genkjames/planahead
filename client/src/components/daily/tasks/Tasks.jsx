@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { getTasks } from '../../../store/actions/tasks';
 
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
@@ -10,7 +8,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 function Tasks(props) {
   // filter tasks for daily view
   let tasks;
-
+  console.log(props);
   if (props.tasks.length > 0) {
     tasks = props.tasks.map(task => {
       return (
@@ -61,10 +59,4 @@ function Tasks(props) {
   )
 }
 
-function mapStateToProps(reduxState) {
-  return {
-    tasks: reduxState.tasks
-  }
-}
-
-export default connect(mapStateToProps, { getTasks })(Tasks);
+export default Tasks;

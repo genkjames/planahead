@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './Main';
+import { connect } from 'react-redux';
+import { checkUser } from '../store/actions/users';
+import { getTasks, getTaskDates } from '../store/actions/tasks';
 import Service from '../services/authService';
 import Task from '../services/taskService';
 import Event from '../services/eventService';
 import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 class App extends Component {
   constructor(props) {
@@ -42,28 +45,28 @@ class App extends Component {
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
 
-    this.register = this.register.bind(this);
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.isUser = this.isUser.bind(this);
+    // this.register = this.register.bind(this);
+    // this.login = this.login.bind(this);
+    // this.logout = this.logout.bind(this);
+    // this.isUser = this.isUser.bind(this);
   }
 
   // CRUD Task Operations
 
-  fetchTasks() {
-    Task.All(this.state.user.id)
-    .then(data => this.setState({
-      tasks: data
-    }));
-  }
+  // fetchTasks() {
+  //   Task.All(this.state.user.id)
+  //   .then(data => this.setState({
+  //     tasks: data
+  //   }));
+  // }
 
   // fetch unique task dates to color code monthly view
-  fetchTaskDates() {
-    Task.Dates(this.state.user.id)
-    .then(data => this.setState({
-      taskDates: data
-    }));
-  }
+  // fetchTaskDates() {
+  //   Task.Dates(this.state.user.id)
+  //   .then(data => this.setState({
+  //     taskDates: data
+  //   }));
+  // }
 
   createTask(task) {
     Task.Create(task)
@@ -287,70 +290,16 @@ class App extends Component {
 
   // Auth
 
-  fetchCalls() {
-    this.fetchTasks();
-    this.fetchTaskDates();
-    this.fetchEvents();
-    this.fetchEventDates();
-    this.fetchNotes();
-    this.fetchNoteDates();
-    this.fetchSchedule();
-    this.fetchScheduleDates();
-  }
-
-  register(user) {
-    Service.register({user: user})
-    .then(data => {
-      if(data.user) {
-        Service.saveToken(data.token)
-        this.setState({
-          user: data.user,
-          errors: false
-        })
-        this.props.history.push('/dashboard');
-      } else {
-        this.setState({
-          user: false,
-          errors: data.errors
-        })
-      }
-    })
-    .catch(err => this.setState({errors: {message: "Some error"}}))
-  }
-
-  login(user) {
-    Service.login({session: user})
-    .then(data => {
-      if(data.user) {
-        Service.saveToken(data.token)
-        this.setState({
-          user: data.user,
-          errors: false
-        })
-        this.props.history.push('/dashboard');
-        this.fetchCalls();
-      } else {
-        this.setState({
-          user: false,
-          errors: data.errors
-        })
-      }
-    })
-    .catch(err => this.setState({errors: {message: "Some error"}}))
-  }
-
-  isUser() {
-    fetch(`${BASE_URL}/login`, {
-      headers: {
-        Authorization: `Bearer ${Service.fetchToken()}`
-      }
-    }).then(resp => resp.json())
-    .then(user => {
-      this.setState({user})
-      this.fetchCalls();
-    })
-    .catch(err => this.setState({user: false}))
-  }
+  // fetchCalls() {
+  //   this.fetchTasks();
+  //   this.fetchTaskDates();
+  //   this.fetchEvents();
+  //   this.fetchEventDates();
+  //   this.fetchNotes();
+  //   this.fetchNoteDates();
+  //   this.fetchSchedule();
+  //   this.fetchScheduleDates();
+  // }
 
   isLoggedIn() {
     if (localStorage.getItem('authToken') !== null) {
@@ -360,43 +309,39 @@ class App extends Component {
     }
   }
 
-  logout() {
-    Service.destroyToken();
-    this.setState({
-      user: false,
-      tasks: [],
-      taskDates: [],
-      events: [],
-      eventDates: [],
-      notes: [],
-      noteDates: [],
-      schedules: [],
-      scheduleDates: []
-    })
-    this.props.history.push('/');
-  }
+  // logout() {
+  //   Service.destroyToken();
+  //   this.setState({
+  //     user: false,
+  //     tasks: [],
+  //     taskDates: [],
+  //     events: [],
+  //     eventDates: [],
+  //     notes: [],
+  //     noteDates: [],
+  //     schedules: [],
+  //     scheduleDates: []
+  //   })
+  //   this.props.history.push('/');
+  // }
 
   componentDidMount() {
     if(Service.fetchToken() !== "undefined") {
-      this.isUser();
+      this.props.checkUser();
     }
   }
 
   render() {
+    console.log('app component rendered');
     return (
       <div>
         <main>
           <Main
-            user={this.state.user}
             isLoggedIn={this.isLoggedIn}
-            logout={this.logout}
-            register={this.register}
-            login={this.login}
             createTask={this.createTask}
             updateTask={this.updateTask}
             deleteTask={this.deleteTask}
-            taskDates={this.state.taskDates}
-            // tasks={this.state.tasks}
+            tasks={this.state.tasks}
             events={this.state.events}
             createEvent={this.createEvent}
             updateEvent={this.updateEvent}
@@ -420,4 +365,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, { checkUser, getTasks, getTaskDates })(App);

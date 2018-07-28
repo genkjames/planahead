@@ -1,10 +1,17 @@
 import Task from '../../services/taskService';
-import { GET_TASKS, ADD_TASK, EDIT_TASK, REMOVE_TASK } from '../actionTypes';
+import { GET_TASKS, ADD_TASK, EDIT_TASK, REMOVE_TASK, GET_TASK_DATES } from '../actionTypes';
 
 function handleAll(tasks) {
   return {
     type: GET_TASKS,
     tasks
+  }
+}
+
+function handleDates(dates) {
+  return {
+    type: GET_TASK_DATES,
+    dates
   }
 }
 
@@ -18,7 +25,14 @@ function handleSubmit(task) {
 export function getTasks(id) {
   return dispatch => {
     Task.All(id)
-    .then(data => dispatch(handleAll(data)));
+    .then(data => {console.log(data); dispatch(handleAll(data))});
+  }
+}
+
+export function getTaskDates(id) {
+  return dispatch => {
+    Task.Dates(id) 
+    .then(data => dispatch(handleDates(data)));
   }
 }
 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTasks } from '../../store/actions/tasks';
 
-import TopNav from '../navigation/TopNav';
 import View from './View';
 
 class Tasks extends Component {
@@ -37,12 +35,8 @@ class Tasks extends Component {
     return dates;
   }
 
-  componentDidMount() {
-    this.props.getTasks(1);
-  }
-
   render() {
-    console.log(this.props);  
+    console.log(this.props);
     const tasksSortedByDate = this.props.tasks.sort(this.sortByDate);
 
     const dates = this.datesOfTasks(tasksSortedByDate);
@@ -60,10 +54,6 @@ class Tasks extends Component {
 
     return (
       <div className="all-tasks">
-        <TopNav
-          user={this.props.user}
-          logout={this.props.logout}
-        />
         <h1>Tasks</h1>
         {tasks}
       </div>
@@ -71,10 +61,10 @@ class Tasks extends Component {
   }
 }
 
-function mapStateToProps(reduxState) {
+function mapStateToProps(state) {
   return {
-    tasks: reduxState.tasks
-  };
+    tasks: state.tasks.tasks
+  }
 }
 
-export default connect(mapStateToProps, { getTasks })(Tasks);
+export default connect(mapStateToProps, null)(Tasks);

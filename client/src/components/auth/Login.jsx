@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logging } from '../../store/actions/users';
+import { login, removeError } from '../../store/actions/users';
 
 import Form from './Form';
 
 function Login(props) {
-  console.log(props);
+  props.history.listen(() => {props.removeError()});
+
   return (
     <div className="user-forms">
       {props.errorTwo && <p className="errors">{props.errorTwo.message}</p>}
       <Form
         label="Login"
-        onSubmit={props.logging}
+        onSubmit={props.login}
         history={props.history}
       />
       <p>Not registered? Sign up <Link to="/register">here</Link></p>
@@ -26,4 +27,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { logging })(Login);
+export default connect(mapStateToProps, { login, removeError })(Login);

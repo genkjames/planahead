@@ -21,10 +21,9 @@ function Main(props) {
         render={({ history }) => (
           <Landing
             user={props.user}
-            register={props.register}
-            login={props.login}
-            logout={props.logout}
-            errors={props.errors}
+            // register={props.register}
+            // login={props.login}
+            // errors={props.errors}
             history={history}
           />
         )}

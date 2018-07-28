@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import TopNav from '../navigation/TopNav';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Routes from './Routes';
 
 class Daily extends Component {
@@ -11,10 +12,6 @@ class Daily extends Component {
 
     return (
       <div className="daily">
-        <TopNav
-          user={this.props.user}
-          logout={this.props.logout}
-        />
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
           user={this.props.user}
@@ -44,4 +41,10 @@ class Daily extends Component {
   }
 }
 
-export default Daily;
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasks.tasks
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(Daily));

@@ -1,4 +1,4 @@
-import { GET_USER, SET_USER, SET_ERROR } from '../actionTypes';
+import { SET_USER, SET_ERROR } from '../actionTypes';
 
 const initialState = {
   user: false,
@@ -7,8 +7,6 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch(action.type) {
-    case GET_USER:
-      return { user: action.user, error: false }
     case SET_USER:
       return { user: action.user, error: false }
     case SET_ERROR:
