@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTasks } from '../../store/actionTypes';
+import { getTasks } from '../../store/actions/tasks';
 
 import TopNav from '../navigation/TopNav';
 import View from './View';

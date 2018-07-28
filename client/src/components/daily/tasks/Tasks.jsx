@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTasks } from '../../../store/actionTypes';
+import { getTasks } from '../../../store/actions/tasks';
 
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';

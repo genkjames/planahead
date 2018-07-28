@@ -18,13 +18,14 @@ function Main(props) {
       />
       <Route
         path="/"
-        render={() => (
+        render={({ history }) => (
           <Landing
             user={props.user}
             register={props.register}
             login={props.login}
             logout={props.logout}
             errors={props.errors}
+            history={history}
           />
         )}
       />

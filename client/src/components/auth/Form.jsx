@@ -30,7 +30,8 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state.user);
+    this.props.onSubmit(this.state.user)
+    .then(() => {this.props.history.push('/dashboard')});
   }
 
   render() {

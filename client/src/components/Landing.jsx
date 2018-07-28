@@ -26,6 +26,7 @@ function Landing(props) {
               <Register
                 register={props.register}
                 errors={props.errors}
+                history={props.history}
               />
             )}
           />
@@ -35,6 +36,7 @@ function Landing(props) {
               <Login
                 login={props.login}
                 errors={props.errors}
+                history={props.history}
               />
             )}
           />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registering } from '../../store/actionTypes';
+import { registering } from '../../store/actions/users';
 
 import Form from './Form';
 
@@ -18,16 +18,17 @@ function Register(props) {
       <Form
         label="Register"
         onSubmit={props.registering}
+        history={props.history}
       />
       <p>Already registered? Log in <Link to="/login">here</Link></p>
     </div>
   )
 }
 
-function mapStateToProps(reduxState) {
+function mapStateToProps(state) {
   return {
-    userTwo: reduxState.users.user,
-    errorTwo: reduxState.users.error
+    userTwo: state.users.user,
+    errorTwo: state.users.error
   }
 }
 
