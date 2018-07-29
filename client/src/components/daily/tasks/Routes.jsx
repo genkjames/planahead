@@ -17,6 +17,7 @@ function Routes(props) {
             label="Edit"
             changeDate={props.changeDate}
             dateObject={props.dateObject}
+            history={props.history}
           />
         )}
       />

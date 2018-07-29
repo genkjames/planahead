@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addTask } from '../../../store/actions/tasks';
+import { addTask, editTask, deleteTask } from '../../../store/actions/tasks';
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
 import Routes from './Routes';
@@ -10,7 +10,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 function Tasks(props) {
   // filter tasks for daily view
   let tasks;
-  console.log(props);
+  
   if (props.tasks.length > 0) {
     tasks = props.tasks.map(task => {
       return (
@@ -19,10 +19,11 @@ function Tasks(props) {
           key={task.id}
           task={task}
           date={props.date}
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
+          onEdit={props.editTask}
+          onDelete={props.deleteTask}
           changeDate={props.changeDate}
           dateObject={props.dateObject}
+          history={props.history}
         />
       )
     })
@@ -68,4 +69,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addTask })(Tasks);
+export default connect(mapStateToProps, { addTask, editTask, deleteTask })(Tasks);

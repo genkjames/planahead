@@ -14,7 +14,6 @@ class TopNav extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="top-nav">
         <div className="auth-menu">

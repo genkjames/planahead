@@ -74,14 +74,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="dashboard">
         <SideMenu />
         <div>
           <TopNav
-            user={this.props.user}
-            // logout={this.props.logout}
             history={this.props.history}
           />
           <Switch>
@@ -89,16 +86,13 @@ class Dashboard extends Component {
               exact path="/dashboard"
               render={() => (
                 <Monthly
-                  user={this.props.user}
                   date={this.state.date}
                   onChange={this.changeDate}
                   onSwitch={this.switchViews}
                   dateFormat={this.dateFormat}
-                  taskDates={this.props.taskDates}
                   eventDates={this.props.eventDates}
                   noteDates={this.props.noteDates}
                   scheduleDates={this.props.scheduleDates}
-                  logout={this.props.logout}
                 />
               )}
             />
@@ -106,14 +100,9 @@ class Dashboard extends Component {
               path="/dashboard/daily"
               render={({ history }) => (
                 <Daily
-                  user={this.props.user}
                   date={this.state.date}
                   history={history}
-                  createTask={this.props.createTask}
-                  updateTask={this.props.updateTask}
-                  deleteTask={this.props.deleteTask}
                   changeDate={this.changeDate}
-                  tasks={this.props.tasks}
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
@@ -121,7 +110,6 @@ class Dashboard extends Component {
                   createEvent={this.props.createEvent}
                   updateEvent={this.props.updateEvent}
                   deleteEvent={this.props.deleteEvent}
-                  logout={this.props.logout}
                   notes={this.props.notes}
                   createNote={this.props.createNote}
                   updateNote={this.props.updateNote}
@@ -136,10 +124,7 @@ class Dashboard extends Component {
             <Route 
               path="/dashboard/tasks"
               render={() => (
-                <Tasks 
-                  user={this.props.user}
-                  logout={this.props.logout}
-                  tasks={this.props.tasks}
+                <Tasks
                   dateObject={this.createDateObject}
                 />
               )}

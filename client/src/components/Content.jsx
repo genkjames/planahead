@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function Content(props) {
-  console.log(props);
   return (
     <div className="landing-content">
       <div>
@@ -17,7 +16,7 @@ function Content(props) {
             <li>Take notes or write down anything worth remembering</li>
           </ul>
         <p>It's never too late to start planning and remembering your every move before you make a step.</p>
-        {props.userTwo.id ? (
+        {props.user.id ? (
             <Link className="links" to="/dashboard">View dashboard</Link>
           ) : (
             <div>
@@ -33,7 +32,7 @@ function Content(props) {
 
 function mapStateToProps(state) {
   return {
-    userTwo: state.users.user
+    user: state.users.user
   }
 }
 

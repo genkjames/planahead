@@ -4,22 +4,15 @@ import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/users';
 import Service from '../services/authService';
-import Task from '../services/taskService';
 import Event from '../services/eventService';
 import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
-
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: false,
-      errors: false,
-      tasks: [],
-      taskDates: [],
       events: [],
       eventDates: [],
       notes: [],
@@ -27,10 +20,6 @@ class App extends Component {
       schedules: [],
       scheduleDates: []
     }
-
-    // this.createTask = this.createTask.bind(this);
-    this.updateTask = this.updateTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
 
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
@@ -43,41 +32,6 @@ class App extends Component {
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
-
-    // this.register = this.register.bind(this);
-    // this.login = this.login.bind(this);
-    // this.logout = this.logout.bind(this);
-    // this.isUser = this.isUser.bind(this);
-  }
-
-  updateTask(task) {
-    Task.Update(task)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/tasks')
-      this.setState((prevState) => {
-        this.fetchTaskDates();
-        const index = prevState.tasks.findIndex(task => task.id === data.id);
-        return {
-          tasks: [
-            ...prevState.tasks.slice(0, index),
-            data,
-            ...prevState.tasks.slice(index + 1)
-          ]
-        }
-      })
-    });
-  }
-
-  deleteTask(id) {
-    Task.Delete(id)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchTaskDates();
-        return {
-          tasks: prevState.tasks.filter(task => task.id !== id)
-        }
-      })
-    })
   }
 
   // CRUD Event Operations
@@ -306,10 +260,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            createTask={this.createTask}
-            updateTask={this.updateTask}
-            deleteTask={this.deleteTask}
-            tasks={this.state.tasks}
             events={this.state.events}
             createEvent={this.createEvent}
             updateEvent={this.updateEvent}
@@ -333,10 +283,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.users.user
-  }
-}
-
-export default connect(mapStateToProps, { checkUser })(App);
+export default connect(null, { checkUser })(App);

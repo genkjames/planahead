@@ -70,7 +70,6 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>

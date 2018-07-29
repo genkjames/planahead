@@ -20,10 +20,6 @@ function Main(props) {
         path="/"
         render={({ history }) => (
           <Landing
-            user={props.user}
-            // register={props.register}
-            // login={props.login}
-            // errors={props.errors}
             history={history}
           />
         )}
