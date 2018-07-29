@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addNote } from '../../../store/actions/notes';
+import { addNote, editNote } from '../../../store/actions/notes';
 import DailyMenu from '../../navigation/DailyMenu';
 import Routes from './Routes';
 import Form from './Form';
@@ -18,7 +18,7 @@ function Notes(props) {
           user={props.user}
           date={props.date}
           note={note}
-          onEdit={props.onEdit}
+          onEdit={props.editNote}
           onDelete={props.onDelete}
           history={props.history}
         />
@@ -65,4 +65,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addNote })(Notes);
+export default connect(mapStateToProps, { addNote, editNote })(Notes);

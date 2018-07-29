@@ -17,13 +17,11 @@ class Daily extends Component {
           history={this.props.history}
           changeDate={this.props.changeDate}
           date={this.props.date}
-          tasks={tasks}
           dateFormat={this.props.dateFormat}
           dateObject={this.props.dateObject}
+          tasks={tasks}
           events={events}
           notes={notes}
-          updateNote={this.props.updateNote}
-          deleteNote={this.props.deleteNote}
           schedules={schedules}
           createSchedule={this.props.createSchedule}
           updateSchedule={this.props.updateSchedule}

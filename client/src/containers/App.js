@@ -16,7 +16,6 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.updateNote = this.updateNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
 
     this.createSchedule = this.createSchedule.bind(this);
@@ -24,22 +23,7 @@ class App extends Component {
     this.deleteSchedule = this.deleteSchedule.bind(this);
   }
 
-  updateNote(note) {
-    Note.Update(note)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/notes')
-      this.setState((prevState) => {
-        const index = prevState.notes.findIndex(note => note.id === data.id);
-        return {
-          notes: [
-            ...prevState.notes.slice(0, index),
-            data,
-            ...prevState.notes.slice(index + 1)
-          ]
-        }
-      })
-    });
-  }
+  
 
   deleteNote(id) {
     Note.Delete(id)
@@ -133,8 +117,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            updateNote={this.updateNote}
-            deleteNote={this.deleteNote}
             schedules={this.state.schedules}
             scheduleDates={this.state.scheduleDates}
             createSchedule={this.createSchedule}

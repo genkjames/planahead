@@ -55,8 +55,6 @@ function Routes(props) {
             date={props.date}
             notes={props.notes}
             dateFormat={props.dateFormat}
-            onEdit={props.updateNote}
-            onDelete={props.deleteNote}
           />
         )}
       />

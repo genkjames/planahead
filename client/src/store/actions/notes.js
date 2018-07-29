@@ -60,3 +60,13 @@ export function addNote(note, id) {
     .then(dispatch(getNoteDates(id)));
   }
 }
+
+export function editNote(note, id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Note.Update(note)
+      .then(data => dispatch(handleEdit(data)));
+    })
+    .then(dispatch(getNoteDates(id)));
+  }
+}
