@@ -5,7 +5,6 @@ import Routes from './Routes';
 
 class Daily extends Component {
   render() {
-    console.log(this.props);
     const tasks = this.props.tasks.filter(this.props.compareDate);
     const events = this.props.events.filter(this.props.compareDate);
     const notes = this.props.notes.filter(this.props.compareDate);
