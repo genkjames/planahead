@@ -42,3 +42,10 @@ export function getNotes(id) {
     .then(data => dispatch(handleAll(data)));
   }
 }
+
+export function getNoteDates(id) {
+  return dispatch => {
+    Note.Dates(id)
+    .then(data => dispatch(handleDates(data)));
+  }
+}
