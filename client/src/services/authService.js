@@ -44,10 +44,22 @@ function register(creds) {
   })
 }
 
+function checkUser() {
+  const options = {
+    headers: {
+      Authorization: `Bearer ${fetchToken()}`
+    }
+  }
+
+  return fetch(`${BASE_URL}/login`, options) 
+   .then(resp => resp.json())
+}
+
 export default {
   saveToken,
   fetchToken,
   destroyToken,
   register,
-  login
+  login,
+  checkUser
 }

@@ -26,6 +26,7 @@ function Routes(props) {
         render={() => (
           <Tasks
             user={props.user}
+            history={props.history}
             onTask={props.createTask}
             onEdit={props.updateTask}
             onDelete={props.deleteTask}

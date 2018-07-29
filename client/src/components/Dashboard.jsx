@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SideMenu from './navigation/SideMenu';
+import TopNav from './navigation/TopNav';
 import Monthly from './Monthly';
 import Daily from './daily/Daily';
 import Tasks from './tasks/Tasks';
@@ -76,66 +77,60 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <SideMenu />
-        <Switch>
-          <Route
-            exact path="/dashboard"
-            render={() => (
-              <Monthly
-                user={this.props.user}
-                date={this.state.date}
-                onChange={this.changeDate}
-                onSwitch={this.switchViews}
-                dateFormat={this.dateFormat}
-                taskDates={this.props.taskDates}
-                eventDates={this.props.eventDates}
-                noteDates={this.props.noteDates}
-                scheduleDates={this.props.scheduleDates}
-                logout={this.props.logout}
-              />
-            )}
+        <div>
+          <TopNav
+            history={this.props.history}
           />
-          <Route
-            path="/dashboard/daily"
-            render={() => (
-              <Daily
-                user={this.props.user}
-                date={this.state.date}
-                createTask={this.props.createTask}
-                updateTask={this.props.updateTask}
-                deleteTask={this.props.deleteTask}
-                changeDate={this.changeDate}
-                tasks={this.props.tasks}
-                compareDate={this.compareDate}
-                dateFormat={this.dateFormat}
-                dateObject={this.createDateObject}
-                events={this.props.events}
-                createEvent={this.props.createEvent}
-                updateEvent={this.props.updateEvent}
-                deleteEvent={this.props.deleteEvent}
-                logout={this.props.logout}
-                notes={this.props.notes}
-                createNote={this.props.createNote}
-                updateNote={this.props.updateNote}
-                deleteNote={this.props.deleteNote}
-                schedules={this.props.schedules}
-                createSchedule={this.props.createSchedule}
-                updateSchedule={this.props.updateSchedule}
-                deleteSchedule={this.props.deleteSchedule}
-              />
-            )}
-          />
-          <Route 
-            path="/dashboard/tasks"
-            render={() => (
-              <Tasks 
-                user={this.props.user}
-                logout={this.props.logout}
-                tasks={this.props.tasks}
-                dateObject={this.createDateObject}
-              />
-            )}
-          />
-        </Switch>
+          <Switch>
+            <Route
+              exact path="/dashboard"
+              render={() => (
+                <Monthly
+                  date={this.state.date}
+                  onChange={this.changeDate}
+                  onSwitch={this.switchViews}
+                  dateFormat={this.dateFormat}
+                  eventDates={this.props.eventDates}
+                  noteDates={this.props.noteDates}
+                  scheduleDates={this.props.scheduleDates}
+                />
+              )}
+            />
+            <Route
+              path="/dashboard/daily"
+              render={({ history }) => (
+                <Daily
+                  date={this.state.date}
+                  history={history}
+                  changeDate={this.changeDate}
+                  compareDate={this.compareDate}
+                  dateFormat={this.dateFormat}
+                  dateObject={this.createDateObject}
+                  events={this.props.events}
+                  createEvent={this.props.createEvent}
+                  updateEvent={this.props.updateEvent}
+                  deleteEvent={this.props.deleteEvent}
+                  notes={this.props.notes}
+                  createNote={this.props.createNote}
+                  updateNote={this.props.updateNote}
+                  deleteNote={this.props.deleteNote}
+                  schedules={this.props.schedules}
+                  createSchedule={this.props.createSchedule}
+                  updateSchedule={this.props.updateSchedule}
+                  deleteSchedule={this.props.deleteSchedule}
+                />
+              )}
+            />
+            <Route 
+              path="/dashboard/tasks"
+              render={() => (
+                <Tasks
+                  dateObject={this.createDateObject}
+                />
+              )}
+            />
+          </Switch>
+        </div>
       </div>
     )
   }

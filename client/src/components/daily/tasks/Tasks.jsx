@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addTask, editTask, deleteTask } from '../../../store/actions/tasks';
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
 import Routes from './Routes';
@@ -7,7 +10,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 function Tasks(props) {
   // filter tasks for daily view
   let tasks;
-
+  
   if (props.tasks.length > 0) {
     tasks = props.tasks.map(task => {
       return (
@@ -16,10 +19,11 @@ function Tasks(props) {
           key={task.id}
           task={task}
           date={props.date}
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
+          onEdit={props.editTask}
+          onDelete={props.deleteTask}
           changeDate={props.changeDate}
           dateObject={props.dateObject}
+          history={props.history}
         />
       )
     })
@@ -36,9 +40,10 @@ function Tasks(props) {
               <Form
                 user={props.user}
                 date={props.date}
-                onSubmit={props.onTask}
+                onSubmit={props.addTask}
                 label="Add"
                 dateFormat={props.dateFormat}
+                history={props.history}
               />)
             }
           />
@@ -58,4 +63,10 @@ function Tasks(props) {
   )
 }
 
-export default Tasks;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, { addTask, editTask, deleteTask })(Tasks);

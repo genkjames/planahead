@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 function Content(props) {
   return (
@@ -29,4 +30,10 @@ function Content(props) {
   )
 }
 
-export default Content;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, null)(Content);
