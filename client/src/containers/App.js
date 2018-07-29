@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Main from './Main';
 import { connect } from 'react-redux';
-import { checkUser } from '../store/actions/users';
+import { checkUser } from '../store/actions/auth';
 import Service from '../services/authService';
 import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
@@ -12,8 +12,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      notes: [],
-      noteDates: [],
       schedules: [],
       scheduleDates: []
     }
@@ -29,12 +27,6 @@ class App extends Component {
 
   // CRUD Note operations
 
-  fetchNotes() {
-    Note.All(this.state.user.id)
-    .then(data => this.setState({
-      notes: data
-    }));
-  }
 
   // fetch unique note dates to color code monthly view
   fetchNoteDates() {
@@ -166,8 +158,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            notes={this.state.notes}
-            noteDates={this.state.noteDates}
             createNote={this.createNote}
             updateNote={this.updateNote}
             deleteNote={this.deleteNote}

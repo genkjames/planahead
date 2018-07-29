@@ -2,6 +2,7 @@ import Service from '../../services/authService';
 import { SET_USER, SET_ERROR } from '../actionTypes'; 
 import { getTasks, getTaskDates } from './tasks';
 import { getEvents, getEventDates } from './events';
+import { getNotes } from './notes';
 
 function handleUser(user) {
   return {
@@ -41,6 +42,7 @@ function fetchCalls(id) {
     dispatch(getTaskDates(id));
     dispatch(getEvents(id));
     dispatch(getEventDates(id));
+    dispatch(getNotes(id));
   }
 }
 

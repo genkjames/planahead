@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import DailyMenu from '../../navigation/DailyMenu';
 import Routes from './Routes';
 import Form from './Form';
@@ -54,4 +56,10 @@ function Notes(props) {
   )
 }
 
-export default Notes;
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, null)(Notes);

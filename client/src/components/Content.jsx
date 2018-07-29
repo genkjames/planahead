@@ -32,7 +32,7 @@ function Content(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.users.user
+    user: state.auth.user
   }
 }
 

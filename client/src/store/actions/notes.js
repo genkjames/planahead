@@ -1,14 +1,14 @@
-import Note from '../services/noteService';
+import Note from '../../services/noteService';
 import { GET_NOTES, GET_NOTE_DATES, ADD_NOTE, EDIT_NOTE, REMOVE_NOTE } from '../actionTypes';
 
-function handleAll(id) {
+function handleAll(notes) {
   return {
     type: GET_NOTES,
     notes
   }
 }
 
-function handleDates(id) {
+function handleDates(dates) {
   return {
     type: GET_NOTE_DATES,
     dates
@@ -33,5 +33,12 @@ function handleDelete(id) {
   return {
     type: REMOVE_NOTE,
     id
+  }
+}
+
+export function getNotes(id) {
+  return dispatch => {
+    Note.All(id)
+    .then(data => dispatch(handleAll(data)));
   }
 }
