@@ -43,9 +43,20 @@ export function getNotes(id) {
   }
 }
 
+// fetch unique note dates to color code monthly view
 export function getNoteDates(id) {
   return dispatch => {
     Note.Dates(id)
     .then(data => dispatch(handleDates(data)));
+  }
+}
+
+export function addNote(note, id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Note.Create(note)
+      .then(data => dispatch(handleSubmit(data)));
+    })
+    .then(dispatch(getNoteDates(id)));
   }
 }

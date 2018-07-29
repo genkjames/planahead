@@ -16,37 +16,12 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.createNote = this.createNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
 
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
-  }
-
-  // CRUD Note operations
-
-
-  // fetch unique note dates to color code monthly view
-  fetchNoteDates() {
-    Note.Dates(this.state.user.id)
-    .then(data => this.setState({
-      noteDates: data
-    }))
-  }
-
-  createNote(note) {
-    Note.Create(note)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/notes');
-      this.fetchNoteDates();
-      this.setState((prevState) => {
-        return {
-          notes: [...prevState.notes, data]
-        }
-      })
-    })
   }
 
   updateNote(note) {
@@ -158,7 +133,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            createNote={this.createNote}
             updateNote={this.updateNote}
             deleteNote={this.deleteNote}
             schedules={this.state.schedules}

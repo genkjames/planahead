@@ -22,7 +22,6 @@ class Daily extends Component {
           dateObject={this.props.dateObject}
           events={events}
           notes={notes}
-          createNote={this.props.createNote}
           updateNote={this.props.updateNote}
           deleteNote={this.props.deleteNote}
           schedules={schedules}

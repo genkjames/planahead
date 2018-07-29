@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { addNote } from '../../../store/actions/notes';
 import DailyMenu from '../../navigation/DailyMenu';
 import Routes from './Routes';
 import Form from './Form';
@@ -19,6 +20,7 @@ function Notes(props) {
           note={note}
           onEdit={props.onEdit}
           onDelete={props.onDelete}
+          history={props.history}
         />
       )
     })
@@ -37,7 +39,8 @@ function Notes(props) {
                 date={props.date}
                 dateFormat={props.dateFormat}
                 label="Add"
-                onSubmit={props.onNote}
+                onSubmit={props.addNote}
+                history={props.history}
               />)}
           />
           <Route
@@ -62,4 +65,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Notes);
+export default connect(mapStateToProps, { addNote })(Notes);

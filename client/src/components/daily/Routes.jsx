@@ -51,10 +51,10 @@ function Routes(props) {
         path="/dashboard/daily/notes"
         render={() => (
           <Notes
+            history={props.history}
             date={props.date}
             notes={props.notes}
             dateFormat={props.dateFormat}
-            onNote={props.createNote}
             onEdit={props.updateNote}
             onDelete={props.deleteNote}
           />
@@ -64,6 +64,7 @@ function Routes(props) {
         path="/dashboard/daily/schedule"
         render={() => (
           <Schedule
+            history={props.history}
             date={props.date}
             dateFormat={props.dateFormat}
             schedules={props.schedules}

@@ -15,6 +15,7 @@ function Routes(props) {
             note={props.note}
             label="Edit"
             onSubmit={props.onEdit}
+            history={props.history}
           />
         )}
       />
