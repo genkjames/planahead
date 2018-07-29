@@ -4,7 +4,6 @@ import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/users';
 import Service from '../services/authService';
-import Event from '../services/eventService';
 import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
 
@@ -19,9 +18,6 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.updateEvent = this.updateEvent.bind(this);
-    this.deleteEvent = this.deleteEvent.bind(this);
-
     this.createNote = this.createNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
@@ -29,38 +25,6 @@ class App extends Component {
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
-  }
-
-  // CRUD Event Operations
-
-  updateEvent(event) {
-    Event.Update(event)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/events')
-      this.setState((prevState) => {
-        const index = prevState.events.findIndex(event => event.id === data.id);
-        this.fetchEventDates();
-        return {
-          events: [
-            ...prevState.events.slice(0, index),
-            data,
-            ...prevState.events.slice(index + 1)
-          ]
-        }
-      })
-    });
-  }
-
-  deleteEvent(id) {
-    Event.Delete(id)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchEventDates();
-        return {
-          events: prevState.events.filter(event => event.id !== id)
-        }
-      })
-    })
   }
 
   // CRUD Note operations
@@ -202,8 +166,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            updateEvent={this.updateEvent}
-            deleteEvent={this.deleteEvent}
             notes={this.state.notes}
             noteDates={this.state.noteDates}
             createNote={this.createNote}

@@ -104,8 +104,6 @@ class Dashboard extends Component {
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
-                  updateEvent={this.props.updateEvent}
-                  deleteEvent={this.props.deleteEvent}
                   notes={this.props.notes}
                   createNote={this.props.createNote}
                   updateNote={this.props.updateNote}

@@ -44,8 +44,6 @@ function Routes(props) {
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
             dateObject={props.dateObject}
-            onEdit={props.updateEvent}
-            onDelete={props.deleteEvent}
           />
         )}
       />

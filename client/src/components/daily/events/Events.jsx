@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addEvent, editEvent } from '../../../store/actions/events';
+import { addEvent, editEvent, deleteEvent } from '../../../store/actions/events';
 
 import DailyMenu from '../../navigation/DailyMenu'
 import Form from './Form';
@@ -19,7 +19,7 @@ function Events(props) {
           event={event}
           date={props.date}
           onEdit={props.editEvent}
-          onDelete={props.onDelete}
+          onDelete={props.deleteEvent}
           changeDate={props.changeDate}
           dateObject={props.dateObject}
           history={props.history}
@@ -67,4 +67,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addEvent, editEvent })(Events);
+export default connect(mapStateToProps, { addEvent, editEvent, deleteEvent })(Events);

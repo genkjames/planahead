@@ -70,3 +70,13 @@ export function editEvent(event, id) {
     .then(dispatch(getEventDates(id)));
   }
 }
+
+export function deleteEvent(id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Event.Delete(id)
+      .then(data => dispatch(handleDelete(id)))
+    })
+    .then(dispatch(getEventDates(id)));
+  }
+}
