@@ -10,7 +10,7 @@ function Login(props) {
 
   return (
     <div className="user-forms">
-      {props.errorTwo && <p className="errors">{props.errorTwo.message}</p>}
+      {props.errors && <p className="errors">{props.errors.message}</p>}
       <Form
         label="Login"
         onSubmit={props.login}
@@ -23,7 +23,7 @@ function Login(props) {
 
 function mapStateToProps(state) {
   return {
-    errorTwo: state.users.error
+    errors: state.users.error
   }
 }
 

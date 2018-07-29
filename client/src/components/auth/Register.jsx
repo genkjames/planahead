@@ -9,13 +9,13 @@ function Register(props) {
   props.history.listen(() => {props.removeError()})
   
   let errors;
-  if (props.errorTwo) {
-    if (props.errorTwo.message.length > 1) {
-      errors = props.errorTwo.message.map(error => {
+  if (props.errors) {
+    if (props.errors.message.length > 1) {
+      errors = props.errors.message.map(error => {
         return <p key={error} className="errors">{error}</p>
       })
     } else {
-      errors = <p className="errors">{props.errorTwo.message}</p>
+      errors = <p className="errors">{props.errors.message}</p>
     }
   }
 
@@ -34,8 +34,7 @@ function Register(props) {
 
 function mapStateToProps(state) {
   return {
-    userTwo: state.users.user,
-    errorTwo: state.users.error
+    errors: state.users.error
   }
 }
 

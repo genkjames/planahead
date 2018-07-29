@@ -13,8 +13,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      events: [],
-      eventDates: [],
       notes: [],
       noteDates: [],
       schedules: [],
@@ -35,21 +33,6 @@ class App extends Component {
   }
 
   // CRUD Event Operations
-
-  // fetchEvents() {
-  //   Event.All(this.state.user.id)
-  //   .then(data => this.setState({
-  //     events: data
-  //   }));
-  // }
-
-  // fetch unique event dates to color code monthly view
-  // fetchEventDates() {
-  //   Event.Dates(this.state.user.id)
-  //   .then(data => this.setState({
-  //     eventDates: data
-  //   }))
-  // }
 
   createEvent(event) {
     Event.Create(event)
@@ -213,17 +196,6 @@ class App extends Component {
 
   // Auth
 
-  // fetchCalls() {
-  //   this.fetchTasks();
-  //   this.fetchTaskDates();
-  //   this.fetchEvents();
-  //   this.fetchEventDates();
-  //   this.fetchNotes();
-  //   this.fetchNoteDates();
-  //   this.fetchSchedule();
-  //   this.fetchScheduleDates();
-  // }
-
   isLoggedIn() {
     if (localStorage.getItem('authToken') !== null) {
       if(localStorage.getItem('authToken') !== "undefined") {
@@ -231,22 +203,6 @@ class App extends Component {
       }
     }
   }
-
-  // logout() {
-  //   Service.destroyToken();
-  //   this.setState({
-  //     user: false,
-  //     tasks: [],
-  //     taskDates: [],
-  //     events: [],
-  //     eventDates: [],
-  //     notes: [],
-  //     noteDates: [],
-  //     schedules: [],
-  //     scheduleDates: []
-  //   })
-  //   this.props.history.push('/');
-  // }
 
   componentDidMount() {
     if(Service.fetchToken() !== "undefined") {

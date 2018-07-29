@@ -27,7 +27,7 @@ export function register(user) {
           dispatch(handleUser(data.user));
           resolve();
         } else {
-          dispatch(handleError(data.errors))
+          dispatch(handleError(data.errors));
         }      
       })
       .catch(err => dispatch(handleError({errors: {message: "Some error"}})))

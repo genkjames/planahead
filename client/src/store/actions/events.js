@@ -43,6 +43,7 @@ export function getEvents(id) {
   }
 }
 
+// fetch unique event dates to color code monthly view
 export function getEventDates(id) {
   return dispatch => {
     Event.Dates(id)
