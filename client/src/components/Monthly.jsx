@@ -84,7 +84,8 @@ class Monthly extends Component {
 function mapStateToProps(state) {
   return {
     taskDates: state.tasks.taskDates,
-    eventDates: state.events.eventDates
+    eventDates: state.events.eventDates,
+    noteDates: state.notes.noteDates
   }
 }
 

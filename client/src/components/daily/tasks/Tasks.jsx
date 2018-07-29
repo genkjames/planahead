@@ -65,7 +65,7 @@ function Tasks(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.users.user
+    user: state.auth.user
   }
 }
 

@@ -15,6 +15,7 @@ function Routes(props) {
             note={props.note}
             label="Edit"
             onSubmit={props.onEdit}
+            history={props.history}
           />
         )}
       />
@@ -22,6 +23,7 @@ function Routes(props) {
          path="/dashboard/daily/notes/"
          render={() => (
           <View
+            user={props.user}
             note={props.note}
             onDelete={props.onDelete}
             manipulate={true}

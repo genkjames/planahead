@@ -5,14 +5,14 @@ const initialState = {
   taskDates: []
 }
 
-export default function rootReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
     case GET_TASKS:
-      return { ...state, tasks: action.tasks }
+      return { ...state, tasks: action.tasks };
     case GET_TASK_DATES:
-      return { ...state, taskDates: action.dates}
+      return { ...state, taskDates: action.dates};
     case ADD_TASK:
-      return { ...state, tasks: [ ...state.tasks, action.task ] }
+      return { ...state, tasks: [ ...state.tasks, action.task ] };
     case EDIT_TASK:
       const index = state.tasks.findIndex(task => task.id === action.task.id);
       return { 
@@ -22,10 +22,10 @@ export default function rootReducer(state = initialState, action) {
           action.task,
           ...state.tasks.slice(index + 1)
         ]
-      } 
+      };
     case REMOVE_TASK:
       let tasks = state.tasks.filter(task => task.id !== action.id);
-      return { ...state, tasks }
+      return { ...state, tasks };
     default:
       return state;
   }

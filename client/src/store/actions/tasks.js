@@ -55,9 +55,9 @@ export function addTask(task, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {      
       Task.Create(task)
-      .then(data => dispatch(handleSubmit(data)));
+      .then(data => dispatch(handleSubmit(data)))
+      .then(() => dispatch(getTaskDates(id)));
     })
-    .then(dispatch(getTaskDates(id)));
   }
 }
 
@@ -65,18 +65,18 @@ export function editTask(task, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {    
       Task.Update(task)
-      .then(data => dispatch(handleEdit(data)));
+      .then(data => dispatch(handleEdit(data)))
+      .then(() => dispatch(getTaskDates(id)));
     })
-    .then(dispatch(getTaskDates(id)));
   }
 }
 
-export function deleteTask(id) {
+export function deleteTask(id, userId) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Task.Delete(id)
       .then(data => dispatch(handleDelete(id)))
+      .then(() => dispatch(getTaskDates(userId)));
     })
-    .then(dispatch(getTaskDates(id)));
   }
 }

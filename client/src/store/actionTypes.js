@@ -18,3 +18,11 @@ export const GET_EVENT_DATES = "GET_EVENT_DATES";
 export const ADD_EVENT = "ADD_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
+
+// Notes Action Types
+
+export const GET_NOTES = "GET_NOTES";
+export const GET_NOTE_DATES = "GET_NOTE_DATES";
+export const ADD_NOTE = "ADD_NOTE";
+export const EDIT_NOTE = "EDIT_NOTE";
+export const REMOVE_NOTE = "REMOVE_NOTE";

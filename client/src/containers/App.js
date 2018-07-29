@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Main from './Main';
 import { connect } from 'react-redux';
-import { checkUser } from '../store/actions/users';
+import { checkUser } from '../store/actions/auth';
 import Service from '../services/authService';
-import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
 
 class App extends Component {
@@ -12,79 +11,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      notes: [],
-      noteDates: [],
       schedules: [],
       scheduleDates: []
     }
-
-    this.createNote = this.createNote.bind(this);
-    this.updateNote = this.updateNote.bind(this);
-    this.deleteNote = this.deleteNote.bind(this);
 
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
   }
 
-  // CRUD Note operations
-
-  fetchNotes() {
-    Note.All(this.state.user.id)
-    .then(data => this.setState({
-      notes: data
-    }));
-  }
-
-  // fetch unique note dates to color code monthly view
-  fetchNoteDates() {
-    Note.Dates(this.state.user.id)
-    .then(data => this.setState({
-      noteDates: data
-    }))
-  }
-
-  createNote(note) {
-    Note.Create(note)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/notes');
-      this.fetchNoteDates();
-      this.setState((prevState) => {
-        return {
-          notes: [...prevState.notes, data]
-        }
-      })
-    })
-  }
-
-  updateNote(note) {
-    Note.Update(note)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/notes')
-      this.setState((prevState) => {
-        const index = prevState.notes.findIndex(note => note.id === data.id);
-        return {
-          notes: [
-            ...prevState.notes.slice(0, index),
-            data,
-            ...prevState.notes.slice(index + 1)
-          ]
-        }
-      })
-    });
-  }
-
-  deleteNote(id) {
-    Note.Delete(id)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchNoteDates();
-        return {
-          notes: prevState.notes.filter(note => note.id !== id)
-        }
-      })
-    })
-  }
 
   // CRUD Schedule Operations
 
@@ -166,11 +101,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            notes={this.state.notes}
-            noteDates={this.state.noteDates}
-            createNote={this.createNote}
-            updateNote={this.updateNote}
-            deleteNote={this.deleteNote}
             schedules={this.state.schedules}
             scheduleDates={this.state.scheduleDates}
             createSchedule={this.createSchedule}

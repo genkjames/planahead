@@ -31,7 +31,8 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state.note);
+    this.props.onSubmit(this.state.note, this.props.user.id)
+    .then(this.props.history.push('/dashboard/daily/notes'));
   }
 
   // sets date when user creates a new note

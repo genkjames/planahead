@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
-import users from './users';
+import auth from './auth';
 import tasks from './tasks';
 import events from './events';
+import notes from './notes';
 
 const rootReducer = combineReducers({
-  users,
+  auth,
   tasks,
-  events
-})
+  events,
+  notes
+});
 
 export default rootReducer;
 

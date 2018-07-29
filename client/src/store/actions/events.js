@@ -55,9 +55,9 @@ export function addEvent(event, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Event.Create(event)
-      .then(data => dispatch(handleSubmit(data)));
+      .then(data => dispatch(handleSubmit(data)))
+      .then(() => dispatch(getEventDates(id)));
     })
-    .then(dispatch(getEventDates(id)));
   }
 }
 
@@ -65,18 +65,18 @@ export function editEvent(event, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Event.Update(event)
-      .then(data => dispatch(handleEdit(data)));
+      .then(data => dispatch(handleEdit(data)))
+      .then(() => dispatch(getEventDates(id)));
     })
-    .then(dispatch(getEventDates(id)));
   }
 }
 
-export function deleteEvent(id) {
+export function deleteEvent(id, userId) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Event.Delete(id)
       .then(data => dispatch(handleDelete(id)))
+      .then(() => dispatch(getEventDates(userId)));
     })
-    .then(dispatch(getEventDates(id)));
   }
 }

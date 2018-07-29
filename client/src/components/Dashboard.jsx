@@ -89,7 +89,6 @@ class Dashboard extends Component {
                   date={this.state.date}
                   onChange={this.changeDate}
                   onSwitch={this.switchViews}
-                  noteDates={this.props.noteDates}
                   scheduleDates={this.props.scheduleDates}
                 />
               )}
@@ -104,10 +103,6 @@ class Dashboard extends Component {
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
-                  notes={this.props.notes}
-                  createNote={this.props.createNote}
-                  updateNote={this.props.updateNote}
-                  deleteNote={this.props.deleteNote}
                   schedules={this.props.schedules}
                   createSchedule={this.props.createSchedule}
                   updateSchedule={this.props.updateSchedule}
@@ -118,9 +113,7 @@ class Dashboard extends Component {
             <Route 
               path="/dashboard/tasks"
               render={() => (
-                <Tasks
-                  dateObject={this.createDateObject}
-                />
+                <Tasks dateObject={this.createDateObject} />
               )}
             />
           </Switch>

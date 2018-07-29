@@ -25,6 +25,7 @@ function Routes(props) {
          path="/dashboard/daily/events/"
          render={() => (
           <View
+            user={props.user}
             event={props.event}
             onDelete={props.onDelete}
             manipulate={true}

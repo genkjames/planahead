@@ -5,14 +5,14 @@ const initialState = {
   eventDates: []
 }
 
-export default function rootReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
     case GET_EVENTS:
-      return { ...state, events: action.events }
+      return { ...state, events: action.events };
     case GET_EVENT_DATES:
-      return { ...state, eventDates: action.dates }
+      return { ...state, eventDates: action.dates };
     case ADD_EVENT:
-      return { ...state, events: [ ...state.events, action.event ] }
+      return { ...state, events: [ ...state.events, action.event ] };
     case EDIT_EVENT:
       const index = state.events.findIndex(event => event.id === action.event.id);
       return { 
@@ -22,10 +22,10 @@ export default function rootReducer(state = initialState, action) {
           action.event,
           ...state.events.slice(index + 1) 
         ] 
-      }
+      };
     case REMOVE_EVENT:
       let events = state.events.filter(event => event.id !== action.id);
-      return { ...state, events }
+      return { ...state, events };
     default:
       return state;
   }

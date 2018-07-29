@@ -5,12 +5,12 @@ const initialState = {
   error: false
 }
 
-export default function rootReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
     case SET_USER:
-      return { user: action.user, error: false }
+      return { ...state, user: action.user };
     case SET_ERROR:
-      return { user: state.user, error: action.error }
+      return { ...state, error: action.error };
     default:
       return state;
   }

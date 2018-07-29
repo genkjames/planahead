@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { register, removeError } from '../../store/actions/users';
+import { register, removeError } from '../../store/actions/auth';
 
 import Form from './Form';
 
@@ -34,7 +34,7 @@ function Register(props) {
 
 function mapStateToProps(state) {
   return {
-    errors: state.users.error
+    errors: state.auth.error
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login, removeError } from '../../store/actions/users';
+import { login, removeError } from '../../store/actions/auth';
 
 import Form from './Form';
 
@@ -23,7 +23,7 @@ function Login(props) {
 
 function mapStateToProps(state) {
   return {
-    errors: state.users.error
+    errors: state.auth.error
   }
 }
 

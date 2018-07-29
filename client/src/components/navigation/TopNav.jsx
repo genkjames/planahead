@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../store/actions/users';
+import { logout } from '../../store/actions/auth';
 
 class TopNav extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class TopNav extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.users.user
+    user: state.auth.user
   }
 }
 
