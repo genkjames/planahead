@@ -1,6 +1,7 @@
 import Service from '../../services/authService';
 import { SET_USER, SET_ERROR } from '../actionTypes'; 
 import { getTasks, getTaskDates } from './tasks';
+import { getEvents, getEventDates } from './events';
 
 function handleUser(user) {
   return {
@@ -26,7 +27,7 @@ export function register(user) {
           dispatch(handleUser(data.user));
           resolve();
         } else {
-          dispatch(handleError(data.errors))
+          dispatch(handleError(data.errors));
         }      
       })
       .catch(err => dispatch(handleError({errors: {message: "Some error"}})))
@@ -38,6 +39,8 @@ function fetchCalls(id) {
   return dispatch => {
     dispatch(getTasks(id))
     dispatch(getTaskDates(id));
+    dispatch(getEvents(id));
+    dispatch(getEventDates(id));
   }
 }
 

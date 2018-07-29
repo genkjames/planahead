@@ -89,8 +89,6 @@ class Dashboard extends Component {
                   date={this.state.date}
                   onChange={this.changeDate}
                   onSwitch={this.switchViews}
-                  dateFormat={this.dateFormat}
-                  eventDates={this.props.eventDates}
                   noteDates={this.props.noteDates}
                   scheduleDates={this.props.scheduleDates}
                 />
@@ -106,10 +104,6 @@ class Dashboard extends Component {
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
-                  events={this.props.events}
-                  createEvent={this.props.createEvent}
-                  updateEvent={this.props.updateEvent}
-                  deleteEvent={this.props.deleteEvent}
                   notes={this.props.notes}
                   createNote={this.props.createNote}
                   updateNote={this.props.updateNote}

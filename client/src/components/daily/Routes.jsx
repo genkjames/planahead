@@ -25,11 +25,7 @@ function Routes(props) {
         path={`/dashboard/daily/tasks`}
         render={() => (
           <Tasks
-            user={props.user}
             history={props.history}
-            onTask={props.createTask}
-            onEdit={props.updateTask}
-            onDelete={props.deleteTask}
             changeDate={props.changeDate}
             date={props.date}
             tasks={props.tasks}
@@ -42,15 +38,12 @@ function Routes(props) {
         path="/dashboard/daily/events"
         render={() => (
           <Events
-            user={props.user}
+            history={props.history}
             date={props.date}
             events={props.events}
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
             dateObject={props.dateObject}
-            onEvent={props.createEvent}
-            onEdit={props.updateEvent}
-            onDelete={props.deleteEvent}
           />
         )}
       />
@@ -58,7 +51,6 @@ function Routes(props) {
         path="/dashboard/daily/notes"
         render={() => (
           <Notes
-            user={props.user}
             date={props.date}
             notes={props.notes}
             dateFormat={props.dateFormat}
@@ -72,7 +64,6 @@ function Routes(props) {
         path="/dashboard/daily/schedule"
         render={() => (
           <Schedule
-            user={props.user}
             date={props.date}
             dateFormat={props.dateFormat}
             schedules={props.schedules}

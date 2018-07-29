@@ -43,6 +43,7 @@ export function getTasks(id) {
   }
 }
 
+// fetch unique task dates to color code monthly view
 export function getTaskDates(id) {
   return dispatch => {
     Task.Dates(id) 

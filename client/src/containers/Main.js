@@ -18,11 +18,7 @@ function Main(props) {
       />
       <Route
         path="/"
-        render={({ history }) => (
-          <Landing
-            history={history}
-          />
-        )}
+        component={Landing}
       />
     </Switch>
   )

@@ -14,31 +14,15 @@ function Landing(props) {
         <Switch>
           <Route
             exact path="/"
-            render={() => (
-              <Content
-                user={props.user}
-              />
-            )}
+            component={Content}
           />
           <Route
             exact path="/register"
-            render={() => (
-              <Register
-                register={props.register}
-                errors={props.errors}
-                history={props.history}
-              />
-            )}
+            component={Register}
           />
           <Route
             exact path="/login"
-            render={() => (
-              <Login
-                login={props.login}
-                errors={props.errors}
-                history={props.history}
-              />
-            )}
+            component={Login}
           />
         </Switch>
       </div>

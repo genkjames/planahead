@@ -1,6 +1,9 @@
 import React from 'react';
-import DailyMenu from '../../navigation/DailyMenu'
 import { Link, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addEvent, editEvent, deleteEvent } from '../../../store/actions/events';
+
+import DailyMenu from '../../navigation/DailyMenu'
 import Form from './Form';
 import Routes from './Routes';
 
@@ -15,10 +18,11 @@ function Events(props) {
           user={props.user}
           event={event}
           date={props.date}
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
+          onEdit={props.editEvent}
+          onDelete={props.deleteEvent}
           changeDate={props.changeDate}
           dateObject={props.dateObject}
+          history={props.history}
         />
       )
     })
@@ -36,8 +40,9 @@ function Events(props) {
                 user={props.user}
                 date={props.date}
                 dateFormat={props.dateFormat}
-                onSubmit={props.onEvent}
+                onSubmit={props.addEvent}
                 label="Add"
+                history={props.history}
               />)}
           />
           <Route
@@ -56,4 +61,10 @@ function Events(props) {
   )
 }
 
-export default Events;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, { addEvent, editEvent, deleteEvent })(Events);

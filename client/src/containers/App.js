@@ -4,7 +4,6 @@ import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/users';
 import Service from '../services/authService';
-import Event from '../services/eventService';
 import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
 
@@ -13,17 +12,11 @@ class App extends Component {
     super(props);
 
     this.state = {
-      events: [],
-      eventDates: [],
       notes: [],
       noteDates: [],
       schedules: [],
       scheduleDates: []
     }
-
-    this.createEvent = this.createEvent.bind(this);
-    this.updateEvent = this.updateEvent.bind(this);
-    this.deleteEvent = this.deleteEvent.bind(this);
 
     this.createNote = this.createNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
@@ -32,66 +25,6 @@ class App extends Component {
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
-  }
-
-  // CRUD Event Operations
-
-  fetchEvents() {
-    Event.All(this.state.user.id)
-    .then(data => this.setState({
-      events: data
-    }));
-  }
-
-  // fetch unique event dates to color code monthly view
-  fetchEventDates() {
-    Event.Dates(this.state.user.id)
-    .then(data => this.setState({
-      eventDates: data
-    }))
-  }
-
-  createEvent(event) {
-    Event.Create(event)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/events');
-      this.setState((prevState) => {
-        this.fetchEventDates();
-        return {
-          events: [...prevState.events, data]
-        }
-      })
-    })
-  }
-
-  updateEvent(event) {
-    Event.Update(event)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/events')
-      this.setState((prevState) => {
-        const index = prevState.events.findIndex(event => event.id === data.id);
-        this.fetchEventDates();
-        return {
-          events: [
-            ...prevState.events.slice(0, index),
-            data,
-            ...prevState.events.slice(index + 1)
-          ]
-        }
-      })
-    });
-  }
-
-  deleteEvent(id) {
-    Event.Delete(id)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchEventDates();
-        return {
-          events: prevState.events.filter(event => event.id !== id)
-        }
-      })
-    })
   }
 
   // CRUD Note operations
@@ -213,17 +146,6 @@ class App extends Component {
 
   // Auth
 
-  // fetchCalls() {
-  //   this.fetchTasks();
-  //   this.fetchTaskDates();
-  //   this.fetchEvents();
-  //   this.fetchEventDates();
-  //   this.fetchNotes();
-  //   this.fetchNoteDates();
-  //   this.fetchSchedule();
-  //   this.fetchScheduleDates();
-  // }
-
   isLoggedIn() {
     if (localStorage.getItem('authToken') !== null) {
       if(localStorage.getItem('authToken') !== "undefined") {
@@ -231,22 +153,6 @@ class App extends Component {
       }
     }
   }
-
-  // logout() {
-  //   Service.destroyToken();
-  //   this.setState({
-  //     user: false,
-  //     tasks: [],
-  //     taskDates: [],
-  //     events: [],
-  //     eventDates: [],
-  //     notes: [],
-  //     noteDates: [],
-  //     schedules: [],
-  //     scheduleDates: []
-  //   })
-  //   this.props.history.push('/');
-  // }
 
   componentDidMount() {
     if(Service.fetchToken() !== "undefined") {
@@ -260,12 +166,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            events={this.state.events}
-            createEvent={this.createEvent}
-            updateEvent={this.updateEvent}
-            deleteEvent={this.deleteEvent}
-            eventDates={this.state.eventDates}
-            errors={this.state.errors}
             notes={this.state.notes}
             noteDates={this.state.noteDates}
             createNote={this.createNote}

@@ -10,7 +10,7 @@ export default function rootReducer(state = initialState, action) {
     case SET_USER:
       return { user: action.user, error: false }
     case SET_ERROR:
-      return { user: false, error: action.error }
+      return { user: state.user, error: action.error }
     default:
       return state;
   }
