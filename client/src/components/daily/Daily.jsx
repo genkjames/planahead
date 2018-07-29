@@ -5,6 +5,7 @@ import Routes from './Routes';
 
 class Daily extends Component {
   render() {
+    console.log(this.props);
     const tasks = this.props.tasks.filter(this.props.compareDate);
     const events = this.props.events.filter(this.props.compareDate);
     const notes = this.props.notes.filter(this.props.compareDate);
@@ -14,18 +15,11 @@ class Daily extends Component {
       <div className="daily">
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
-          history={this.props.history}
-          changeDate={this.props.changeDate}
-          date={this.props.date}
-          dateFormat={this.props.dateFormat}
-          dateObject={this.props.dateObject}
+          {...this.props}
           tasks={tasks}
           events={events}
           notes={notes}
           schedules={schedules}
-          createSchedule={this.props.createSchedule}
-          updateSchedule={this.props.updateSchedule}
-          deleteSchedule={this.props.deleteSchedule}
         />
       </div>
     )

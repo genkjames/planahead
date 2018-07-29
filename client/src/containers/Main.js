@@ -9,12 +9,7 @@ function Main(props) {
     <Switch>
       <Route
         path="/dashboard"
-        render={({ history }) => (
-          <Dashboard
-            {...props}
-            history={history}
-          />
-        )}
+        render={() => (<Dashboard {...props} />)}
       />
       <Route
         path="/"
