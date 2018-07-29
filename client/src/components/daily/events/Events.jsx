@@ -1,6 +1,8 @@
 import React from 'react';
-import DailyMenu from '../../navigation/DailyMenu'
 import { Link, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import DailyMenu from '../../navigation/DailyMenu'
 import Form from './Form';
 import Routes from './Routes';
 
@@ -56,4 +58,10 @@ function Events(props) {
   )
 }
 
-export default Events;
+function mapStateToProps(state) {
+  return {
+    user: state.users.user
+  }
+}
+
+export default connect(mapStateToProps, null)(Events);

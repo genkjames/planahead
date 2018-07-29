@@ -14,11 +14,7 @@ class Daily extends Component {
       <div className="daily">
         <h1>{this.props.date.toDateString()}</h1>
         <Routes
-          user={this.props.user}
           history={this.props.history}
-          createTask={this.props.createTask}
-          updateTask={this.props.updateTask}
-          deleteTask={this.props.deleteTask}
           changeDate={this.props.changeDate}
           date={this.props.date}
           tasks={tasks}
@@ -44,7 +40,8 @@ class Daily extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks.tasks
+    tasks: state.tasks.tasks,
+    events: state.events.events
   }
 }
 

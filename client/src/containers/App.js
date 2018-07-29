@@ -36,12 +36,12 @@ class App extends Component {
 
   // CRUD Event Operations
 
-  fetchEvents() {
-    Event.All(this.state.user.id)
-    .then(data => this.setState({
-      events: data
-    }));
-  }
+  // fetchEvents() {
+  //   Event.All(this.state.user.id)
+  //   .then(data => this.setState({
+  //     events: data
+  //   }));
+  // }
 
   // fetch unique event dates to color code monthly view
   fetchEventDates() {
@@ -260,7 +260,7 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            events={this.state.events}
+            // events={this.state.events}
             createEvent={this.createEvent}
             updateEvent={this.updateEvent}
             deleteEvent={this.deleteEvent}

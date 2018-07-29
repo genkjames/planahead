@@ -35,3 +35,10 @@ function handleDelete(id) {
     id
   }
 }
+
+export function getEvents(id) {
+  return dispatch => {
+    Event.All(id)
+    .then(data => dispatch(handleAll(data)));
+  }
+}
