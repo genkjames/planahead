@@ -42,3 +42,10 @@ export function getEvents(id) {
     .then(data => dispatch(handleAll(data)));
   }
 }
+
+export function getEventDates(id) {
+  return dispatch => {
+    Event.Dates(id)
+    .then(data => dispatch(handleDates(data)));
+  }
+}

@@ -44,12 +44,12 @@ class App extends Component {
   // }
 
   // fetch unique event dates to color code monthly view
-  fetchEventDates() {
-    Event.Dates(this.state.user.id)
-    .then(data => this.setState({
-      eventDates: data
-    }))
-  }
+  // fetchEventDates() {
+  //   Event.Dates(this.state.user.id)
+  //   .then(data => this.setState({
+  //     eventDates: data
+  //   }))
+  // }
 
   createEvent(event) {
     Event.Create(event)
@@ -260,12 +260,9 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            // events={this.state.events}
             createEvent={this.createEvent}
             updateEvent={this.updateEvent}
             deleteEvent={this.deleteEvent}
-            eventDates={this.state.eventDates}
-            errors={this.state.errors}
             notes={this.state.notes}
             noteDates={this.state.noteDates}
             createNote={this.createNote}
