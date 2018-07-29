@@ -19,7 +19,6 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
 
@@ -33,19 +32,6 @@ class App extends Component {
   }
 
   // CRUD Event Operations
-
-  createEvent(event) {
-    Event.Create(event)
-    .then(data => {
-      this.props.history.push('/dashboard/daily/events');
-      this.setState((prevState) => {
-        this.fetchEventDates();
-        return {
-          events: [...prevState.events, data]
-        }
-      })
-    })
-  }
 
   updateEvent(event) {
     Event.Update(event)
@@ -216,7 +202,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            createEvent={this.createEvent}
             updateEvent={this.updateEvent}
             deleteEvent={this.deleteEvent}
             notes={this.state.notes}

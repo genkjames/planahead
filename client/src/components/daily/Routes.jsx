@@ -38,12 +38,12 @@ function Routes(props) {
         path="/dashboard/daily/events"
         render={() => (
           <Events
+            history={props.history}
             date={props.date}
             events={props.events}
             dateFormat={props.dateFormat}
             changeDate={props.changeDate}
             dateObject={props.dateObject}
-            onEvent={props.createEvent}
             onEdit={props.updateEvent}
             onDelete={props.deleteEvent}
           />

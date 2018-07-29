@@ -42,7 +42,8 @@ class Form extends Component {
     if(this.state.event.id) {
       this.changeDate();
     }
-    this.props.onSubmit(this.state.event);
+    this.props.onSubmit(this.state.event, this.props.user.id)
+    .then(this.props.history.push('/dashboard/daily/events'));
   }
 
   // sets date when user creates a new event

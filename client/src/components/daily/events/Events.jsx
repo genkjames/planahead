@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addEvent } from '../../../store/actions/events';
 
 import DailyMenu from '../../navigation/DailyMenu'
 import Form from './Form';
@@ -38,8 +39,9 @@ function Events(props) {
                 user={props.user}
                 date={props.date}
                 dateFormat={props.dateFormat}
-                onSubmit={props.onEvent}
+                onSubmit={props.addEvent}
                 label="Add"
+                history={props.history}
               />)}
           />
           <Route
@@ -64,4 +66,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Events);
+export default connect(mapStateToProps, { addEvent })(Events);
