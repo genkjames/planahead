@@ -4,7 +4,6 @@ import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/auth';
 import Service from '../services/authService';
-import Note from '../services/noteService';
 import Schedule from '../services/scheduleService';
 
 class App extends Component {
@@ -16,26 +15,11 @@ class App extends Component {
       scheduleDates: []
     }
 
-    this.deleteNote = this.deleteNote.bind(this);
-
     this.createSchedule = this.createSchedule.bind(this);
     this.updateSchedule = this.updateSchedule.bind(this);
     this.deleteSchedule = this.deleteSchedule.bind(this);
   }
 
-  
-
-  deleteNote(id) {
-    Note.Delete(id)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchNoteDates();
-        return {
-          notes: prevState.notes.filter(note => note.id !== id)
-        }
-      })
-    })
-  }
 
   // CRUD Schedule Operations
 

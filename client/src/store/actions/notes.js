@@ -55,9 +55,9 @@ export function addNote(note, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Note.Create(note)
-      .then(data => dispatch(handleSubmit(data)));
+      .then(data => dispatch(handleSubmit(data)))
+      .then(() => dispatch(getNoteDates(id)));
     })
-    .then(dispatch(getNoteDates(id)));
   }
 }
 
@@ -65,8 +65,18 @@ export function editNote(note, id) {
   return dispatch => {
     return new Promise((resolve, reject) => {
       Note.Update(note)
-      .then(data => dispatch(handleEdit(data)));
+      .then(data => dispatch(handleEdit(data)))
+      .then(() => dispatch(getNoteDates(id)));
     })
-    .then(dispatch(getNoteDates(id)));
+  }
+}
+
+export function deleteNote(id, userId) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Note.Delete(id)
+      .then(data => dispatch(handleDelete(id)))
+      .then(() => dispatch(getNoteDates(userId)));     
+    })
   }
 }

@@ -9,7 +9,7 @@ class View extends Component {
   }
 
   handleDelete(id) {
-    this.props.onDelete(id);
+    this.props.onDelete(id, this.props.user.id);
   }
 
   render() {
