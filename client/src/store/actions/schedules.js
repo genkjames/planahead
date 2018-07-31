@@ -70,3 +70,13 @@ export function editSchedule(schedule, id) {
     })
   }
 }
+
+export function deleteSchedule(id, userId) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Schedule.Delete(id)
+      .then(data => dispatch(handleDelete(id)))
+      .then(() => dispatch(getScheduleDates(userId)));     
+    })
+  }
+}

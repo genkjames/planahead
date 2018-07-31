@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addSchedule, editSchedule } from '../../../store/actions/schedules';
+import { addSchedule, editSchedule, deleteSchedule } from '../../../store/actions/schedules';
 
 import DailyMenu from '../../navigation/DailyMenu';
 import Form from './Form';
@@ -72,7 +72,7 @@ class Schedule extends Component {
           time={schedule.set_time}
           onSubmit={this.props.addSchedule}
           onEdit={this.props.editSchedule}
-          onDelete={this.props.onDelete}
+          onDelete={this.props.deleteSchedule}
           schedule={schedule}
         />
       )
@@ -96,7 +96,7 @@ class Schedule extends Component {
           time={time}
           onSubmit={this.props.addSchedule}
           onEdit={this.props.editSchedule}
-          onDelete={this.props.onDelete}
+          onDelete={this.props.deleteSchedule}
         />
       )
     })
@@ -120,4 +120,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addSchedule, editSchedule })(Schedule);
+export default connect(mapStateToProps, { addSchedule, editSchedule, deleteSchedule })(Schedule);
