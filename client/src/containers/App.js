@@ -4,7 +4,6 @@ import Main from './Main';
 import { connect } from 'react-redux';
 import { checkUser } from '../store/actions/auth';
 import Service from '../services/authService';
-import Schedule from '../services/scheduleService';
 
 class App extends Component {
   // Checks if user is still logged in
