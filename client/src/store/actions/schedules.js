@@ -60,3 +60,13 @@ export function addSchedule(schedule, id) {
     })
   }
 }
+
+export function editSchedule(schedule, id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Schedule.Update(schedule)
+      .then(data => dispatch(handleEdit(data)))
+      .then(() => dispatch(getScheduleDates(id)));
+    })
+  }
+}
