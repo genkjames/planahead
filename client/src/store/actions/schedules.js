@@ -1,29 +1,39 @@
 import Schedule from '../../services/scheduleService';
 import { GET_SCHEDULES, GET_SCHEDULE_DATES, ADD_SCHEDULE, EDIT_SCHEDULE, REMOVE_SCHEDULE } from '../actionTypes';
 
-function handleSubmit(schedules) {
-  type: GET_SCHEDULES,
-  schedules
+function handleAll(schedules) {
+  return {
+    type: GET_SCHEDULES,
+    schedules
+  }
 }
 
 function handleDates(dates) {
-  type: GET_SCHEDULE_DATES,
-  dates
+  return {    
+    type: GET_SCHEDULE_DATES,
+    dates
+  }
 }
 
 function handleSubmit(schedule) {
-  type: ADD_SCHEDULE,
-  schedule
+  return {
+    type: ADD_SCHEDULE,
+    schedule
+  }
 }
 
 function handleEdit(schedule) {
-  type: EDIT_SCHEDULE,
-  schedule
+  return {
+    type: EDIT_SCHEDULE,
+    schedule
+  }
 }
 
 function handleDelete(id) {
-  type: REMOVE_SCHEDULE,
-  id
+  return {
+    type: REMOVE_SCHEDULE,
+    id
+  }
 }
 
 export function getSchedules(id) {
@@ -38,5 +48,15 @@ export function getScheduleDates(id) {
   return dispatch => {
     Schedule.Dates(id)
     .then(data => dispatch(handleDates(data)));
+  }
+}
+
+export function addSchedule(schedule, id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Schedule.Create(schedule)
+      .then(data => dispatch(handleSubmit(data)))
+      .then(() => dispatch(getScheduleDates(id)));
+    })
   }
 }

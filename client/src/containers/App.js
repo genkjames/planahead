@@ -7,25 +7,6 @@ import Service from '../services/authService';
 import Schedule from '../services/scheduleService';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
-  // CRUD Schedule Operations
-
-  // fetch unique schedule dates to color code monthly view
-  createSchedule(schedule) {
-    Schedule.Create(schedule)
-    .then(data => {
-      this.setState((prevState) => {
-        this.fetchScheduleDates();
-        return {
-          schedules: [...prevState.schedules, data]
-        }
-      })
-    })
-  }
 
   updateSchedule(schedule) {
     Schedule.Update(schedule)

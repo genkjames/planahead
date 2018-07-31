@@ -42,7 +42,7 @@ class Form extends Component {
   // creates schedule once user leaves input box and schedule has no id 
   handleExit(e) {
     if (!this.state.schedule.id && this.state.schedule.text !== "") {
-      this.props.onSubmit(this.state.schedule);
+      this.props.onSubmit(this.state.schedule, this.props.user.id);
     }
     this.setState({
         focused: false
@@ -54,9 +54,9 @@ class Form extends Component {
   // allows for users to edit and delete without having to click buttons / links
   handleSubmit(schedule) {
     if (schedule.id && schedule.text === "") {
-      this.props.onDelete(schedule.id);
+      this.props.onDelete(schedule.id, this.props.user.id);
     } else if (schedule.id) {
-      this.props.onEdit(schedule)
+      this.props.onEdit(schedule, this.props.user.id)
     }
   }
 
