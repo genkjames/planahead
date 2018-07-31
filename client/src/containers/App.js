@@ -9,26 +9,10 @@ import Schedule from '../services/scheduleService';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      schedules: [],
-      scheduleDates: []
-    }
-
-    this.createSchedule = this.createSchedule.bind(this);
-    this.updateSchedule = this.updateSchedule.bind(this);
-    this.deleteSchedule = this.deleteSchedule.bind(this);
   }
 
 
   // CRUD Schedule Operations
-
-  fetchSchedule() {
-    Schedule.All(this.state.user.id)
-    .then(data => this.setState({
-      schedules: data
-    }));
-  }
 
   // fetch unique schedule dates to color code monthly view
   fetchScheduleDates() {
@@ -101,7 +85,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            schedules={this.state.schedules}
             scheduleDates={this.state.scheduleDates}
             createSchedule={this.createSchedule}
             updateSchedule={this.updateSchedule}

@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case ADD_SCHEDULE:
       return { ...state, schedules: [ ...state.schedules, action.schedule ] }
     case EDIT_SCHEDULE:
-    const index = state.schedules.findIndex(schedule => schedule.id === action.schedule.id);
+      const index = state.schedules.findIndex(schedule => schedule.id === action.schedule.id);
       return { 
         ...state, 
         schedules: [
@@ -24,7 +24,8 @@ export default (state = initialState, action) => {
         ]
       }
     case REMOVE_SCHEDULE:
-      return { ...state, }
+      const schedules = state.schedules.filter(schedule => schedule.id !== action.id);
+      return { ...state, schedules }
     default:
       return state;
   }

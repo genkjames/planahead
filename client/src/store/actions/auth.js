@@ -3,6 +3,7 @@ import { SET_USER, SET_ERROR } from '../actionTypes';
 import { getTasks, getTaskDates } from './tasks';
 import { getEvents, getEventDates } from './events';
 import { getNotes, getNoteDates } from './notes';
+import { getSchedules } from './schedules';
 
 function handleUser(user) {
   return {
@@ -44,6 +45,7 @@ function fetchCalls(id) {
     dispatch(getEventDates(id));
     dispatch(getNotes(id));
     dispatch(getNoteDates(id));
+    dispatch(getSchedules(id));
   }
 }
 
