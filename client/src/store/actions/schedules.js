@@ -32,3 +32,11 @@ export function getSchedules(id) {
     .then(data => dispatch(handleAll(data)));
   }
 }
+
+// fetch unique schedule dates to color code monthly view
+export function getScheduleDates(id) {
+  return dispatch => {
+    Schedule.Dates(id)
+    .then(data => dispatch(handleDates(data)));
+  }
+}

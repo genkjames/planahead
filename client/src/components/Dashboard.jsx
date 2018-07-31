@@ -89,7 +89,6 @@ class Dashboard extends Component {
                   date={this.state.date}
                   onChange={this.changeDate}
                   onSwitch={this.switchViews}
-                  scheduleDates={this.props.scheduleDates}
                 />
               )}
             />

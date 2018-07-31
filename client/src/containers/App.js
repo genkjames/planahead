@@ -15,13 +15,6 @@ class App extends Component {
   // CRUD Schedule Operations
 
   // fetch unique schedule dates to color code monthly view
-  fetchScheduleDates() {
-    Schedule.Dates(this.state.user.id)
-    .then(data => this.setState({
-      scheduleDates: data
-    }));
-  }
-
   createSchedule(schedule) {
     Schedule.Create(schedule)
     .then(data => {
@@ -85,7 +78,6 @@ class App extends Component {
         <main>
           <Main
             isLoggedIn={this.isLoggedIn}
-            scheduleDates={this.state.scheduleDates}
             createSchedule={this.createSchedule}
             updateSchedule={this.updateSchedule}
             deleteSchedule={this.deleteSchedule}
