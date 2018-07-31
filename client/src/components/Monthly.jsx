@@ -85,7 +85,8 @@ function mapStateToProps(state) {
   return {
     taskDates: state.tasks.taskDates,
     eventDates: state.events.eventDates,
-    noteDates: state.notes.noteDates
+    noteDates: state.notes.noteDates,
+    scheduleDates: state.schedules.scheduleDates
   }
 }
 

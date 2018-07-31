@@ -66,9 +66,6 @@ function Routes(props) {
             date={props.date}
             dateFormat={props.dateFormat}
             schedules={props.schedules}
-            onSchedule={props.createSchedule}
-            onEdit={props.updateSchedule}
-            onDelete={props.deleteSchedule}
           />
         )}
       />

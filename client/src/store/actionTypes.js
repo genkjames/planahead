@@ -26,3 +26,11 @@ export const GET_NOTE_DATES = "GET_NOTE_DATES";
 export const ADD_NOTE = "ADD_NOTE";
 export const EDIT_NOTE = "EDIT_NOTE";
 export const REMOVE_NOTE = "REMOVE_NOTE";
+
+// Schedule Action Types
+
+export const GET_SCHEDULES = "GET_SCHEDULES";
+export const GET_SCHEDULE_DATES = "GET_SCHEDULE_DATES";
+export const ADD_SCHEDULE = "ADD_SCHEDULE";
+export const EDIT_SCHEDULE = "EDIT_SCHEDULE";
+export const REMOVE_SCHEDULE = "REMOVE_SCHEDULE";
