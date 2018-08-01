@@ -5,6 +5,7 @@ import TopNav from './navigation/TopNav';
 import Monthly from './Monthly';
 import Daily from './daily/Daily';
 import Tasks from './tasks/Tasks';
+import Events from './events/Events';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -109,6 +110,12 @@ class Dashboard extends Component {
               path="/dashboard/tasks"
               render={() => (
                 <Tasks dateObject={this.createDateObject} />
+              )}
+            />
+            <Route 
+              path="/dashboard/events"
+              render={() => (
+                <Events />
               )}
             />
           </Switch>
