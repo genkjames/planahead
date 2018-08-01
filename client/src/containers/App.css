@@ -410,7 +410,7 @@ button {
   background: #fff;
 }
 
-.daily h1, .all-tasks h1 {
+.daily h1, [class^='all-'] h1 {
   text-align: center;
   padding: 20px;
   background: var(--light-blue);
