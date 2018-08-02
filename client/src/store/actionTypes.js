@@ -34,3 +34,7 @@ export const GET_SCHEDULE_DATES = "GET_SCHEDULE_DATES";
 export const ADD_SCHEDULE = "ADD_SCHEDULE";
 export const EDIT_SCHEDULE = "EDIT_SCHEDULE";
 export const REMOVE_SCHEDULE = "REMOVE_SCHEDULE";
+
+// Date Action Types
+
+export const SET_DATE = "SET_DATE"
