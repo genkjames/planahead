@@ -2,7 +2,7 @@ import { SET_DATE } from '../actionTypes';
 
 const date = new Date();
 
-const intialState = {
+const initialState = {
   date
 }
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 import { connect } from 'react-redux';
 
+import { changeDate } from '../store/actions/date';
+
 class Monthly extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +16,13 @@ class Monthly extends Component {
 
   // handles change in calendar tiles when clicked
   handleChange(date) {
-    this.props.onChange(date);
+    this.props.changeDate(date)
+    .then(this.props.history.push('/dashboard/daily'));
   }
 
   // handles change in navigation arrows when clicked
   handleButton(date) {
-    this.props.onSwitch(date);
+    this.props.changeDate(date.activeStartDate);
   }
 
   // allows users to see when a date has a task or event scheduled
@@ -86,8 +89,9 @@ function mapStateToProps(state) {
     taskDates: state.tasks.taskDates,
     eventDates: state.events.eventDates,
     noteDates: state.notes.noteDates,
-    scheduleDates: state.schedules.scheduleDates
+    scheduleDates: state.schedules.scheduleDates,
+    date: state.date.date
   }
 }
 
-export default connect(mapStateToProps, null)(Monthly);
+export default connect(mapStateToProps, { changeDate })(Monthly);

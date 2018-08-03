@@ -30,7 +30,8 @@ function mapStateToProps(state) {
     tasks: state.tasks.tasks,
     events: state.events.events,
     notes: state.notes.notes,
-    schedules: state.schedules.schedules
+    schedules: state.schedules.schedules,
+    date: state.date.date
   }
 }
 

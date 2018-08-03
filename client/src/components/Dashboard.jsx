@@ -15,7 +15,6 @@ class Dashboard extends Component {
     }
 
     this.changeDate = this.changeDate.bind(this);
-    this.switchViews = this.switchViews.bind(this);
     this.dateFormat = this.dateFormat.bind(this);
     this.compareDate = this.compareDate.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
@@ -25,13 +24,6 @@ class Dashboard extends Component {
   changeDate(date) {
     this.setState({date});
     this.props.history.push('/dashboard/daily');
-  }
-
-  // onClick function for navigation arrows
-  switchViews(date) {
-    this.setState({
-      date: date.activeStartDate
-    })
   }
 
   // adds a 0 to any month or day field that has one digit
@@ -112,11 +104,11 @@ class Dashboard extends Component {
           <Switch>
             <Route
               exact path="/dashboard"
-              render={() => (
+              render={({ history }) => (
                 <Monthly
-                  date={this.state.date}
-                  onChange={this.changeDate}
-                  onSwitch={this.switchViews}
+                  // date={this.state.date}
+                  // onChange={this.changeDate}
+                  history={history}
                 />
               )}
             />
@@ -124,7 +116,7 @@ class Dashboard extends Component {
               path="/dashboard/daily"
               render={({ history }) => (
                 <Daily
-                  date={this.state.date}
+                  // date={this.state.date}
                   history={history}
                   changeDate={this.changeDate}
                   compareDate={this.compareDate}
