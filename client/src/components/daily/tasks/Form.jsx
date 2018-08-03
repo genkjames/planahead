@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { changeDate } from '../../../store/actions/date';
 
 class Form extends Component {
   constructor(props) {

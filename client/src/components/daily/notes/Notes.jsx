@@ -61,7 +61,8 @@ function Notes(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth.user
+    user: state.auth.user,
+    date: state.date.date
   }
 }
 

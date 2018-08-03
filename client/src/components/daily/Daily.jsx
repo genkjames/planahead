@@ -5,20 +5,21 @@ import Routes from './Routes';
 
 class Daily extends Component {
   render() {
-    const tasks = this.props.tasks.filter(this.props.compareDate);
-    const events = this.props.events.filter(this.props.compareDate);
-    const notes = this.props.notes.filter(this.props.compareDate);
-    const schedules = this.props.schedules.filter(this.props.compareDate);
+    const { tasks, events, notes, schedules, date, compareDate } = this.props;
+    const viewTasks = tasks.filter(task => compareDate(task, date));
+    const viewEvents = events.filter(event => compareDate(event,date));
+    const viewNotes = notes.filter(note => compareDate(note, date));
+    const viewSchedules = schedules.filter(schedule => compareDate(schedule, date));
 
     return (
       <div className="daily">
-        <h1>{this.props.date.toDateString()}</h1>
+        <h1>{date.toDateString()}</h1>
         <Routes
           {...this.props}
-          tasks={tasks}
-          events={events}
-          notes={notes}
-          schedules={schedules}
+          tasks={viewTasks}
+          events={viewEvents}
+          notes={viewNotes}
+          schedules={viewSchedules}
         />
       </div>
     )

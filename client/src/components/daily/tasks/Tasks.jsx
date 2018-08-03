@@ -21,7 +21,7 @@ function Tasks(props) {
           date={props.date}
           onEdit={props.editTask}
           onDelete={props.deleteTask}
-          changeDate={props.changeDate}
+          // changeDate={props.changeDate}
           dateObject={props.dateObject}
           history={props.history}
         />
@@ -65,7 +65,8 @@ function Tasks(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth.user
+    user: state.auth.user,
+    date: state.date.date
   }
 }
 

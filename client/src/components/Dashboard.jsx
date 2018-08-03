@@ -44,9 +44,9 @@ class Dashboard extends Component {
   }
 
   // filters out tasks, events, etc. that aren't scheduled for a particular day
-  compareDate(prod) {
-    const date = this.dateFormat(this.state.date);
-    if(date === prod.set_date) {
+  compareDate(prod, date) {
+    const prodDate = this.dateFormat(date);
+    if(prodDate === prod.set_date) {
       return true;
     }
   }
@@ -105,20 +105,15 @@ class Dashboard extends Component {
             <Route
               exact path="/dashboard"
               render={({ history }) => (
-                <Monthly
-                  // date={this.state.date}
-                  // onChange={this.changeDate}
-                  history={history}
-                />
+                <Monthly history={history} />
               )}
             />
             <Route
               path="/dashboard/daily"
               render={({ history }) => (
                 <Daily
-                  // date={this.state.date}
                   history={history}
-                  changeDate={this.changeDate}
+                  // changeDate={this.changeDate}
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
