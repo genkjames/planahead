@@ -10,20 +10,9 @@ import Events from './events/Events';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      date: new Date()
-    }
-
-    this.changeDate = this.changeDate.bind(this);
     this.dateFormat = this.dateFormat.bind(this);
     this.compareDate = this.compareDate.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
-  }
-
-  // onClick function for calendar date tiles
-  changeDate(date) {
-    this.setState({date});
-    this.props.history.push('/dashboard/daily');
   }
 
   // adds a 0 to any month or day field that has one digit
@@ -113,7 +102,6 @@ class Dashboard extends Component {
               render={({ history }) => (
                 <Daily
                   history={history}
-                  changeDate={this.changeDate}
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
