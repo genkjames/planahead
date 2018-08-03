@@ -26,7 +26,6 @@ function Routes(props) {
         render={() => (
           <Tasks
             history={props.history}
-            // changeDate={props.changeDate}
             tasks={props.tasks}
             dateFormat={props.dateFormat}
             dateObject={props.dateObject}
@@ -40,7 +39,6 @@ function Routes(props) {
             history={props.history}
             events={props.events}
             dateFormat={props.dateFormat}
-            changeDate={props.changeDate}
             dateObject={props.dateObject}
           />
         )}

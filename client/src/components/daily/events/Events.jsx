@@ -20,7 +20,6 @@ function Events(props) {
           date={props.date}
           onEdit={props.editEvent}
           onDelete={props.deleteEvent}
-          changeDate={props.changeDate}
           dateObject={props.dateObject}
           history={props.history}
         />
