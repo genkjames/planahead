@@ -21,7 +21,6 @@ function Tasks(props) {
           date={props.date}
           onEdit={props.editTask}
           onDelete={props.deleteTask}
-          // changeDate={props.changeDate}
           dateObject={props.dateObject}
           history={props.history}
         />

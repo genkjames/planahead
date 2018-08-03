@@ -15,7 +15,6 @@ function Routes(props) {
             onSubmit={props.onEdit}
             task={props.task}
             label="Edit"
-            // changeDate={props.changeDate}
             dateObject={props.dateObject}
             history={props.history}
           />

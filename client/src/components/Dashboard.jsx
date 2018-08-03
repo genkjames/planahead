@@ -113,7 +113,7 @@ class Dashboard extends Component {
               render={({ history }) => (
                 <Daily
                   history={history}
-                  // changeDate={this.changeDate}
+                  changeDate={this.changeDate}
                   compareDate={this.compareDate}
                   dateFormat={this.dateFormat}
                   dateObject={this.createDateObject}
