@@ -6,6 +6,7 @@ import Monthly from './Monthly';
 import Daily from './daily/Daily';
 import Tasks from './tasks/Tasks';
 import Events from './events/Events';
+import Notes from './notes/Notes';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -127,6 +128,10 @@ class Dashboard extends Component {
                   datesOf={this.datesOf}
                 />
               )}
+            />
+            <Route 
+              path="/dashboard/notes"
+              render={() => (<Notes />)}
             />
           </Switch>
         </div>

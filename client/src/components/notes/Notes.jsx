@@ -1,9 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 function Notes(props) {
   return (
-    <h1>Notes</h1>
+    <div>
+      <h1>Notes</h1>
+    </div>
   )
 }
 
-export default Notes;
+function mapStateToProps(state) {
+  return {
+    notes: state.notes.notes
+  }
+}
+
+export default connect(mapStateToProps, null)(Notes);
