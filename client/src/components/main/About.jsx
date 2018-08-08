@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Content(props) {
+function About(props) {
   return (
     <div className="landing-content">
       <div>
@@ -36,4 +36,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Content);
+export default connect(mapStateToProps, null)(About);
