@@ -8,6 +8,7 @@ function View(props) {
   if (event !== undefined) {
     date = dateObject({"set_date": event}).toDateString();
   }
+  
   return (
     <div>
       <div className="container">

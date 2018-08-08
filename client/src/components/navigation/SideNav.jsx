@@ -14,6 +14,7 @@ function SideNav(props) {
       </div>
       <Link to="/dashboard/tasks">Tasks</Link>
       <Link to="/dashboard/events">Events</Link>
+      <Link to="/dashboard/notes">Notes</Link>
     </nav>
   )
 }
