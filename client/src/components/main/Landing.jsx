@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Register from './auth/Register';
-import Login from './auth/Login';
+import Register from '../auth/Register';
+import Login from '../auth/Login';
 import About from './About';
 
 function Landing(props) {

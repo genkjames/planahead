@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SideMenu from './navigation/SideMenu';
-import TopNav from './navigation/TopNav';
+import SideMenu from '../navigation/SideMenu';
+import TopNav from '../navigation/TopNav';
 import Monthly from './Monthly';
-import Daily from './daily/Daily';
-import Tasks from './tasks/Tasks';
-import Events from './events/Events';
-import Notes from './notes/Notes';
+import Daily from '../daily/Daily';
+import Tasks from '../tasks/Tasks';
+import Events from '../events/Events';
+import Notes from '../notes/Notes';
 
 class Dashboard extends Component {
   constructor(props) {
