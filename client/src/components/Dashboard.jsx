@@ -131,7 +131,13 @@ class Dashboard extends Component {
             />
             <Route 
               path="/dashboard/notes"
-              render={() => (<Notes />)}
+              render={() => (
+                <Notes 
+                  dateObject={this.createDateObject}
+                  sortByDate={this.sortByDate}
+                  datesOf={this.datesOf}
+                />
+              )}
             />
           </Switch>
         </div>

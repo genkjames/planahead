@@ -1,8 +1,21 @@
 import React from 'react';
+import NoteView from '../daily/NoteView';
 
 function View(props) {
+  const { note, notes, dateObject } = props;
+  let date;
+
+  if (note !== undefined) {
+    date = dateObject({"set_date": note}).toDateString();
+  }
+
   return (
-    <h1>Note View</h1>
+    <div className="container">
+      <h2>{date}</h2>
+      <NoteView 
+        notes={notes}
+      />
+    </div>
   )
 }
 
