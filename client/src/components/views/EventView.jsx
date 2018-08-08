@@ -1,5 +1,5 @@
 import React from 'react';
-import Events from './events/View';
+import Events from '../daily/events/View';
 
 function EventView(props) {
   const events = props.events.map(event => {

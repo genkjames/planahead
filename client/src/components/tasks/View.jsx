@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskView from '../daily/TaskView';
+import TaskView from '../views/TaskView';
 
 function View(props) {
   let date;

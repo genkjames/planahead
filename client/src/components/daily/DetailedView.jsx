@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TaskView from './TaskView';
-import EventView from './EventView';
-import NoteView from './NoteView';
+import TaskView from '../views/TaskView';
+import EventView from '../views/EventView';
+import NoteView from '../views/NoteView';
 
 function DetailedView(props) {
   let content;

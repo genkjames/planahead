@@ -1,7 +1,8 @@
 import React from 'react';
-import NoteView from '../daily/NoteView';
+import NoteView from '../views/NoteView';
 
 function View(props) {
+  console.log(props);
   const { note, notes, dateObject } = props;
   let date;
 

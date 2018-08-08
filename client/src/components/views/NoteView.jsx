@@ -1,5 +1,5 @@
 import React from 'react';
-import Notes from './notes/View';
+import Notes from '../daily/notes/View';
 
 function NoteView(props) {
   const notes = props.notes.map(note => {

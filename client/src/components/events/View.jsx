@@ -1,5 +1,5 @@
 import React from 'react';
-import EventView from '../daily/EventView';
+import EventView from '../views/EventView';
 
 function View(props) {
   const { event, events, dateObject } = props;
