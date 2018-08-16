@@ -1,5 +1,5 @@
 import React from 'react';
-import Tasks from './tasks/View';
+import Tasks from '../daily/tasks/View';
 
 function TaskView(props) {
   const tasks = props.tasks.map(task => {

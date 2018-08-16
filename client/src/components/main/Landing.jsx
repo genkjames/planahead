@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Register from './auth/Register';
-import Login from './auth/Login';
-import Content from './Content';
+import Register from '../auth/Register';
+import Login from '../auth/Login';
+import About from './About';
 
 function Landing(props) {
   return (
@@ -14,7 +14,7 @@ function Landing(props) {
         <Switch>
           <Route
             exact path="/"
-            component={Content}
+            component={About}
           />
           <Route
             exact path="/register"

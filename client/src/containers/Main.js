@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Landing from '../components/Landing';
-import Dashboard from '../components/Dashboard';
+import Landing from '../components/main/Landing';
+import Dashboard from '../components/main/Dashboard';
 
 function Main(props) {
   return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 import { connect } from 'react-redux';
 
-import { changeDate } from '../store/actions/date';
+import { changeDate } from '../../store/actions/date';
 
 class Monthly extends Component {
   constructor(props) {
