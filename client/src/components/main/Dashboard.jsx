@@ -43,8 +43,9 @@ class Dashboard extends Component {
 
   // converts set_date to an instance of a Date object to change the state of date if user updates
   createDateObject(date) {
+    console.log(date);
     const newDate = new Date();
-    const dateValues = date.set_date.split('-');
+    const dateValues = date.split('-');
     newDate.setFullYear(dateValues[0]);
     newDate.setMonth(parseInt(dateValues[1], 10) - 1);
     newDate.setDate(dateValues[2]);
@@ -99,7 +100,7 @@ class Dashboard extends Component {
               )}
             />
             <Route
-              path="/dashboard/daily"
+              path="/dashboard/daily/:id"
               render={({ history }) => (
                 <Daily
                   history={history}

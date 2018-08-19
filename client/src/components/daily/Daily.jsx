@@ -3,8 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Routes from './Routes';
 
+import { changeDate } from '../../store/actions/date';
+
 class Daily extends Component {
+  componentDidMount() {
+    const date = this.props.dateObject(this.props.match.params.id);
+    this.props.changeDate(date);
+  }
+
   render() {
+    console.log(this.props.match.params.id);
+    console.log(this.props.date);
     const { tasks, events, notes, schedules, date, compareDate } = this.props;
     const viewTasks = tasks.filter(task => compareDate(task, date));
     const viewEvents = events.filter(event => compareDate(event,date));
@@ -36,4 +45,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(Daily));
+export default withRouter(connect(mapStateToProps, { changeDate })(Daily));

@@ -21,7 +21,7 @@ class Form extends Component {
 
   // converts set_date of task to an instance of a Date object to change the state of date if user updates the date of their task
   changeDate() {
-    const newDate = this.props.dateObject(this.state.task);
+    const newDate = this.props.dateObject(this.state.task.set_date);
     this.props.changeDate(newDate);
   }
 
