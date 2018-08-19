@@ -43,7 +43,6 @@ class Dashboard extends Component {
 
   // converts set_date to an instance of a Date object to change the state of date if user updates
   createDateObject(date) {
-    console.log(date);
     const newDate = new Date();
     const dateValues = date.split('-');
     newDate.setFullYear(dateValues[0]);
@@ -87,7 +86,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <SideMenu />
+        <SideMenu dateFormat={this.dateFormat}/>
         <div>
           <TopNav
             history={this.props.history}

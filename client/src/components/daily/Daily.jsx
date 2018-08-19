@@ -12,8 +12,6 @@ class Daily extends Component {
   }
 
   render() {
-    console.log(this.props.match.params.id);
-    console.log(this.props.date);
     const { tasks, events, notes, schedules, date, compareDate } = this.props;
     const viewTasks = tasks.filter(task => compareDate(task, date));
     const viewEvents = events.filter(event => compareDate(event,date));

@@ -34,7 +34,7 @@ class Form extends Component {
 
   // converts set_date of event to an instance of a Date object to change the state of date if user updates the date of their event
   changeDate() {
-    const newDate = this.props.dateObject(this.state.event);
+    const newDate = this.props.dateObject(this.state.event.set_date);
     this.props.changeDate(newDate);
   }
 
