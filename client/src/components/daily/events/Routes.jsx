@@ -4,10 +4,11 @@ import Form from './Form';
 import View from './View';
 
 function Routes(props) {
+  console.log(props);
   return (
     <Switch>
       <Route
-        path={`/dashboard/daily/events/edit/${props.event.id}`}
+        path={`/dashboard/daily/:id/events/edit/${props.event.id}`}
         render={() => (
           <Form
             user={props.user}
@@ -21,7 +22,7 @@ function Routes(props) {
         )}
       />
       <Route
-         path="/dashboard/daily/events/"
+         path="/dashboard/daily/:id/events/"
          render={() => (
           <View
             user={props.user}

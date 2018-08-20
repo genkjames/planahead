@@ -21,7 +21,7 @@ class View extends Component {
             <p>{this.props.event.text}</p>
           </div>
           {this.props.manipulate && <div className="actions">
-            <Link to={`/dashboard/daily/events/edit/${this.props.event.id}`}>
+            <Link to={`/dashboard/daily/${this.props.event.set_date}/events/edit/${this.props.event.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>
             <button onClick={() => this.handleDelete(this.props.event.id)}>
