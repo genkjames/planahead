@@ -4,7 +4,6 @@ import Form from './Form';
 import View from './View';
 
 function Routes(props) {
-  console.log(props);
   return (
     <Switch>
       <Route

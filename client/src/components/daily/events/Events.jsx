@@ -30,7 +30,7 @@ function Events(props) {
 
   return (
     <div className="events">
-      <DailyMenu />
+      <DailyMenu date={date} />
       <div className="container">
         <Switch>
           <Route
