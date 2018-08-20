@@ -8,6 +8,8 @@ import Schedule from './schedule/Schedule';
 
 
 function Routes(props) {
+  const date = props.dateFormat(props.date);
+  
   return (
     <Switch>
       <Route 
@@ -63,7 +65,7 @@ function Routes(props) {
           />
         )}
       />
-      <Redirect to="/dashboard/daily/" />
+      <Redirect to={`/dashboard/daily/${date}`} />
     </Switch>
   )
 }

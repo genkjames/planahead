@@ -95,7 +95,10 @@ class Dashboard extends Component {
             <Route
               exact path="/dashboard"
               render={({ history }) => (
-                <Monthly history={history} />
+                <Monthly 
+                  history={history} 
+                  dateFormat={this.dateFormat}
+                />
               )}
             />
             <Route

@@ -16,8 +16,9 @@ class Monthly extends Component {
 
   // handles change in calendar tiles when clicked
   handleChange(date) {
+    const formattedDate = this.props.dateFormat(date);
     this.props.changeDate(date)
-    .then(this.props.history.push('/dashboard/daily'));
+    .then(this.props.history.push(`/dashboard/daily/${formattedDate}`));
   }
 
   // handles change in navigation arrows when clicked
