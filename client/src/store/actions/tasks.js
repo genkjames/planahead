@@ -72,6 +72,7 @@ export function editTask(task, id) {
 }
 
 export function deleteTask(id, userId) {
+  console.log('deleting');
   return dispatch => {
     return new Promise((resolve, reject) => {
       Task.Delete(id)

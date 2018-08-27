@@ -10,7 +10,6 @@ class Daily extends Component {
     let date = this.props.dateObject(this.props.match.params.id);
     if (isNaN(Date.parse(date))) {
       date = new Date();
-
       this.props.history.push(`/dashboard/daily/${this.props.dateFormat(date)}`);
     }
     this.props.changeDate(date);
