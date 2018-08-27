@@ -10,7 +10,7 @@ class CompletionStatus extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-   // when clicked task is updated to being complete in database
+   // when clicked task is updated to being complete / incomplete in database
   handleClick() {
     if (this.props.manipulate) {  
       const { id, user_id, text, set_date, is_complete } = this.props.task;
