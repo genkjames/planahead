@@ -35,7 +35,7 @@ function Tasks(props) {
       <div className="container">
         <Switch>
           <Route
-            path="/dashboard/daily/tasks/new"
+            path="/dashboard/daily/:id/tasks/new"
             render={() => (
               <Form
                 user={props.user}
@@ -48,10 +48,10 @@ function Tasks(props) {
             }
           />
           <Route
-            path="/dashboard/daily/tasks"
+            path="/dashboard/daily/:id/tasks"
             render={() => (
               <div className="add-new">
-                <Link to="/dashboard/daily/tasks/new" className="links">Add Task</Link>
+                <Link to={`/dashboard/daily/${date}/tasks/new`} className="links">Add Task</Link>
               </div>
               )
             }

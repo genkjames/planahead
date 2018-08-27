@@ -45,7 +45,7 @@ class Form extends Component {
       this.changeDate();
     }
     this.props.onSubmit(this.state.task, this.props.user.id)
-    .then(this.props.history.push('/dashboard/daily/tasks'));
+    .then(this.props.history.push(`/dashboard/daily/${this.state.task.set_date}/tasks`));
   }
 
   // sets date when user creates a new task
@@ -98,7 +98,7 @@ class Form extends Component {
           </div>}
           <div>
             <button className="links" value="submit">{this.props.label} Task</button>
-            <Link className="links" to="/dashboard/daily/tasks">Cancel</Link>
+            <Link className="links" to={`/dashboard/daily/${this.state.task.set_date}/tasks`}>Cancel</Link>
           </div>
         </form>
       </div>

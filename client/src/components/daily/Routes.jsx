@@ -20,11 +20,12 @@ function Routes(props) {
             events={props.events}
             notes={props.notes}
             schedules={props.schedules}
+            dateFormat={props.dateFormat}
           />
         )}
       />
       <Route
-        path={`/dashboard/daily/:id/tasks`}
+        path="/dashboard/daily/:id/tasks"
         render={() => (
           <Tasks
             history={props.history}

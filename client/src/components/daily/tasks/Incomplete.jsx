@@ -37,7 +37,7 @@ class Incomplete extends Component {
         <div className="view task">
           <p onClick={this.handleClick}>{this.props.task.text}</p>
           {this.props.manipulate && <div className="actions">
-            <Link to={`/dashboard/daily/tasks/edit/${this.props.task.id}`}>
+            <Link to={`/dashboard/daily/${this.props.task.set_date}/tasks/edit/${this.props.task.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>
             <button onClick={() => this.props.handleDelete(this.props.task.id)}>
