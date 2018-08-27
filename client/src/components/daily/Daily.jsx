@@ -7,7 +7,12 @@ import { changeDate } from '../../store/actions/date';
 
 class Daily extends Component {
   componentDidMount() {
-    const date = this.props.dateObject(this.props.match.params.id);
+    let date = this.props.dateObject(this.props.match.params.id);
+    if (isNaN(Date.parse(date))) {
+      date = new Date();
+
+      this.props.history.push(`/dashboard/daily/${this.props.dateFormat(date)}`);
+    }
     this.props.changeDate(date);
   }
 
