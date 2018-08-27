@@ -21,7 +21,7 @@ class Form extends Component {
 
   // converts set_date of task to an instance of a Date object to change the state of date if user updates the date of their task
   changeDate() {
-    const newDate = this.props.dateObject(this.state.task);
+    const newDate = this.props.dateObject(this.state.task.set_date);
     this.props.changeDate(newDate);
   }
 
@@ -45,7 +45,7 @@ class Form extends Component {
       this.changeDate();
     }
     this.props.onSubmit(this.state.task, this.props.user.id)
-    .then(this.props.history.push('/dashboard/daily/tasks'));
+    .then(this.props.history.push(`/dashboard/daily/${this.state.task.set_date}/tasks`));
   }
 
   // sets date when user creates a new task
@@ -98,7 +98,7 @@ class Form extends Component {
           </div>}
           <div>
             <button className="links" value="submit">{this.props.label} Task</button>
-            <Link className="links" to="/dashboard/daily/tasks">Cancel</Link>
+            <Link className="links" to={`/dashboard/daily/${this.state.task.set_date}/tasks`}>Cancel</Link>
           </div>
         </form>
       </div>

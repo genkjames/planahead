@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import View from './View';
 
 function Notes(props) {
-  console.log(props);
   const { notes, datesOf, dateObject, sortByDate } = props;
 
   const notesSortedByDate = notes.sort(sortByDate);

@@ -34,7 +34,7 @@ class Form extends Component {
 
   // converts set_date of event to an instance of a Date object to change the state of date if user updates the date of their event
   changeDate() {
-    const newDate = this.props.dateObject(this.state.event);
+    const newDate = this.props.dateObject(this.state.event.set_date);
     this.props.changeDate(newDate);
   }
 
@@ -45,7 +45,7 @@ class Form extends Component {
       this.changeDate();
     }
     this.props.onSubmit(this.state.event, this.props.user.id)
-    .then(this.props.history.push('/dashboard/daily/events'));
+    .then(this.props.history.push(`/dashboard/daily/${this.state.event.set_date}events`));
   }
 
   // sets date when user creates a new event
@@ -109,7 +109,7 @@ class Form extends Component {
           </div>
           <div>
             <button className="links" value="submit">{this.props.label} Event</button>
-            <Link className="links" to="/dashboard/daily/events">Cancel</Link>
+            <Link className="links" to={`/dashboard/daily/${this.state.event.set_date}/events`}>Cancel</Link>
           </div>
         </form>
       </div>

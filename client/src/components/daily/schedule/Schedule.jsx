@@ -62,6 +62,8 @@ class Schedule extends Component {
   }
 
   render() {
+    const date = this.props.dateFormat(this.props.date);
+
     const schedule = this.props.schedules.map(schedule => {
       return (
         <Form
@@ -105,7 +107,7 @@ class Schedule extends Component {
 
     return (
       <div className="schedule">
-        <DailyMenu />
+        <DailyMenu date={date} />
         <div className="container schedule-table">
           {totalSchedules}
         </div>

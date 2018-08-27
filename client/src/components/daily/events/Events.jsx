@@ -9,6 +9,7 @@ import Routes from './Routes';
 
 function Events(props) {
   let events;
+  const date = props.dateFormat(props.date);
 
   if(props.events.length > 0) {
     events = props.events.map(event => {
@@ -29,11 +30,11 @@ function Events(props) {
 
   return (
     <div className="events">
-      <DailyMenu />
+      <DailyMenu date={date} />
       <div className="container">
         <Switch>
           <Route
-            path="/dashboard/daily/events/new"
+            path="/dashboard/daily/:id/events/new"
             render={() => (
               <Form
                 user={props.user}
@@ -45,10 +46,10 @@ function Events(props) {
               />)}
           />
           <Route
-            path="/dashboard/daily/events"
+            path="/dashboard/daily/:id/events"
             render={() => (
               <div className="add-new">
-                <Link to="/dashboard/daily/events/new" className="links">Add Event</Link>
+                <Link to={`/dashboard/daily/${date}/events/new`} className="links">Add Event</Link>
               </div>
               )
             }

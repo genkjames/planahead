@@ -5,7 +5,7 @@ function View(props) {
   let date;
 
   if (props.date !== undefined) {
-    date = props.dateObject({"set_date": props.date}).toDateString();
+    date = props.dateObject(props.date).toDateString();
   }
 
   return (

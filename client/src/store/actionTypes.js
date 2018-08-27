@@ -37,4 +37,4 @@ export const REMOVE_SCHEDULE = "REMOVE_SCHEDULE";
 
 // Date Action Types
 
-export const SET_DATE = "SET_DATE"
+export const SET_DATE = "SET_DATE";

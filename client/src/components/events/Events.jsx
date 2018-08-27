@@ -20,6 +20,7 @@ function Events(props) {
       />
     )
   })
+  
   return (
     <div className="all-events">
       <h1>Events</h1>

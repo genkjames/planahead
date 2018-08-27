@@ -6,7 +6,7 @@ function View(props) {
   let date;
 
   if (event !== undefined) {
-    date = dateObject({"set_date": event}).toDateString();
+    date = dateObject(event).toDateString();
   }
   
   return (

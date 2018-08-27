@@ -2,12 +2,11 @@ import React from 'react';
 import NoteView from '../views/NoteView';
 
 function View(props) {
-  console.log(props);
   const { note, notes, dateObject } = props;
   let date;
 
   if (note !== undefined) {
-    date = dateObject({"set_date": note}).toDateString();
+    date = dateObject(note).toDateString();
   }
 
   return (

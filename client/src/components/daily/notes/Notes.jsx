@@ -9,6 +9,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 
 function Notes(props) {
   let notes;
+  const date = props.dateFormat(props.date);
 
   if(props.notes.length > 0) {
     notes = props.notes.map(note => {
@@ -28,7 +29,7 @@ function Notes(props) {
 
   return (
     <div className="notes">
-      <DailyMenu />
+      <DailyMenu date={date} />
       <div className="container">
         <Switch>
           <Route

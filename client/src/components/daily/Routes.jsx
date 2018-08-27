@@ -8,21 +8,24 @@ import Schedule from './schedule/Schedule';
 
 
 function Routes(props) {
+  const date = props.dateFormat(props.date);
+  
   return (
     <Switch>
       <Route 
-        exact path='/dashboard/daily/'
+        exact path='/dashboard/daily/:id'
         render={() => (
           <View 
             tasks={props.tasks}
             events={props.events}
             notes={props.notes}
             schedules={props.schedules}
+            dateFormat={props.dateFormat}
           />
         )}
       />
       <Route
-        path={`/dashboard/daily/tasks`}
+        path="/dashboard/daily/:id/tasks"
         render={() => (
           <Tasks
             history={props.history}
@@ -33,7 +36,7 @@ function Routes(props) {
         )}
       />
       <Route
-        path="/dashboard/daily/events"
+        path="/dashboard/daily/:id/events"
         render={() => (
           <Events
             history={props.history}
@@ -44,7 +47,7 @@ function Routes(props) {
         )}
       />
       <Route
-        path="/dashboard/daily/notes"
+        path="/dashboard/daily/:id/notes"
         render={() => (
           <Notes
             history={props.history}
@@ -54,7 +57,7 @@ function Routes(props) {
         )}
       />
       <Route
-        path="/dashboard/daily/schedule"
+        path="/dashboard/daily/:id/schedule"
         render={() => (
           <Schedule
             history={props.history}
@@ -63,7 +66,7 @@ function Routes(props) {
           />
         )}
       />
-      <Redirect to="/dashboard/daily/" />
+      <Redirect to={`/dashboard/daily/${date}`} />
     </Switch>
   )
 }

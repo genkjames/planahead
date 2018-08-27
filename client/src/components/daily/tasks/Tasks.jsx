@@ -10,6 +10,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 function Tasks(props) {
   // filter tasks for daily view
   let tasks;
+  const date = props.dateFormat(props.date);
   
   if (props.tasks.length > 0) {
     tasks = props.tasks.map(task => {
@@ -30,11 +31,11 @@ function Tasks(props) {
 
   return (
     <div className="tasks">
-      <DailyMenu />
+      <DailyMenu date={date} />
       <div className="container">
         <Switch>
           <Route
-            path="/dashboard/daily/tasks/new"
+            path="/dashboard/daily/:id/tasks/new"
             render={() => (
               <Form
                 user={props.user}
@@ -47,10 +48,10 @@ function Tasks(props) {
             }
           />
           <Route
-            path="/dashboard/daily/tasks"
+            path="/dashboard/daily/:id/tasks"
             render={() => (
               <div className="add-new">
-                <Link to="/dashboard/daily/tasks/new" className="links">Add Task</Link>
+                <Link to={`/dashboard/daily/${date}/tasks/new`} className="links">Add Task</Link>
               </div>
               )
             }

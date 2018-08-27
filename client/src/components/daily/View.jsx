@@ -7,14 +7,17 @@ function View(props) {
       <DetailedView 
         label="Tasks"
         content={props.tasks}
+        dateFormat={props.dateFormat}
       />
       <DetailedView 
         label="Events"
         content={props.events}
+        dateFormat={props.dateFormat}
       />
       <DetailedView 
         label="Notes"
         content={props.notes}
+        dateFormat={props.dateFormat}
       />
     </div>
   )
