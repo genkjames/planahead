@@ -18,7 +18,7 @@ class View extends Component {
         <div className="view">
           <p>{this.props.note.text}</p>
           {this.props.manipulate && <div className="actions">
-            <Link to={`/dashboard/daily/notes/edit/${this.props.note.id}`}>
+            <Link to={`/dashboard/daily/${this.props.note.set_date}/notes/edit/${this.props.note.id}`}>
               <i className="fa fa-pencil fa-hover"></i>
             </Link>
             <button onClick={() => this.handleDelete(this.props.note.id)}>
