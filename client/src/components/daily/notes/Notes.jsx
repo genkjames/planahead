@@ -48,7 +48,7 @@ function Notes(props) {
             path="/dashboard/daily/:id/notes"
             render={() => (
               <div className="add-new">
-                <Link to="/dashboard/daily/:id/notes/new" className="links">Add Note</Link>
+                <Link to={`/dashboard/daily/${date}/notes/new`} className="links">Add Note</Link>
               </div>
               )
             }

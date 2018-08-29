@@ -7,7 +7,7 @@ function Routes(props) {
   return (
     <Switch>
       <Route
-        path={`/dashboard/daily/notes/edit/${props.note.id}`}
+        path={`/dashboard/daily/:id/notes/edit/${props.note.id}`}
         render={() => (
           <Form
             user={props.user}
@@ -20,7 +20,7 @@ function Routes(props) {
         )}
       />
       <Route
-         path="/dashboard/daily/notes/"
+         path="/dashboard/daily/:id/notes/"
          render={() => (
           <View
             user={props.user}
