@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SideMenu from '../navigation/SideMenu';
 import TopNav from '../navigation/TopNav';
 import Monthly from './Monthly';
@@ -142,6 +142,7 @@ class Dashboard extends Component {
                 />
               )}
             />
+            <Redirect to="/dashboard" />
           </Switch>
         </div>
       </div>
