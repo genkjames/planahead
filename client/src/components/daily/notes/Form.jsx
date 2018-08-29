@@ -74,7 +74,7 @@ class Form extends Component {
           </div>
           <div>
             <button className="links" value="submit">{this.props.label} Note</button>
-            <Link className="links" to="/dashboard/daily/notes">Cancel</Link>
+            <Link className="links" to={`/dashboard/daily/${this.state.note.set_date}/notes`}>Cancel</Link>
           </div>
         </form>
       </div>
