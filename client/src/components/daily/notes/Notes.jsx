@@ -33,7 +33,7 @@ function Notes(props) {
       <div className="container">
         <Switch>
           <Route
-            path="/dashboard/daily/notes/new"
+            path="/dashboard/daily/:id/notes/new"
             render={() => (
               <Form
                 user={props.user}
@@ -45,10 +45,10 @@ function Notes(props) {
               />)}
           />
           <Route
-            path="/dashboard/daily/notes"
+            path="/dashboard/daily/:id/notes"
             render={() => (
               <div className="add-new">
-                <Link to="/dashboard/daily/notes/new" className="links">Add Note</Link>
+                <Link to={`/dashboard/daily/${date}/notes/new`} className="links">Add Note</Link>
               </div>
               )
             }

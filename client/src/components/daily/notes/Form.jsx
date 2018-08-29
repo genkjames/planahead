@@ -32,7 +32,7 @@ class Form extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onSubmit(this.state.note, this.props.user.id)
-    .then(this.props.history.push('/dashboard/daily/notes'));
+    .then(this.props.history.push(`/dashboard/daily/${this.state.note.set_date}/notes`));
   }
 
   // sets date when user creates a new note
@@ -74,7 +74,7 @@ class Form extends Component {
           </div>
           <div>
             <button className="links" value="submit">{this.props.label} Note</button>
-            <Link className="links" to="/dashboard/daily/notes">Cancel</Link>
+            <Link className="links" to={`/dashboard/daily/${this.state.note.set_date}/notes`}>Cancel</Link>
           </div>
         </form>
       </div>
